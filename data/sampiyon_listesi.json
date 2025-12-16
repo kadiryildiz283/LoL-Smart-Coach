@@ -1,0 +1,690 @@
+[
+    {
+        "name": "Aatrox",
+        "role": "Jungler, Top"
+    },
+    {
+        "name": "Ahri",
+        "role": "Mid"
+    },
+    {
+        "name": "Akali",
+        "role": "Mid"
+    },
+    {
+        "name": "Akshan",
+        "role": "Mid"
+    },
+    {
+        "name": "Alistar",
+        "role": "Support"
+    },
+    {
+        "name": "Ambessa",
+        "role": "Top, Jungler"
+    },
+    {
+        "name": "Amumu",
+        "role": "Jungler"
+    },
+    {
+        "name": "Anivia",
+        "role": "Mid"
+    },
+    {
+        "name": "Annie",
+        "role": "Mid"
+    },
+    {
+        "name": "Aphelios",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Ashe",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Aurelion Sol",
+        "role": "Mid"
+    },
+    {
+        "name": "Aurora",
+        "role": "Mid"
+    },
+    {
+        "name": "Azir",
+        "role": "Mid"
+    },
+    {
+        "name": "Bard",
+        "role": "Support"
+    },
+    {
+        "name": "Bel'Veth",
+        "role": "Jungler"
+    },
+    {
+        "name": "Blitzcrank",
+        "role": "Support"
+    },
+    {
+        "name": "Brand",
+        "role": "Support"
+    },
+    {
+        "name": "Braum",
+        "role": "Support"
+    },
+    {
+        "name": "Briar",
+        "role": "Jungler"
+    },
+    {
+        "name": "Caitlyn",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Camille",
+        "role": "Top"
+    },
+    {
+        "name": "Cassiopeia",
+        "role": "Mid, Top"
+    },
+    {
+        "name": "Cho'Gath",
+        "role": "Top, Jungler"
+    },
+    {
+        "name": "Corki",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Darius",
+        "role": "Top"
+    },
+    {
+        "name": "Diana",
+        "role": "Jungler, Mid"
+    },
+    {
+        "name": "Dr. Mundo",
+        "role": "Top, Jungler"
+    },
+    {
+        "name": "Draven",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Ekko",
+        "role": "Jungler, Mid"
+    },
+    {
+        "name": "Elise",
+        "role": "Jungler, Support"
+    },
+    {
+        "name": "Evelynn",
+        "role": "Jungler"
+    },
+    {
+        "name": "Ezreal",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Fiddlesticks",
+        "role": "Jungler"
+    },
+    {
+        "name": "Fiora",
+        "role": "Top"
+    },
+    {
+        "name": "Fizz",
+        "role": "Mid"
+    },
+    {
+        "name": "Galio",
+        "role": "Mid"
+    },
+    {
+        "name": "Gangplank",
+        "role": "Top"
+    },
+    {
+        "name": "Garen",
+        "role": "Top"
+    },
+    {
+        "name": "Gnar",
+        "role": "Top"
+    },
+    {
+        "name": "Gragas",
+        "role": "Top"
+    },
+    {
+        "name": "Graves",
+        "role": "Jungler"
+    },
+    {
+        "name": "Gwen",
+        "role": "Top"
+    },
+    {
+        "name": "Hecarim",
+        "role": "Jungler"
+    },
+    {
+        "name": "Heimerdinger",
+        "role": "Top"
+    },
+    {
+        "name": "Hwei",
+        "role": "Mid"
+    },
+    {
+        "name": "Illaoi",
+        "role": "Top"
+    },
+    {
+        "name": "Irelia",
+        "role": "Top, Mid"
+    },
+    {
+        "name": "Ivern",
+        "role": "Jungler"
+    },
+    {
+        "name": "Janna",
+        "role": "Support"
+    },
+    {
+        "name": "Jarvan IV",
+        "role": "Jungler"
+    },
+    {
+        "name": "Jax",
+        "role": "Top, Jungler"
+    },
+    {
+        "name": "Jayce",
+        "role": "Top, Jungler"
+    },
+    {
+        "name": "Jhin",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Jinx",
+        "role": "AD Carry"
+    },
+    {
+        "name": "K'Sante",
+        "role": "Top"
+    },
+    {
+        "name": "Kai'Sa",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Kalista",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Karma",
+        "role": "Support"
+    },
+    {
+        "name": "Karthus",
+        "role": "Jungler"
+    },
+    {
+        "name": "Kassadin",
+        "role": "Mid"
+    },
+    {
+        "name": "Katarina",
+        "role": "Mid"
+    },
+    {
+        "name": "Kayle",
+        "role": "Top, Mid"
+    },
+    {
+        "name": "Kayn",
+        "role": "Jungler"
+    },
+    {
+        "name": "Kennen",
+        "role": "Top, Mid"
+    },
+    {
+        "name": "Kha'Zix",
+        "role": "Jungler"
+    },
+    {
+        "name": "Kindred",
+        "role": "Jungler"
+    },
+    {
+        "name": "Kled",
+        "role": "Top"
+    },
+    {
+        "name": "Kog'Maw",
+        "role": "AD Carry"
+    },
+    {
+        "name": "LeBlanc",
+        "role": "Mid"
+    },
+    {
+        "name": "Lee Sin",
+        "role": "Jungler"
+    },
+    {
+        "name": "Leona",
+        "role": "Support"
+    },
+    {
+        "name": "Lillia",
+        "role": "Jungler"
+    },
+    {
+        "name": "Lissandra",
+        "role": "Mid"
+    },
+    {
+        "name": "Lucian",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Lulu",
+        "role": "Support"
+    },
+    {
+        "name": "Lux",
+        "role": "Support, Mid"
+    },
+    {
+        "name": "Malphite",
+        "role": "Top, Jungler"
+    },
+    {
+        "name": "Malzahar",
+        "role": "Mid"
+    },
+    {
+        "name": "Maokai",
+        "role": "Support"
+    },
+    {
+        "name": "Master Yi",
+        "role": "Jungler"
+    },
+    {
+        "name": "Mel",
+        "role": "Mid, Support"
+    },
+    {
+        "name": "Milio",
+        "role": "Support"
+    },
+    {
+        "name": "Miss Fortune",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Mordekaiser",
+        "role": "Top"
+    },
+    {
+        "name": "Morgana",
+        "role": "Support, Mid"
+    },
+    {
+        "name": "Naafiri",
+        "role": "Jungler, Mid"
+    },
+    {
+        "name": "Nami",
+        "role": "Support"
+    },
+    {
+        "name": "Nasus",
+        "role": "Top"
+    },
+    {
+        "name": "Nautilus",
+        "role": "Support"
+    },
+    {
+        "name": "Neeko",
+        "role": "Support"
+    },
+    {
+        "name": "Nidalee",
+        "role": "Jungler"
+    },
+    {
+        "name": "Nilah",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Nocturne",
+        "role": "Jungler"
+    },
+    {
+        "name": "Nunu & Willump",
+        "role": "Jungler"
+    },
+    {
+        "name": "Olaf",
+        "role": "Top"
+    },
+    {
+        "name": "Orianna",
+        "role": "Mid"
+    },
+    {
+        "name": "Ornn",
+        "role": "Top"
+    },
+    {
+        "name": "Pantheon",
+        "role": "Support, Jungler, Top"
+    },
+    {
+        "name": "Poppy",
+        "role": "Support, Top"
+    },
+    {
+        "name": "Pyke",
+        "role": "Support"
+    },
+    {
+        "name": "Qiyana",
+        "role": "Jungler, Mid"
+    },
+    {
+        "name": "Quinn",
+        "role": "Top, Mid"
+    },
+    {
+        "name": "Rakan",
+        "role": "Support"
+    },
+    {
+        "name": "Rammus",
+        "role": "Jungler"
+    },
+    {
+        "name": "Rek'Sai",
+        "role": "Jungler"
+    },
+    {
+        "name": "Rell",
+        "role": "Support"
+    },
+    {
+        "name": "Renata Glasc",
+        "role": "Support"
+    },
+    {
+        "name": "Renekton",
+        "role": "Top"
+    },
+    {
+        "name": "Rengar",
+        "role": "Jungler"
+    },
+    {
+        "name": "Riven",
+        "role": "Top"
+    },
+    {
+        "name": "Rumble",
+        "role": "Top"
+    },
+    {
+        "name": "Ryze",
+        "role": "Mid"
+    },
+    {
+        "name": "Samira",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Sejuani",
+        "role": "Jungler"
+    },
+    {
+        "name": "Senna",
+        "role": "Support"
+    },
+    {
+        "name": "Seraphine",
+        "role": "Support"
+    },
+    {
+        "name": "Sett",
+        "role": "Top"
+    },
+    {
+        "name": "Shaco",
+        "role": "Jungler, Support"
+    },
+    {
+        "name": "Shen",
+        "role": "Top"
+    },
+    {
+        "name": "Shyvana",
+        "role": "Jungler"
+    },
+    {
+        "name": "Singed",
+        "role": "Top"
+    },
+    {
+        "name": "Sion",
+        "role": "Top"
+    },
+    {
+        "name": "Sivir",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Skarner",
+        "role": "Jungler"
+    },
+    {
+        "name": "Smolder",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Sona",
+        "role": "Support"
+    },
+    {
+        "name": "Soraka",
+        "role": "Support"
+    },
+    {
+        "name": "Swain",
+        "role": "Support, Mid"
+    },
+    {
+        "name": "Sylas",
+        "role": "Jungler, Mid"
+    },
+    {
+        "name": "Syndra",
+        "role": "Mid"
+    },
+    {
+        "name": "Tahm Kench",
+        "role": "Support, Top"
+    },
+    {
+        "name": "Taliyah",
+        "role": "Mid"
+    },
+    {
+        "name": "Talon",
+        "role": "Jungler, Mid"
+    },
+    {
+        "name": "Taric",
+        "role": "Support"
+    },
+    {
+        "name": "Teemo",
+        "role": "Top"
+    },
+    {
+        "name": "Thresh",
+        "role": "Support"
+    },
+    {
+        "name": "Tristana",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Trundle",
+        "role": "Jungler, Top"
+    },
+    {
+        "name": "Tryndamere",
+        "role": "Top"
+    },
+    {
+        "name": "Twisted Fate",
+        "role": "Mid"
+    },
+    {
+        "name": "Twitch",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Udyr",
+        "role": "Jungler"
+    },
+    {
+        "name": "Urgot",
+        "role": "Top"
+    },
+    {
+        "name": "Varus",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Vayne",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Veigar",
+        "role": "Mid"
+    },
+    {
+        "name": "Vel'Koz",
+        "role": "Support, Mid"
+    },
+    {
+        "name": "Vex",
+        "role": "Mid"
+    },
+    {
+        "name": "Vi",
+        "role": "Jungler"
+    },
+    {
+        "name": "Viego",
+        "role": "Jungler"
+    },
+    {
+        "name": "Viktor",
+        "role": "Mid"
+    },
+    {
+        "name": "Vladimir",
+        "role": "Mid, Top"
+    },
+    {
+        "name": "Volibear",
+        "role": "Top, Jungler"
+    },
+    {
+        "name": "Warwick",
+        "role": "Jungler, Top"
+    },
+    {
+        "name": "Wukong",
+        "role": "Jungler"
+    },
+    {
+        "name": "Xayah",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Xerath",
+        "role": "Mid, Support"
+    },
+    {
+        "name": "Xin Zhao",
+        "role": "Jungler"
+    },
+    {
+        "name": "Yasuo",
+        "role": "Mid, Top"
+    },
+    {
+        "name": "Yone",
+        "role": "Mid, Top"
+    },
+    {
+        "name": "Yorick",
+        "role": "Top"
+    },
+    {
+        "name": "Yunara",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Yuumi",
+        "role": "Support"
+    },
+    {
+        "name": "Zaahen",
+        "role": "Top, Jungler"
+    },
+    {
+        "name": "Zac",
+        "role": "Jungler"
+    },
+    {
+        "name": "Zed",
+        "role": "Mid, Jungler"
+    },
+    {
+        "name": "Zeri",
+        "role": "AD Carry"
+    },
+    {
+        "name": "Ziggs",
+        "role": "AD Carry, Mid"
+    },
+    {
+        "name": "Zilean",
+        "role": "Support"
+    },
+    {
+        "name": "Zoe",
+        "role": "Mid"
+    },
+    {
+        "name": "Zyra",
+        "role": "Support"
+    }
+]

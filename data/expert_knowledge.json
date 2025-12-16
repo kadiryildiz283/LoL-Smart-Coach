@@ -1,0 +1,2452 @@
+[
+    {
+        "name": "Aatrox",
+        "role_desc": "Üst Koridor (Juggernaut/Diver)",
+        "hard_counters": [
+            "Fiora",
+            "Irelia",
+            "Kled",
+            "Singed"
+        ],
+        "easy_matchups": [
+            "Sion",
+            "Kayle",
+            "Dr. Mundo"
+        ]
+    },
+    {
+        "name": "Ahri",
+        "role_desc": "Orta Koridor (Mage/Assassin)",
+        "hard_counters": [
+            "Annie",
+            "Lissandra",
+            "Vex",
+            "Malzahar"
+        ],
+        "easy_matchups": [
+            "Xerath",
+            "Vel'Koz",
+            "Lux"
+        ]
+    },
+    {
+        "name": "Akali",
+        "role_desc": "Orta/Üst Koridor (Assassin)",
+        "hard_counters": [
+            "Galio",
+            "Vex",
+            "Pantheon",
+            "Kled"
+        ],
+        "easy_matchups": [
+            "Katarina",
+            "Zed",
+            "Yasuo"
+        ]
+    },
+    {
+        "name": "Akshan",
+        "role_desc": "Orta/Üst Koridor (Marksman/Assassin)",
+        "hard_counters": [
+            "Jax",
+            "Yasuo",
+            "Irelia"
+        ],
+        "easy_matchups": [
+            "Kayle",
+            "Kassadin",
+            "Sylas"
+        ]
+    },
+    {
+        "name": "Alistar",
+        "role_desc": "Üst Koridor/Orman (Diver/Skirmisher)",
+        "hard_counters": [
+            "Warwick",
+            "Poppy",
+            "Cassiopeia",
+            "Vex"
+        ],
+        "easy_matchups": [
+            "Sejuani",
+            "Sion",
+            "Jayce"
+        ]
+    },
+    {
+        "name": "Amumu",
+        "role_desc": "Orman/Destek (Tank)",
+        "hard_counters": [
+            "Sylas",
+            "Olaf",
+            "Lee Sin"
+        ],
+        "easy_matchups": [
+            "Zeri",
+            "Kalista",
+            "Yasuo"
+        ]
+    },
+    {
+        "name": "Anivia",
+        "role_desc": "Orta Koridor (Control Mage)",
+        "hard_counters": [
+            "Kassadin",
+            "Fizz",
+            "Xerath"
+        ],
+        "easy_matchups": [
+            "Vladimir",
+            "Ryze",
+            "Nasus"
+        ]
+    },
+    {
+        "name": "Annie",
+        "role_desc": "Orta/Destek (Burst Mage)",
+        "hard_counters": [
+            "Xerath",
+            "Vel'Koz",
+            "Syndra",
+            "Orianna"
+        ],
+        "easy_matchups": [
+            "Yasuo",
+            "Yone",
+            "Akali",
+            "LeBlanc"
+        ]
+    },
+    {
+        "name": "Aphelios",
+        "role_desc": "Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Twitch",
+            "Braum",
+            "Ashe"
+        ],
+        "easy_matchups": [
+            "Vayne",
+            "Kaisa",
+            "Ezreal"
+        ]
+    },
+    {
+        "name": "Ashe",
+        "role_desc": "Alt Koridor/Destek (Utility Marksman)",
+        "hard_counters": [
+            "Draven",
+            "Samira",
+            "Fizz",
+            "Olaf"
+        ],
+        "easy_matchups": [
+            "Kalista",
+            "Zeri",
+            "Singed"
+        ]
+    },
+    {
+        "name": "Aurelion Sol",
+        "role_desc": "Orta Koridor (Battlemage)",
+        "hard_counters": [
+            "Yone",
+            "Fizz",
+            "Zed",
+            "Kassadin"
+        ],
+        "easy_matchups": [
+            "Malzahar",
+            "Annie",
+            "Veigar"
+        ]
+    },
+    {
+        "name": "Azir",
+        "role_desc": "Orta Koridor (Specialist)",
+        "hard_counters": [
+            "Xerath",
+            "Ziggs",
+            "Kassadin",
+            "Irelia"
+        ],
+        "easy_matchups": [
+            "Renekton (Mid)",
+            "Corki",
+            "Heimerdinger"
+        ]
+    },
+    {
+        "name": "Bard",
+        "role_desc": "Destek (Enchanter/Catcher)",
+        "hard_counters": [
+            "Blitzcrank",
+            "Nautilus",
+            "Pyke"
+        ],
+        "easy_matchups": [
+            "Braum",
+            "Taric",
+            "Tahm Kench"
+        ]
+    },
+    {
+        "name": "Bel'Veth",
+        "role_desc": "Orman (Skirmisher)",
+        "hard_counters": [
+            "Rammus",
+            "Poppy",
+            "Taliyah"
+        ],
+        "easy_matchups": [
+            "Sion",
+            "Dr. Mundo",
+            "Nidalee"
+        ]
+    },
+    {
+        "name": "Blitzcrank",
+        "role_desc": "Destek (Catcher)",
+        "hard_counters": [
+            "Morgana",
+            "Sivir",
+            "Ezreal",
+            "Alistar",
+            "Leona"
+        ],
+        "easy_matchups": [
+            "Soraka",
+            "Sona",
+            "Senna",
+            "Yuumi"
+        ]
+    },
+    {
+        "name": "Brand",
+        "role_desc": "Destek/Orta/Orman (Burst Mage)",
+        "hard_counters": [
+            "Fizz",
+            "Zed",
+            "Blitzcrank",
+            "Xerath"
+        ],
+        "easy_matchups": [
+            "Braum",
+            "Malphite",
+            "Rammus"
+        ]
+    },
+    {
+        "name": "Braum",
+        "role_desc": "Destek (Warden)",
+        "hard_counters": [
+            "Zyra",
+            "Brand",
+            "Xerath",
+            "Vel'Koz"
+        ],
+        "easy_matchups": [
+            "Miss Fortune",
+            "Ezreal",
+            "Ornn",
+            "Draven"
+        ]
+    },
+    {
+        "name": "Briar",
+        "role_desc": "Orman (Diver)",
+        "hard_counters": [
+            "Rammus",
+            "Nocturne",
+            "Singed",
+            "Shaco"
+        ],
+        "easy_matchups": [
+            "Hecarim",
+            "Kha'Zix",
+            "Nidalee"
+        ]
+    },
+    {
+        "name": "Caitlyn",
+        "role_desc": "Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Sivir",
+            "Jhin",
+            "Ashe",
+            "Yasuo (ADC)"
+        ],
+        "easy_matchups": [
+            "Vayne",
+            "Draven",
+            "Lucian"
+        ]
+    },
+    {
+        "name": "Camille",
+        "role_desc": "Üst Koridor/Destek (Diver)",
+        "hard_counters": [
+            "Jax",
+            "Renekton",
+            "Poppy",
+            "Shen"
+        ],
+        "easy_matchups": [
+            "Garen",
+            "Aatrox",
+            "Kayle"
+        ]
+    },
+    {
+        "name": "Cassiopeia",
+        "role_desc": "Orta/Üst Koridor (Battlemage)",
+        "hard_counters": [
+            "Xerath",
+            "Syndra",
+            "Orianna",
+            "Vel'Koz"
+        ],
+        "easy_matchups": [
+            "Yasuo",
+            "Yone",
+            "Irelia",
+            "Sylas"
+        ]
+    },
+    {
+        "name": "Cho'Gath",
+        "role_desc": "Üst/Orta (Tank)",
+        "hard_counters": [
+            "Vayne",
+            "Fiora",
+            "Gwen",
+            "Kayle"
+        ],
+        "easy_matchups": [
+            "Ryze",
+            "Malzahar",
+            "Jayce"
+        ]
+    },
+    {
+        "name": "Corki",
+        "role_desc": "Orta/Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Zed",
+            "Fizz",
+            "Tristana",
+            "Irelia"
+        ],
+        "easy_matchups": [
+            "Azir",
+            "Malzahar",
+            "Twisted Fate"
+        ]
+    },
+    {
+        "name": "Darius",
+        "role_desc": "Üst Koridor (Juggernaut)",
+        "hard_counters": [
+            "Vayne",
+            "Quinn",
+            "Yorick",
+            "Wukong"
+        ],
+        "easy_matchups": [
+            "Sion",
+            "Nasus",
+            "Rengar (Top)"
+        ]
+    },
+    {
+        "name": "Diana",
+        "role_desc": "Orman/Orta (Assassin/Diver)",
+        "hard_counters": [
+            "Swain",
+            "Galio",
+            "Mordekaiser"
+        ],
+        "easy_matchups": [
+            "Katarina",
+            "Fizz (Erken oyun)",
+            "Lux"
+        ]
+    },
+    {
+        "name": "Dr. Mundo",
+        "role_desc": "Üst/Orman (Juggernaut)",
+        "hard_counters": [
+            "Gwen",
+            "Aatrox",
+            "Vayne",
+            "Kled"
+        ],
+        "easy_matchups": [
+            "Teemo",
+            "Malphite",
+            "Singed"
+        ]
+    },
+    {
+        "name": "Draven",
+        "role_desc": "Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Caitlyn",
+            "Varus",
+            "Nilah",
+            "Blitzcrank"
+        ],
+        "easy_matchups": [
+            "Ezreal",
+            "Vayne",
+            "Kaisa",
+            "Zeri"
+        ]
+    },
+    {
+        "name": "Ekko",
+        "role_desc": "Orman/Orta (Assassin)",
+        "hard_counters": [
+            "Kassadin",
+            "Sylas",
+            "LeBlanc"
+        ],
+        "easy_matchups": [
+            "Xerath",
+            "Vel'Koz",
+            "Syndra"
+        ]
+    },
+    {
+        "name": "Elise",
+        "role_desc": "Orman (Diver)",
+        "hard_counters": [
+            "Kha'Zix",
+            "Rengar",
+            "Shaco"
+        ],
+        "easy_matchups": [
+            "Kindred",
+            "Graves",
+            "Master Yi"
+        ]
+    },
+    {
+        "name": "Evelynn",
+        "role_desc": "Orman (Assassin)",
+        "hard_counters": [
+            "Rengar",
+            "Rek'Sai",
+            "Kha'Zix",
+            "Karthus"
+        ],
+        "easy_matchups": [
+            "Tanklar",
+            "Hareketsiz Büyücüler"
+        ]
+    },
+    {
+        "name": "Ezreal",
+        "role_desc": "Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Vayne",
+            "Draven",
+            "Kalista"
+        ],
+        "easy_matchups": [
+            "Blitzcrank",
+            "Nautilus",
+            "Leona"
+        ]
+    },
+    {
+        "name": "Fiddlesticks",
+        "role_desc": "Orman (Specialist)",
+        "hard_counters": [
+            "Janna",
+            "Gragas",
+            "Xin Zhao",
+            "Lee Sin"
+        ],
+        "easy_matchups": [
+            "Master Yi",
+            "Yasuo",
+            "Katarina"
+        ]
+    },
+    {
+        "name": "Fiora",
+        "role_desc": "Üst Koridor (Skirmisher)",
+        "hard_counters": [
+            "Malphite",
+            "Wukong",
+            "Heimerdinger"
+        ],
+        "easy_matchups": [
+            "Kled",
+            "Aatrox",
+            "Ornn",
+            "Cho'Gath"
+        ]
+    },
+    {
+        "name": "Fizz",
+        "role_desc": "Orta Koridor (Assassin)",
+        "hard_counters": [
+            "Lissandra",
+            "Galio",
+            "Pantheon",
+            "Vex"
+        ],
+        "easy_matchups": [
+            "Twisted Fate",
+            "Syndra",
+            "Viktor"
+        ]
+    },
+    {
+        "name": "Galio",
+        "role_desc": "Orta/Destek (Warden/Mage)",
+        "hard_counters": [
+            "Vayne (Mid)",
+            "Lucian",
+            "Pantheon",
+            "Talon"
+        ],
+        "easy_matchups": [
+            "LeBlanc",
+            "Akali",
+            "Katarina",
+            "Sylas"
+        ]
+    },
+    {
+        "name": "Gangplank",
+        "role_desc": "Üst Koridor (Specialist)",
+        "hard_counters": [
+            "Irelia",
+            "Riven",
+            "Olaf",
+            "Tryndamere"
+        ],
+        "easy_matchups": [
+            "Renekton",
+            "Shen",
+            "Malzahar"
+        ]
+    },
+    {
+        "name": "Garen",
+        "role_desc": "Üst Koridor (Juggernaut)",
+        "hard_counters": [
+            "Camille",
+            "Vayne",
+            "Kayle",
+            "Teemo"
+        ],
+        "easy_matchups": [
+            "Jax",
+            "Riven",
+            "Irelia"
+        ]
+    },
+    {
+        "name": "Gnar",
+        "role_desc": "Üst Koridor (Specialist)",
+        "hard_counters": [
+            "Irelia",
+            "Yasuo",
+            "Wukong"
+        ],
+        "easy_matchups": [
+            "Garen",
+            "Darius",
+            "Singed"
+        ]
+    },
+    {
+        "name": "Gragas",
+        "role_desc": "Orman/Top/Destek (Vanguard)",
+        "hard_counters": [
+            "Yasuo",
+            "Braum",
+            "Fiora"
+        ],
+        "easy_matchups": [
+            "Jax",
+            "Riven",
+            "Tryndamere"
+        ]
+    },
+    {
+        "name": "Graves",
+        "role_desc": "Orman (Marksman)",
+        "hard_counters": [
+            "Evelynn",
+            "Nidalee",
+            "Bel'Veth"
+        ],
+        "easy_matchups": [
+            "Viego",
+            "Jarvan IV",
+            "Lee Sin",
+            "Kindred"
+        ]
+    },
+    {
+        "name": "Gwen",
+        "role_desc": "Üst/Orman (Skirmisher/AP Fighter)",
+        "hard_counters": [
+            "Fiora",
+            "Tryndamere",
+            "Warwick",
+            "Akali"
+        ],
+        "easy_matchups": [
+            "Dr. Mundo",
+            "Sion",
+            "Cho'Gath",
+            "Ornn"
+        ]
+    },
+    {
+        "name": "Hecarim",
+        "role_desc": "Orman (Diver)",
+        "hard_counters": [
+            "Kindred",
+            "Sejuani",
+            "Anivia",
+            "Veigar"
+        ],
+        "easy_matchups": [
+            "Graves",
+            "Kha'Zix",
+            "Talon"
+        ]
+    },
+    {
+        "name": "Heimerdinger",
+        "role_desc": "Orta/Destek (Specialist)",
+        "hard_counters": [
+            "Syndra",
+            "Sion",
+            "Irelia"
+        ],
+        "easy_matchups": [
+            "Pyke",
+            "Blitzcrank",
+            "Nautilus",
+            "Melee Assassins"
+        ]
+    },
+    {
+        "name": "Illaoi",
+        "role_desc": "Üst Koridor (Juggernaut)",
+        "hard_counters": [
+            "Mordekaiser",
+            "Yorick",
+            "Tryndamere"
+        ],
+        "easy_matchups": [
+            "Renekton",
+            "Garen",
+            "Camille"
+        ]
+    },
+    {
+        "name": "Irelia",
+        "role_desc": "Üst/Orta (Diver)",
+        "hard_counters": [
+            "Volibear",
+            "Sett",
+            "Fiora",
+            "Jax",
+            "Warwick"
+        ],
+        "easy_matchups": [
+            "Yorick",
+            "Gnar",
+            "Jayce",
+            "Aatrox"
+        ]
+    },
+    {
+        "name": "Ivern",
+        "role_desc": "Orman (Enchanter)",
+        "hard_counters": [
+            "Rengar",
+            "Kha'Zix",
+            "Lee Sin"
+        ],
+        "easy_matchups": [
+            "Hareketsiz Tanklar"
+        ]
+    },
+    {
+        "name": "Janna",
+        "role_desc": "Destek (Enchanter)",
+        "hard_counters": [
+            "Sona",
+            "Soraka",
+            "Nami"
+        ],
+        "easy_matchups": [
+            "Leona",
+            "Alistar",
+            "Zac",
+            "Rengar",
+            "Kennen"
+        ]
+    },
+    {
+        "name": "Jarvan IV",
+        "role_desc": "Orman (Diver)",
+        "hard_counters": [
+            "Poppy",
+            "Vayne",
+            "Ahri"
+        ],
+        "easy_matchups": [
+            "Olaf",
+            "Jhin",
+            "Xerath",
+            "Ashe"
+        ]
+    },
+    {
+        "name": "Jax",
+        "role_desc": "Üst/Orman (Skirmisher)",
+        "hard_counters": [
+            "Malphite",
+            "Garen",
+            "Illaoi",
+            "Gragas"
+        ],
+        "easy_matchups": [
+            "Irelia",
+            "Camille",
+            "Tryndamere",
+            "Urgot",
+            "Master Yi"
+        ]
+    },
+    {
+        "name": "Jayce",
+        "role_desc": "Üst/Orta (Artillery)",
+        "hard_counters": [
+            "Irelia",
+            "Malphite",
+            "Wukong",
+            "Olaf"
+        ],
+        "easy_matchups": [
+            "Darius",
+            "Garen",
+            "Renekton"
+        ]
+    },
+    {
+        "name": "Jhin",
+        "role_desc": "Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Tristana",
+            "Lucian",
+            "Draven",
+            "Twitch"
+        ],
+        "easy_matchups": [
+            "Xayah",
+            "Aphelios"
+        ]
+    },
+    {
+        "name": "Jinx",
+        "role_desc": "Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Draven",
+            "Samira",
+            "Twitch"
+        ],
+        "easy_matchups": [
+            "Caitlyn (Geç oyun)",
+            "Aphelios"
+        ]
+    },
+    {
+        "name": "Kai'Sa",
+        "role_desc": "Alt Koridor (Marksman/Assassin)",
+        "hard_counters": [
+            "Caitlyn",
+            "Draven",
+            "Nilah"
+        ],
+        "easy_matchups": [
+            "Ezreal",
+            "Zeri",
+            "İzole Hedefler"
+        ]
+    },
+    {
+        "name": "Kalista",
+        "role_desc": "Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Ashe",
+            "Nasus",
+            "Vex"
+        ],
+        "easy_matchups": [
+            "Ezreal",
+            "Zeri",
+            "Skillshot Supportlar (Brand",
+            "Lux)"
+        ]
+    },
+    {
+        "name": "Karma",
+        "role_desc": "Destek/Orta (Enchanter/Mage)",
+        "hard_counters": [
+            "Blitzcrank",
+            "Nautilus",
+            "Pyke"
+        ],
+        "easy_matchups": [
+            "Morgana",
+            "Janna"
+        ]
+    },
+    {
+        "name": "Karthus",
+        "role_desc": "Orman/Bot (Battlemage)",
+        "hard_counters": [
+            "Soraka",
+            "Kindred",
+            "Ekko",
+            "Evelynn",
+            "Fizz"
+        ],
+        "easy_matchups": [
+            "Teemo",
+            "Graves",
+            "Heimerdinger"
+        ]
+    },
+    {
+        "name": "Kassadin",
+        "role_desc": "Orta Koridor (Assassin)",
+        "hard_counters": [
+            "Tristana",
+            "Lucian",
+            "Pantheon",
+            "Zed",
+            "Talon"
+        ],
+        "easy_matchups": [
+            "Katarina",
+            "Aurelion Sol",
+            "Veigar",
+            "Ekko",
+            "Anivia"
+        ]
+    },
+    {
+        "name": "Katarina",
+        "role_desc": "Orta Koridor (Assassin)",
+        "hard_counters": [
+            "Kassadin",
+            "Vex",
+            "Galio",
+            "Lissandra",
+            "Vladimir"
+        ],
+        "easy_matchups": [
+            "Veigar",
+            "Lux",
+            "Vel'Koz"
+        ]
+    },
+    {
+        "name": "Kayle",
+        "role_desc": "Üst/Orta (Specialist)",
+        "hard_counters": [
+            "Irelia",
+            "Jax",
+            "Tryndamere",
+            "Pantheon"
+        ],
+        "easy_matchups": [
+            "Garen",
+            "Singed",
+            "Mordekaiser"
+        ]
+    },
+    {
+        "name": "Kayn",
+        "role_desc": "Orman (Skirmisher/Assassin)",
+        "hard_counters": [
+            "Poppy",
+            "Graves",
+            "Warwick"
+        ],
+        "easy_matchups": [
+            "Amumu",
+            "Sion",
+            "Zac (Rhaast Formu)"
+        ]
+    },
+    {
+        "name": "Kennen",
+        "role_desc": "Üst Koridor (Specialist)",
+        "hard_counters": [
+            "Irelia",
+            "Dr. Mundo",
+            "Nasus",
+            "Janna"
+        ],
+        "easy_matchups": [
+            "Renekton",
+            "Garen",
+            "Jax"
+        ]
+    },
+    {
+        "name": "Kha'Zix",
+        "role_desc": "Orman (Assassin)",
+        "hard_counters": [
+            "Lee Sin",
+            "Rengar",
+            "Poppy",
+            "Warwick"
+        ],
+        "easy_matchups": [
+            "Kindred",
+            "Graves",
+            "Karthus",
+            "Nidalee"
+        ]
+    },
+    {
+        "name": "Kindred",
+        "role_desc": "Orman (Marksman)",
+        "hard_counters": [
+            "Lee Sin",
+            "Gragas",
+            "Master Yi",
+            "Kha'Zix"
+        ],
+        "easy_matchups": [
+            "Hecarim",
+            "Sion",
+            "Udyr"
+        ]
+    },
+    {
+        "name": "Kled",
+        "role_desc": "Üst Koridor (Skirmisher)",
+        "hard_counters": [
+            "Fiora",
+            "Jax",
+            "Teemo"
+        ],
+        "easy_matchups": [
+            "Aatrox",
+            "Yasuo",
+            "Irelia",
+            "Dr. Mundo"
+        ]
+    },
+    {
+        "name": "Kog'Maw",
+        "role_desc": "Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Draven",
+            "Lucian",
+            "Blitzcrank",
+            "Nautilus"
+        ],
+        "easy_matchups": [
+            "Vayne",
+            "Ezreal",
+            "Tanklar"
+        ]
+    },
+    {
+        "name": "K'Sante",
+        "role_desc": "Üst Koridor (Warden/Skirmisher)",
+        "hard_counters": [
+            "Fiora",
+            "Garen",
+            "Gwen",
+            "Ambessa"
+        ],
+        "easy_matchups": [
+            "Malphite",
+            "Sion",
+            "Ornn"
+        ]
+    },
+    {
+        "name": "LeBlanc",
+        "role_desc": "Orta Koridor (Assassin)",
+        "hard_counters": [
+            "Lissandra",
+            "Vex",
+            "Malzahar",
+            "Galio"
+        ],
+        "easy_matchups": [
+            "Ahri",
+            "Ziggs",
+            "Xerath",
+            "Syndra"
+        ]
+    },
+    {
+        "name": "Lee Sin",
+        "role_desc": "Orman (Diver)",
+        "hard_counters": [
+            "Poppy",
+            "Rammus",
+            "Warwick",
+            "Udyr"
+        ],
+        "easy_matchups": [
+            "Evelynn",
+            "Twitch",
+            "Shaco",
+            "Akali"
+        ]
+    },
+    {
+        "name": "Leona",
+        "role_desc": "Destek (Vanguard)",
+        "hard_counters": [
+            "Morgana",
+            "Janna",
+            "Alistar",
+            "Thresh"
+        ],
+        "easy_matchups": [
+            "Sona",
+            "Soraka",
+            "Yuumi",
+            "Blitzcrank"
+        ]
+    },
+    {
+        "name": "Lillia",
+        "role_desc": "Orman (Skirmisher)",
+        "hard_counters": [
+            "Master Yi",
+            "Rengar",
+            "Kha'Zix"
+        ],
+        "easy_matchups": [
+            "Rammus",
+            "Hecarim",
+            "Udyr"
+        ]
+    },
+    {
+        "name": "Lissandra",
+        "role_desc": "Orta Koridor (Burst Mage)",
+        "hard_counters": [
+            "Xerath",
+            "Ziggs",
+            "Sylas"
+        ],
+        "easy_matchups": [
+            "Zed",
+            "Fizz",
+            "LeBlanc",
+            "Katarina"
+        ]
+    },
+    {
+        "name": "Lucian",
+        "role_desc": "Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Caitlyn",
+            "Ashe"
+        ],
+        "easy_matchups": [
+            "Kassadin",
+            "Ezreal",
+            "Zeri"
+        ]
+    },
+    {
+        "name": "Lulu",
+        "role_desc": "Destek (Enchanter)",
+        "hard_counters": [
+            "Blitzcrank",
+            "Pyke",
+            "Sona"
+        ],
+        "easy_matchups": [
+            "Leona",
+            "Rengar",
+            "Zed",
+            "Assassins"
+        ]
+    },
+    {
+        "name": "Lux",
+        "role_desc": "Destek/Orta (Burst Mage)",
+        "hard_counters": [
+            "Fizz",
+            "Zed",
+            "Yasuo",
+            "Blitzcrank"
+        ],
+        "easy_matchups": [
+            "Zoe",
+            "Ryze",
+            "Annie"
+        ]
+    },
+    {
+        "name": "Malphite",
+        "role_desc": "Üst Koridor (Tank)",
+        "hard_counters": [
+            "Sylas",
+            "Mordekaiser",
+            "Rumble",
+            "Sion"
+        ],
+        "easy_matchups": [
+            "Tryndamere",
+            "Jax",
+            "Quinn",
+            "Vayne",
+            "Fiora"
+        ]
+    },
+    {
+        "name": "Malzahar",
+        "role_desc": "Orta Koridor (Battlemage)",
+        "hard_counters": [
+            "Gangplank",
+            "Syndra",
+            "Xerath"
+        ],
+        "easy_matchups": [
+            "LeBlanc",
+            "Katarina",
+            "Yasuo",
+            "Yone"
+        ]
+    },
+    {
+        "name": "Maokai",
+        "role_desc": "Orman/Destek/Üst (Tank)",
+        "hard_counters": [
+            "Sylas",
+            "Mordekaiser",
+            "Olaf"
+        ],
+        "easy_matchups": [
+            "LeBlanc",
+            "Ezreal (Kaçanları W ile tutar)"
+        ]
+    },
+    {
+        "name": "Master Yi",
+        "role_desc": "Orta Koridor (Burst Mage)",
+        "hard_counters": [
+            "Yasuo",
+            "Samira",
+            "Zed",
+            "Yone"
+        ],
+        "easy_matchups": [
+            "Vladimir",
+            "Katarina (Belirli durumlarda)",
+            "Hareketsiz Büyücüler"
+        ]
+    },
+    {
+        "name": "Milio",
+        "role_desc": "Destek (Enchanter)",
+        "hard_counters": [
+            "Blitzcrank",
+            "Pyke",
+            "Nautilus"
+        ],
+        "easy_matchups": [
+            "Amumu",
+            "Lillia",
+            "Ashe",
+            "Leona"
+        ]
+    },
+    {
+        "name": "Miss Fortune",
+        "role_desc": "Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Braum",
+            "Yasuo",
+            "Samira"
+        ],
+        "easy_matchups": [
+            "Zyra",
+            "Heimerdinger",
+            "Soraka"
+        ]
+    },
+    {
+        "name": "Mordekaiser",
+        "role_desc": "Üst Koridor (Juggernaut)",
+        "hard_counters": [
+            "Olaf",
+            "Gangplank",
+            "Fiora",
+            "Vayne"
+        ],
+        "easy_matchups": [
+            "Illaoi",
+            "Malphite",
+            "Shen",
+            "Yuumi"
+        ]
+    },
+    {
+        "name": "Morgana",
+        "role_desc": "Destek (Catcher/Enchanter)",
+        "hard_counters": [
+            "Karma",
+            "Soraka",
+            "Xerath",
+            "AD Suikastçiler (Zed/Talon)"
+        ],
+        "easy_matchups": [
+            "Blitzcrank",
+            "Thresh",
+            "Leona",
+            "Pyke"
+        ]
+    },
+    {
+        "name": "Naafiri",
+        "role_desc": "Orta/Orman (Assassin)",
+        "hard_counters": [
+            "Irelia",
+            "Veigar",
+            "Poppy"
+        ],
+        "easy_matchups": [
+            "Xerath",
+            "Vel'Koz",
+            "Lux"
+        ]
+    },
+    {
+        "name": "Nami",
+        "role_desc": "Destek (Enchanter)",
+        "hard_counters": [
+            "Blitzcrank",
+            "Nautilus",
+            "Leona"
+        ],
+        "easy_matchups": [
+            "Jhin",
+            "Draven (Balon (Q) ile tutmak kolaydır)"
+        ]
+    },
+    {
+        "name": "Nasus",
+        "role_desc": "Üst Koridor (Juggernaut)",
+        "hard_counters": [
+            "Camille",
+            "Aatrox",
+            "Darius",
+            "Olaf"
+        ],
+        "easy_matchups": [
+            "Kayle",
+            "Vladimir",
+            "Kalista",
+            "Zeri"
+        ]
+    },
+    {
+        "name": "Nautilus",
+        "role_desc": "Destek (Vanguard)",
+        "hard_counters": [
+            "Morgana",
+            "Taric",
+            "Braum"
+        ],
+        "easy_matchups": [
+            "Blitzcrank",
+            "Sona",
+            "Yuumi"
+        ]
+    },
+    {
+        "name": "Neeko",
+        "role_desc": "Orta/Destek (Burst Mage)",
+        "hard_counters": [
+            "Vel'Koz",
+            "Xerath",
+            "Lux"
+        ],
+        "easy_matchups": [
+            "Akali",
+            "Katarina",
+            "Yi"
+        ]
+    },
+    {
+        "name": "Nidalee",
+        "role_desc": "Orman (Specialist)",
+        "hard_counters": [
+            "Rengar",
+            "Master Yi",
+            "Xin Zhao"
+        ],
+        "easy_matchups": [
+            "Karthus",
+            "Graves",
+            "Lillia"
+        ]
+    },
+    {
+        "name": "Nilah",
+        "role_desc": "Alt Koridor (Skirmisher)",
+        "hard_counters": [
+            "Xayah",
+            "Caitlyn",
+            "Ashe"
+        ],
+        "easy_matchups": [
+            "Twitch",
+            "Master Yi",
+            "Draven"
+        ]
+    },
+    {
+        "name": "Nocturne",
+        "role_desc": "Orman (Assassin)",
+        "hard_counters": [
+            "Warwick",
+            "Olaf",
+            "Graves"
+        ],
+        "easy_matchups": [
+            "Twisted Fate",
+            "Shen",
+            "Galio"
+        ]
+    },
+    {
+        "name": "Nunu & Willump",
+        "role_desc": "Orman (Tank)",
+        "hard_counters": [
+            "Anivia",
+            "Trundle",
+            "Cassiopeia"
+        ],
+        "easy_matchups": [
+            "Karthus",
+            "Nidalee"
+        ]
+    },
+    {
+        "name": "Olaf",
+        "role_desc": "Üst/Orman (Diver)",
+        "hard_counters": [
+            "Trundle",
+            "Kled",
+            "Fiora",
+            "Jarvan IV"
+        ],
+        "easy_matchups": [
+            "Yasuo",
+            "Nasus",
+            "Irelia",
+            "Mordekaiser"
+        ]
+    },
+    {
+        "name": "Orianna",
+        "role_desc": "Orta Koridor (Control Mage)",
+        "hard_counters": [
+            "Ziggs",
+            "Xerath",
+            "Irelia"
+        ],
+        "easy_matchups": [
+            "Annie",
+            "Ryze",
+            "Kayle"
+        ]
+    },
+    {
+        "name": "Ornn",
+        "role_desc": "Üst Koridor (Tank)",
+        "hard_counters": [
+            "Fiora",
+            "Trundle",
+            "Vayne",
+            "Gwen"
+        ],
+        "easy_matchups": [
+            "Malphite",
+            "Kennen",
+            "Quinn"
+        ]
+    },
+    {
+        "name": "Pantheon",
+        "role_desc": "Üst/Orta/Destek (Diver)",
+        "hard_counters": [
+            "Malphite",
+            "Ornn",
+            "Shen"
+        ],
+        "easy_matchups": [
+            "Fiora",
+            "Camille",
+            "Yone",
+            "Teemo",
+            "Kassadin"
+        ]
+    },
+    {
+        "name": "Poppy",
+        "role_desc": "Üst/Orman/Destek (Warden)",
+        "hard_counters": [
+            "Darius",
+            "Olaf",
+            "Garen"
+        ],
+        "easy_matchups": [
+            "Riven",
+            "Yasuo",
+            "Lee Sin",
+            "Kayn",
+            "Zac"
+        ]
+    },
+    {
+        "name": "Pyke",
+        "role_desc": "Destek (Assassin)",
+        "hard_counters": [
+            "Soraka",
+            "Lulu",
+            "Poppy",
+            "Renata Glasc"
+        ],
+        "easy_matchups": [
+            "Lux",
+            "Xerath",
+            "Brand"
+        ]
+    },
+    {
+        "name": "Qiyana",
+        "role_desc": "Orta/Orman (Assassin)",
+        "hard_counters": [
+            "Vex",
+            "Poppy",
+            "Renekton"
+        ],
+        "easy_matchups": [
+            "Corki",
+            "Azir",
+            "Ryze"
+        ]
+    },
+    {
+        "name": "Quinn",
+        "role_desc": "Üst Koridor (Marksman)",
+        "hard_counters": [
+            "Malphite",
+            "Irelia",
+            "Teemo"
+        ],
+        "easy_matchups": [
+            "Renekton",
+            "Darius",
+            "Garen"
+        ]
+    },
+    {
+        "name": "Rakan",
+        "role_desc": "Destek (Catcher)",
+        "hard_counters": [
+            "Morgana",
+            "Janna",
+            "Thresh"
+        ],
+        "easy_matchups": [
+            "Blitzcrank",
+            "Xerath"
+        ]
+    },
+    {
+        "name": "Rammus",
+        "role_desc": "Orman (Vanguard)",
+        "hard_counters": [
+            "Trundle",
+            "Vayne",
+            "Soraka",
+            "Anivia"
+        ],
+        "easy_matchups": [
+            "Master Yi",
+            "Urgot",
+            "Yasuo",
+            "Yone",
+            "Bel'Veth",
+            "Tryndamere"
+        ]
+    },
+    {
+        "name": "Rek'Sai",
+        "role_desc": "Orman (Diver)",
+        "hard_counters": [
+            "Poppy",
+            "Taliyah"
+        ],
+        "easy_matchups": [
+            "Shaco",
+            "Evelynn",
+            "Twitch"
+        ]
+    },
+    {
+        "name": "Rell",
+        "role_desc": "Destek (Vanguard)",
+        "hard_counters": [
+            "Janna",
+            "Thresh",
+            "Vayne"
+        ],
+        "easy_matchups": [
+            "Samira",
+            "Yasuo (Kalkanlarını kırar)"
+        ]
+    },
+    {
+        "name": "Renata Glasc",
+        "role_desc": "Destek (Enchanter)",
+        "hard_counters": [
+            "Xerath",
+            "Lux",
+            "Vel'Koz"
+        ],
+        "easy_matchups": [
+            "Master Yi",
+            "Vayne",
+            "Kog'Maw",
+            "Samira"
+        ]
+    },
+    {
+        "name": "Renekton",
+        "role_desc": "Üst/Orta (Diver)",
+        "hard_counters": [
+            "Illaoi",
+            "Gangplank",
+            "Vayne",
+            "Quinn"
+        ],
+        "easy_matchups": [
+            "Yasuo",
+            "Yone",
+            "Riven",
+            "Irelia"
+        ]
+    },
+    {
+        "name": "Rengar",
+        "role_desc": "Orman/Üst (Assassin)",
+        "hard_counters": [
+            "Poppy",
+            "Warwick",
+            "Darius",
+            "Sett"
+        ],
+        "easy_matchups": [
+            "Kha'Zix",
+            "Evelynn",
+            "Twitch"
+        ]
+    },
+    {
+        "name": "Riven",
+        "role_desc": "Üst Koridor (Skirmisher)",
+        "hard_counters": [
+            "Renekton",
+            "Poppy",
+            "Kennen",
+            "Urgot"
+        ],
+        "easy_matchups": [
+            "Yasuo",
+            "Yone",
+            "Sion"
+        ]
+    },
+    {
+        "name": "Rumble",
+        "role_desc": "Üst/Orta/Orman (Battlemage)",
+        "hard_counters": [
+            "Yorick",
+            "Darius",
+            "Tahm Kench"
+        ],
+        "easy_matchups": [
+            "Malphite",
+            "Jax",
+            "Yasuo"
+        ]
+    },
+    {
+        "name": "Ryze",
+        "role_desc": "Orta/Üst (Battlemage)",
+        "hard_counters": [
+            "Anivia",
+            "Cassiopeia",
+            "Irelia"
+        ],
+        "easy_matchups": [
+            "Vladimir",
+            "Fizz"
+        ]
+    },
+    {
+        "name": "Samira",
+        "role_desc": "Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Sett",
+            "Alistar",
+            "Leona",
+            "Renata Glasc"
+        ],
+        "easy_matchups": [
+            "Miss Fortune",
+            "Jhin",
+            "Ezreal",
+            "Mel"
+        ]
+    },
+    {
+        "name": "Sejuani",
+        "role_desc": "Orman/Üst (Tank)",
+        "hard_counters": [
+            "Trundle",
+            "Olaf",
+            "Sylas"
+        ],
+        "easy_matchups": [
+            "Tryndamere",
+            "Urgot",
+            "Teemo"
+        ]
+    },
+    {
+        "name": "Senna",
+        "role_desc": "Destek/ADC (Marksman)",
+        "hard_counters": [
+            "Blitzcrank",
+            "Pyke",
+            "Leona"
+        ],
+        "easy_matchups": [
+            "Tahm Kench",
+            "Braum",
+            "Galio"
+        ]
+    },
+    {
+        "name": "Seraphine",
+        "role_desc": "Destek/Orta (Enchanter/Mage)",
+        "hard_counters": [
+            "Zed",
+            "Talon",
+            "Blitzcrank"
+        ],
+        "easy_matchups": [
+            "Janna",
+            "Sona"
+        ]
+    },
+    {
+        "name": "Sett",
+        "role_desc": "Üst/Destek (Juggernaut)",
+        "hard_counters": [
+            "Renekton",
+            "Volibear",
+            "Vayne"
+        ],
+        "easy_matchups": [
+            "Irelia",
+            "Sion",
+            "Cho'Gath"
+        ]
+    },
+    {
+        "name": "Shaco",
+        "role_desc": "Orman (Assassin)",
+        "hard_counters": [
+            "Rek'Sai",
+            "Karthus",
+            "Rengar",
+            "Lee Sin"
+        ],
+        "easy_matchups": [
+            "Master Yi",
+            "Xin Zhao",
+            "Nunu"
+        ]
+    },
+    {
+        "name": "Shen",
+        "role_desc": "Üst Koridor (Warden)",
+        "hard_counters": [
+            "Darius",
+            "Mordekaiser",
+            "Gangplank",
+            "Sett"
+        ],
+        "easy_matchups": [
+            "Camille",
+            "Renekton",
+            "Jax",
+            "Fiora"
+        ]
+    },
+    {
+        "name": "Shyvana",
+        "role_desc": "Orman (Juggernaut)",
+        "hard_counters": [
+            "Trundle",
+            "Olaf",
+            "Xin Zhao"
+        ],
+        "easy_matchups": [
+            "Rammus",
+            "Amumu"
+        ]
+    },
+    {
+        "name": "Singed",
+        "role_desc": "Üst Koridor (Specialist)",
+        "hard_counters": [
+            "Kayle",
+            "Teemo",
+            "Vayne",
+            "Gangplank"
+        ],
+        "easy_matchups": [
+            "Jax",
+            "Irelia",
+            "Malphite"
+        ]
+    },
+    {
+        "name": "Sion",
+        "role_desc": "Üst Koridor (Tank)",
+        "hard_counters": [
+            "Darius",
+            "Fiora",
+            "Aatrox",
+            "Irelia"
+        ],
+        "easy_matchups": [
+            "Malphite",
+            "Teemo",
+            "Vladimir"
+        ]
+    },
+    {
+        "name": "Sivir",
+        "role_desc": "Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Vayne",
+            "Draven",
+            "Twitch"
+        ],
+        "easy_matchups": [
+            "Caitlyn",
+            "Blitzcrank",
+            "Morgana"
+        ]
+    },
+    {
+        "name": "Skarner",
+        "role_desc": "Orman/Üst (Tank)",
+        "hard_counters": [
+            "Olaf",
+            "Morgana",
+            "Gangplank"
+        ],
+        "easy_matchups": [
+            "Hareketsiz Carryler (Jhin",
+            "Xerath)"
+        ]
+    },
+    {
+        "name": "Smolder",
+        "role_desc": "Alt Koridor (Marksman/Caster)",
+        "hard_counters": [
+            "Jarvan IV",
+            "Vi",
+            "Nautilus"
+        ],
+        "easy_matchups": [
+            "Zeri",
+            "Ezreal"
+        ]
+    },
+    {
+        "name": "Sona",
+        "role_desc": "Destek (Enchanter)",
+        "hard_counters": [
+            "Blitzcrank",
+            "Pyke",
+            "Leona",
+            "Nautilus"
+        ],
+        "easy_matchups": [
+            "Janna",
+            "Lulu",
+            "Morgana"
+        ]
+    },
+    {
+        "name": "Soraka",
+        "role_desc": "Destek (Enchanter)",
+        "hard_counters": [
+            "Blitzcrank",
+            "Leona",
+            "Nautilus",
+            "Pyke"
+        ],
+        "easy_matchups": [
+            "Karthus",
+            "Pyke",
+            "Rammus"
+        ]
+    },
+    {
+        "name": "Swain",
+        "role_desc": "Destek/Orta (Battlemage)",
+        "hard_counters": [
+            "Sylas",
+            "Irelia",
+            "Cassiopeia"
+        ],
+        "easy_matchups": [
+            "Diana",
+            "Yasuo",
+            "Nautilus"
+        ]
+    },
+    {
+        "name": "Sylas",
+        "role_desc": "Orta Koridor (Skirmisher)",
+        "hard_counters": [
+            "Cassiopeia",
+            "Taliyah",
+            "Heimerdinger",
+            "Vex"
+        ],
+        "easy_matchups": [
+            "Malphite",
+            "Amumu",
+            "Swain",
+            "Alistar"
+        ]
+    },
+    {
+        "name": "Syndra",
+        "role_desc": "Orta Koridor (Burst Mage)",
+        "hard_counters": [
+            "Fizz",
+            "Ekko",
+            "Zed"
+        ],
+        "easy_matchups": [
+            "Heimerdinger",
+            "Annie",
+            "Malzahar"
+        ]
+    },
+    {
+        "name": "Tahm Kench",
+        "role_desc": "Üst/Destek (Warden)",
+        "hard_counters": [
+            "Gwen",
+            "Vayne",
+            "Fiora"
+        ],
+        "easy_matchups": [
+            "Tryndamere",
+            "Renekton",
+            "Zed"
+        ]
+    },
+    {
+        "name": "Taliyah",
+        "role_desc": "Orman/Orta (Battlemage)",
+        "hard_counters": [
+            "Katarina",
+            "Zed",
+            "Fizz"
+        ],
+        "easy_matchups": [
+            "Sylas",
+            "Akali",
+            "Zac",
+            "Rengar"
+        ]
+    },
+    {
+        "name": "Talon",
+        "role_desc": "Orman/Orta (Assassin)",
+        "hard_counters": [
+            "Pantheon",
+            "Diana",
+            "Malphite"
+        ],
+        "easy_matchups": [
+            "Kassadin",
+            "Aurelion Sol",
+            "Lux"
+        ]
+    },
+    {
+        "name": "Taric",
+        "role_desc": "Destek (Warden)",
+        "hard_counters": [
+            "Morgana",
+            "Sona",
+            "Vel'Koz"
+        ],
+        "easy_matchups": [
+            "Nautilus",
+            "Leona",
+            "Zed",
+            "Talon"
+        ]
+    },
+    {
+        "name": "Teemo",
+        "role_desc": "Üst Koridor (Specialist)",
+        "hard_counters": [
+            "Tahm Kench",
+            "Sion",
+            "Pantheon",
+            "Yorick"
+        ],
+        "easy_matchups": [
+            "Tryndamere",
+            "Vayne",
+            "Nasus",
+            "Garen"
+        ]
+    },
+    {
+        "name": "Thresh",
+        "role_desc": "Destek (Catcher)",
+        "hard_counters": [
+            "Zyra",
+            "Brand",
+            "Morgana"
+        ],
+        "easy_matchups": [
+            "Leona",
+            "Nautilus",
+            "Zac"
+        ]
+    },
+    {
+        "name": "Tristana",
+        "role_desc": "Alt/Orta (Marksman)",
+        "hard_counters": [
+            "Draven",
+            "Samira",
+            "Nilah"
+        ],
+        "easy_matchups": [
+            "Kassadin",
+            "Corki",
+            "Jhin"
+        ]
+    },
+    {
+        "name": "Trundle",
+        "role_desc": "Üst/Orman (Juggernaut)",
+        "hard_counters": [
+            "Jax",
+            "Teemo",
+            "Kennen"
+        ],
+        "easy_matchups": [
+            "Rammus",
+            "Sejuani",
+            "Ornn",
+            "Olaf"
+        ]
+    },
+    {
+        "name": "Tryndamere",
+        "role_desc": "Üst Koridor (Skirmisher)",
+        "hard_counters": [
+            "Malphite",
+            "Tahm Kench",
+            "Poppy",
+            "Nasus"
+        ],
+        "easy_matchups": [
+            "Kayle",
+            "Gwen",
+            "Yorick",
+            "Sion"
+        ]
+    },
+    {
+        "name": "Twisted Fate",
+        "role_desc": "Orta Koridor (Burst Mage)",
+        "hard_counters": [
+            "Fizz",
+            "Yasuo",
+            "Nocturne",
+            "Pantheon"
+        ],
+        "easy_matchups": [
+            "Akali",
+            "Galio"
+        ]
+    },
+    {
+        "name": "Twitch",
+        "role_desc": "Alt Koridor/Orman (Marksman)",
+        "hard_counters": [
+            "Draven",
+            "Nilah",
+            "Yasuo"
+        ],
+        "easy_matchups": [
+            "Ezreal",
+            "Aphelios"
+        ]
+    },
+    {
+        "name": "Udyr",
+        "role_desc": "Orman/Üst (Juggernaut)",
+        "hard_counters": [
+            "Vayne",
+            "Ashe",
+            "Anivia"
+        ],
+        "easy_matchups": [
+            "Zed",
+            "Talon",
+            "Rammus"
+        ]
+    },
+    {
+        "name": "Urgot",
+        "role_desc": "Üst Koridor (Juggernaut)",
+        "hard_counters": [
+            "Mordekaiser",
+            "Rammus",
+            "Olaf"
+        ],
+        "easy_matchups": [
+            "Riven",
+            "Renekton",
+            "Assassinler"
+        ]
+    },
+    {
+        "name": "Varus",
+        "role_desc": "Alt Koridor (Marksman/Mage)",
+        "hard_counters": [
+            "Tristana",
+            "Samira",
+            "Yasuo"
+        ],
+        "easy_matchups": [
+            "Draven",
+            "Caitlyn"
+        ]
+    },
+    {
+        "name": "Vayne",
+        "role_desc": "Alt/Üst (Marksman)",
+        "hard_counters": [
+            "Caitlyn",
+            "Draven",
+            "Ashe",
+            "Teemo"
+        ],
+        "easy_matchups": [
+            "Sion",
+            "Mordekaiser",
+            "Ezreal",
+            "Sivir",
+            "Tanklar"
+        ]
+    },
+    {
+        "name": "Veigar",
+        "role_desc": "Orta Koridor (Burst Mage)",
+        "hard_counters": [
+            "Kassadin",
+            "Katarina",
+            "Fizz",
+            "Zed"
+        ],
+        "easy_matchups": [
+            "Azir",
+            "Ryze",
+            "Cassiopeia"
+        ]
+    },
+    {
+        "name": "Vel'Koz",
+        "role_desc": "Orta/Destek (Artillery)",
+        "hard_counters": [
+            "Yasuo",
+            "Fizz",
+            "Zed",
+            "Katarina"
+        ],
+        "easy_matchups": [
+            "Annie",
+            "Braum",
+            "Heimerdinger"
+        ]
+    },
+    {
+        "name": "Vex",
+        "role_desc": "Orta Koridor (Burst Mage)",
+        "hard_counters": [
+            "Vladimir",
+            "Xerath",
+            "Annie"
+        ],
+        "easy_matchups": [
+            "Yasuo",
+            "Yone",
+            "LeBlanc",
+            "Irelia",
+            "Akali"
+        ]
+    },
+    {
+        "name": "Vi",
+        "role_desc": "Orman (Diver)",
+        "hard_counters": [
+            "Poppy",
+            "Xayah",
+            "Morgana"
+        ],
+        "easy_matchups": [
+            "Zeri",
+            "Ezreal",
+            "Jayce"
+        ]
+    },
+    {
+        "name": "Viego",
+        "role_desc": "Orman (Skirmisher)",
+        "hard_counters": [
+            "Rammus",
+            "Poppy",
+            "Warwick"
+        ],
+        "easy_matchups": [
+            "Vi",
+            "Xin Zhao",
+            "Lee Sin"
+        ]
+    },
+    {
+        "name": "Viktor",
+        "role_desc": "Orta Koridor (Battlemage)",
+        "hard_counters": [
+            "Kassadin",
+            "Ekko",
+            "Irelia",
+            "Xerath"
+        ],
+        "easy_matchups": [
+            "Vladimir",
+            "Ryze",
+            "Sylas"
+        ]
+    },
+    {
+        "name": "Vladimir",
+        "role_desc": "Orta/Üst (Battlemage)",
+        "hard_counters": [
+            "Malzahar",
+            "Anivia",
+            "Kassadin",
+            "Fiddlesticks"
+        ],
+        "easy_matchups": [
+            "Zed",
+            "Fizz",
+            "Katarina"
+        ]
+    },
+    {
+        "name": "Volibear",
+        "role_desc": "Orman/Üst (Juggernaut)",
+        "hard_counters": [
+            "Jax",
+            "Teemo",
+            "Quinn",
+            "Vayne"
+        ],
+        "easy_matchups": [
+            "Irelia",
+            "Riven",
+            "Camille",
+            "Yone"
+        ]
+    },
+    {
+        "name": "Warwick",
+        "role_desc": "Orman/Üst (Diver)",
+        "hard_counters": [
+            "Olaf",
+            "Jax",
+            "Teemo"
+        ],
+        "easy_matchups": [
+            "Lee Sin",
+            "Master Yi",
+            "Hecarim",
+            "Ambessa"
+        ]
+    },
+    {
+        "name": "Wukong",
+        "role_desc": "Orman/Üst (Diver)",
+        "hard_counters": [
+            "Garen",
+            "Mordekaiser",
+            "Illaoi"
+        ],
+        "easy_matchups": [
+            "Jayce",
+            "Darius",
+            "Camille"
+        ]
+    },
+    {
+        "name": "Xayah",
+        "role_desc": "Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Caitlyn",
+            "Ezreal",
+            "Ziggs"
+        ],
+        "easy_matchups": [
+            "Kai'Sa",
+            "Tristana",
+            "Rakan",
+            "Nilah",
+            "Vi"
+        ]
+    },
+    {
+        "name": "Xerath",
+        "role_desc": "Orta/Destek (Artillery)",
+        "hard_counters": [
+            "Fizz",
+            "Zed",
+            "Nocturne"
+        ],
+        "easy_matchups": [
+            "Annie",
+            "Ryze",
+            "Malzahar",
+            "Cassiopeia"
+        ]
+    },
+    {
+        "name": "Xin Zhao",
+        "role_desc": "Orman (Diver)",
+        "hard_counters": [
+            "Jax",
+            "Malphite",
+            "Rammus"
+        ],
+        "easy_matchups": [
+            "Nidalee",
+            "Kindred",
+            "Graves"
+        ]
+    },
+    {
+        "name": "Yasuo",
+        "role_desc": "Orta/Üst (Skirmisher)",
+        "hard_counters": [
+            "Renekton",
+            "Pantheon",
+            "Vex",
+            "Lissandra",
+            "Rammus"
+        ],
+        "easy_matchups": [
+            "Lux",
+            "Ahri",
+            "Vel'Koz",
+            "Twisted Fate",
+            "Miss Fortune"
+        ]
+    },
+    {
+        "name": "Yone",
+        "role_desc": "Orta/Üst (Skirmisher)",
+        "hard_counters": [
+            "Vex",
+            "Pantheon",
+            "Renekton",
+            "Annie"
+        ],
+        "easy_matchups": [
+            "Aurelion Sol",
+            "Azir",
+            "Zoe"
+        ]
+    },
+    {
+        "name": "Yorick",
+        "role_desc": "Üst Koridor (Juggernaut)",
+        "hard_counters": [
+            "Irelia",
+            "Kled",
+            "Jax",
+            "Tryndamere"
+        ],
+        "easy_matchups": [
+            "Teemo",
+            "Darius",
+            "Jayce",
+            "Kennen"
+        ]
+    },
+    {
+        "name": "Yuumi",
+        "role_desc": "Destek (Enchanter)",
+        "hard_counters": [
+            "Mordekaiser",
+            "Poppy",
+            "Leona"
+        ],
+        "easy_matchups": [
+            "Poke Şampiyonları (Ezreal",
+            "Xerath)"
+        ]
+    },
+    {
+        "name": "Zac",
+        "role_desc": "Orman (Tank)",
+        "hard_counters": [
+            "Poppy",
+            "Thresh",
+            "Vayne",
+            "Janna"
+        ],
+        "easy_matchups": [
+            "Hareketsiz Büyücüler/ADC'ler"
+        ]
+    },
+    {
+        "name": "Zed",
+        "role_desc": "Orta Koridor (Assassin)",
+        "hard_counters": [
+            "Malphite",
+            "Lissandra",
+            "Kayle",
+            "Garen"
+        ],
+        "easy_matchups": [
+            "Veigar",
+            "Vel'Koz",
+            "Syndra",
+            "Aurelion Sol"
+        ]
+    },
+    {
+        "name": "Zeri",
+        "role_desc": "Alt Koridor (Marksman)",
+        "hard_counters": [
+            "Twitch",
+            "Vayne",
+            "Draven",
+            "Vi"
+        ],
+        "easy_matchups": [
+            "Garen",
+            "Urgot",
+            "Skillshot şampiyonlar"
+        ]
+    },
+    {
+        "name": "Ziggs",
+        "role_desc": "Orta/Alt (Artillery)",
+        "hard_counters": [
+            "Yasuo",
+            "Zed",
+            "Fizz"
+        ],
+        "easy_matchups": [
+            "Azir",
+            "Heimerdinger"
+        ]
+    },
+    {
+        "name": "Zilean",
+        "role_desc": "Destek (Enchanter)",
+        "hard_counters": [
+            "Blitzcrank",
+            "Nautilus"
+        ],
+        "easy_matchups": [
+            "Zed",
+            "Talon",
+            "Rengar"
+        ]
+    },
+    {
+        "name": "Zoe",
+        "role_desc": "Orta Koridor (Burst Mage)",
+        "hard_counters": [
+            "Malzahar",
+            "Yasuo",
+            "Yone",
+            "Naafiri"
+        ],
+        "easy_matchups": [
+            "Azir",
+            "Viktor",
+            "Hareketsiz Büyücüler"
+        ]
+    },
+    {
+        "name": "Zyra",
+        "role_desc": "Destek (Mage)",
+        "hard_counters": [
+            "Miss Fortune",
+            "Irelia",
+            "Yasuo",
+            "Xerath"
+        ],
+        "easy_matchups": [
+            "Braum",
+            "Tahm Kench",
+            "Thresh"
+        ]
+    }
+]

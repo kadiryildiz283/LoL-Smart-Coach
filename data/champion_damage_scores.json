@@ -1,0 +1,642 @@
+{
+    "Aatrox": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Ahri": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Akali": {
+        "ap": 9,
+        "ad": 2
+    },
+    "Alistar": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Ambessa": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Amumu": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Anivia": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Annie": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Aphelios": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Aurelion Sol": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Aurora": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Azir": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Bard": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Bel'Veth": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Blitzcrank": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Blue Kayn": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Brand": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Braum": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Briar": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Caitlyn": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Camille": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Cassiopeia": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Cho'Gath": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Corki": {
+        "ap": 2,
+        "ad": 9
+    },
+    "Darius": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Diana": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Dr. Mundo": {
+        "ap": 2,
+        "ad": 8
+    },
+    "Draven": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Ekko": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Elise": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Evelynn": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Ezreal": {
+        "ap": 4,
+        "ad": 8
+    },
+    "Fiddlesticks": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Fiora": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Fizz": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Galio": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Garen": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Gragas": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Graves": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Gwen": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Hecarim": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Heimerdinger": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Hwei": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Illaoi": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Irelia": {
+        "ap": 2,
+        "ad": 9
+    },
+    "Ivern": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Janna": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Jarvan IV": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Jax": {
+        "ap": 4,
+        "ad": 7
+    },
+    "Jayce": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Jhin": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Jinx": {
+        "ap": 0,
+        "ad": 10
+    },
+    "K'Sante": {
+        "ap": 2,
+        "ad": 8
+    },
+    "Kai'Sa": {
+        "ap": 6,
+        "ad": 6
+    },
+    "Kalista": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Karma": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Karthus": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Katarina": {
+        "ap": 8,
+        "ad": 4
+    },
+    "Kayle": {
+        "ap": 7,
+        "ad": 5
+    },
+    "Kennen": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Kha'Zix": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Kindred": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Kled": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Kog'Maw": {
+        "ap": 7,
+        "ad": 4
+    },
+    "LeBlanc": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Lee Sin": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Leona": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Lissandra": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Lucian": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Lulu": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Lux": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Malphite": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Malzahar": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Maokai": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Master Yi": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Mel": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Mililo": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Miss Fortune": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Morgana": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Naafiri": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Nami": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Nasus": {
+        "ap": 2,
+        "ad": 8
+    },
+    "Nautilus": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Neeko": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Nidalee": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Nocturne": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Nunu & Willump": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Olaf": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Orianna": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Ornn": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Pantheon": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Poppy": {
+        "ap": 2,
+        "ad": 8
+    },
+    "Pyke": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Qiyana": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Rammus": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Red Kayn": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Rek'Sai": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Rell": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Renata Glasc": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Renekton": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Rengar": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Riven": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Rumble": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Ryze": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Samira": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Sejuani": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Seraphine": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Sett": {
+        "ap": 2,
+        "ad": 8
+    },
+    "Shaco": {
+        "ap": 5,
+        "ad": 6
+    },
+    "Shen": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Shyvana": {
+        "ap": 7,
+        "ad": 4
+    },
+    "Singed": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Sion": {
+        "ap": 2,
+        "ad": 8
+    },
+    "Sivir": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Skarner": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Smolder": {
+        "ap": 3,
+        "ad": 8
+    },
+    "Sona": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Soraka": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Swain": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Sylas": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Syndra": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Tahm Kench": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Taliyah": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Talon": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Taric": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Teemo": {
+        "ap": 9,
+        "ad": 2
+    },
+    "Thresh": {
+        "ap": 6,
+        "ad": 4
+    },
+    "Tristana": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Trundle": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Tryndamere": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Twisted Fate": {
+        "ap": 9,
+        "ad": 2
+    },
+    "Twitch": {
+        "ap": 2,
+        "ad": 9
+    },
+    "Udyr": {
+        "ap": 6,
+        "ad": 5
+    },
+    "Urgot": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Varus": {
+        "ap": 5,
+        "ad": 7
+    },
+    "Veigar": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Vel'Koz": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Vex": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Vi": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Viego": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Viktor": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Vladimir": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Volibear": {
+        "ap": 6,
+        "ad": 5
+    },
+    "Warwick": {
+        "ap": 7,
+        "ad": 4
+    },
+    "Wukong": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Xayah": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Xerath": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Xin Zhao": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Yasuo": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Yone": {
+        "ap": 2,
+        "ad": 9
+    },
+    "Yorick": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Yuumi": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Zaahen": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Zac": {
+        "ap": 7,
+        "ad": 3
+    },
+    "Zed": {
+        "ap": 0,
+        "ad": 10
+    },
+    "Zeri": {
+        "ap": 3,
+        "ad": 8
+    },
+    "Ziggs": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Zilean": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Zoe": {
+        "ap": 10,
+        "ad": 0
+    },
+    "Zyra": {
+        "ap": 10,
+        "ad": 0
+    }
+}
