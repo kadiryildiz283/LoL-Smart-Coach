@@ -9,7 +9,7 @@ class LoLDecisionEngine:
         # Hızlı erişim için isimden veriye giden sözlük
         self.champ_lookup = {c['name'].lower(): c for c in self.data}
 
-        # --- SINIFSAL ÜSTÜNLÜK TABLOSU (Senin Tanımladığın 6 Sınıf) ---
+        # --- SINIFSAL ÜSTÜNLÜK TABLOSU (Taş-Kağıt-Makas) ---
         # Sol Taraf (Anahtar) -> Sağ Taraftaki Listeyi YENER.
         self.class_counters = {
             "Assassin": ["Immobile_Mage", "ADC", "Support"], 
@@ -17,7 +17,16 @@ class LoLDecisionEngine:
             "Skirmisher": ["Tank", "Assassin"],        
             "Immobile_Mage": ["ADC", "Support"],            
             "ADC": ["Tank"],
-            "Support": [] # Destekler genelde koruyucudur, sınıf counterlamaz.
+            "Support": [] 
+        }
+
+        # --- ÇOKLU DİL DESTEĞİ (TR/EN) ---
+        self.role_keywords = {
+            "top": ["top", "üst", "upper"],
+            "jungle": ["jungle", "orman"],
+            "mid": ["mid", "middle", "orta"],
+            "ad carry": ["ad carry", "adc", "bottom", "alt", "nişancı", "bot"],
+            "support": ["support", "utility", "destek"]
         }
 
     def load_data(self):
@@ -29,15 +38,15 @@ class LoLDecisionEngine:
 
     def get_list_score(self, list_data, target_name):
         """Listelerden (Synergy, Counter) puan çeker."""
-        if not list_data: return 0.0
+        if not list_data or not target_name: return 0.0
         for item in list_data:
             if item['champion'].lower() == target_name.lower():
                 return float(item['score'])
         return 0.0
 
     def get_class_interaction(self, my_class, enemy_class):
-        """Sınıf avantajını hesaplar."""
-        if my_class == "Unknown" or enemy_class == "Unknown": return 0.0
+        """Sınıf avantajını hesaplar (Taş-Kağıt-Makas)."""
+        if my_class in ["Unknown", "None"] or enemy_class in ["Unknown", "None"]: return 0.0
         
         # Ben onu yener miyim?
         if my_class in self.class_counters and enemy_class in self.class_counters[my_class]:
@@ -53,6 +62,8 @@ class LoLDecisionEngine:
         total_ad = 0
         
         for ally in ally_team:
+            if ally in ["Picking...", "Unknown", "...", "None"]: continue
+
             champ = self.champ_lookup.get(ally.lower())
             if champ:
                 # Veri setinde damage_profile yoksa varsayılan 5/5 al
@@ -61,72 +72,72 @@ class LoLDecisionEngine:
                 total_ad += dmg['ad']
         
         # Takım dengesini belirle
-        # Eğer AD puanı, AP puanından 15 fazlaysa -> Bize AP lazım
         needed = "Balanced"
-        if total_ad > total_ap + 10: needed = "AP"
-        elif total_ap > total_ad + 10: needed = "AD"
+        if total_ad > total_ap + 15: needed = "AP"
+        elif total_ap > total_ad + 15: needed = "AD"
         
-        return needed, total_ap, total_ad
+        return needed
+
+    def check_role_match(self, target_role, champ_role_text):
+        """
+        Şampiyonun rol yazısı (örn: 'Orta Koridor') ile hedef rolü (örn: 'mid')
+        karşılaştırır. Türkçe/İngilizce fark etmeksizin eşleştirir.
+        """
+        keywords = self.role_keywords.get(target_role, [target_role])
+        champ_role_lower = champ_role_text.lower()
+        
+        # Keywords listesindeki HERHANGİ bir kelime şampiyon rolünde geçiyor mu?
+        for kw in keywords:
+            if kw in champ_role_lower:
+                return True
+        return False
 
     def calculate_score(self, my_role, enemy_laner=None, ally_team=[], enemy_team=[]):
         recommendations = []
 
         # ==============================================================================
-        # ⚙️ AĞIRLIK AYARLARI (SENİN İSTEDİĞİN DÜZEN + YORUMLAR)
+        # ⚙️ AĞIRLIK AYARLARI (SENİN KALİTELİ DÜZENİN)
         # ==============================================================================
-        
-        # 1. TEMEL İSTATİSTİKLER
-        # Win Rate çok önemli ama tek başına karar verdirmez.
-        W_GENEL_WR          = 80.0  
-        
-        # 2. TAKIM UYUMU
-        # Sinerji iyidir ama karşıda "Hard Counter" varsa sinerji kurtarmaz.
-        W_SINERJI           = 5.0   
-        
-        # 3. KORİDOR (LANE) İSTATİSTİKLERİ
-        # İstatistiksel olarak rakibi yenmek.
+        W_GENEL_WR          = 80.0  # Kazanma Oranı en önemli faktör
+        W_SINERJI           = 15.0   
         W_LANE_ADVANTAGE    = 15.0  
         W_LANE_DISADVANTAGE = 20.0  
-        
-        # 4. ALTIN FARKI (100'e bölündüğü için katsayılar düşük görünebilir ama etkilidir)
-        W_GOLD_ADV          = 5.0   
-        W_GOLD_DEF          = 6.0   
-
-        # 5. GENEL MAÇ (TAKIM SAVAŞI)
-        W_GEN_GOOD_VS       = 8.0   
-        W_GEN_BAD_VS        = 10.0  
-
-        # 6. UZMAN GÖRÜŞÜ (OYUNU DEĞİŞTİREN FAKTÖR)
-        # Bu puanlar çok yüksek çünkü "Mekanik Counter" her istatistiği yener.
-        W_EXPERT_HARD_CTR   = 100.0  # Rakibi kesin yener
-        W_EXPERT_COUNTERED  = 200.0 # Rakibe kesin yenilir (ASLA SEÇME)
-        
-        # 7. SINIF AVANTAJI
+        W_GOLD_ADV          = 15.0   
+        W_GOLD_DEF          = 16.0   
+        W_GEN_GOOD_VS       = 18.0   
+        W_GEN_BAD_VS        = 20.0  
+        W_EXPERT_HARD_CTR   = 100.0  # Uzman Bonusu
+        W_EXPERT_COUNTERED  = 200.0  # Uzman Cezası
         W_CLASS_ADVANTAGE   = 40.0   
-
-        # 8. HASAR İHTİYACI (YENİ)
-        # Takım Full AD ise, AP şampiyona verilecek puan (Hasar puanı * bu katsayı)
-        W_DMG_NEED          = 15.0   
-
+        W_DMG_NEED          = 15.0   # Takım ihtiyacı bonusu
         # ==============================================================================
 
-        # Takım Analizi
-        needed_dmg, t_ap, t_ad = self.analyze_team_damage(ally_team)
-        
-        print(f"🤖 Analiz Başladı | Rol: {my_role} | Rakip: {enemy_laner}")
-        print(f"📊 Takım Hasarı: AP:{t_ap} - AD:{t_ad} => İhtiyaç: {needed_dmg}")
-        print("-" * 60)
+        # --- 1. ROL EŞLEŞTİRME (ÇOKLU DİL DESTEĞİ) ---
+        # Client'tan gelen rol isimlerini standartlaştır (adc -> ad carry)
+        client_role_map = {
+            "adc": "ad carry", "bottom": "ad carry", "bot": "ad carry",
+            "support": "support", "utility": "support", "destek": "support",
+            "mid": "mid", "middle": "mid", "orta": "mid",
+            "jungle": "jungle", "orman": "jungle",
+            "top": "top", "üst": "top",
+            "unknown": "mid", "belirsiz": "mid", "none": "mid", "": "mid"
+        }
+        target_role = client_role_map.get(str(my_role).lower(), "mid")
 
+        # Takım Analizi
+        needed_dmg = self.analyze_team_damage(ally_team)
+        
         # Rakip Sınıfı
         enemy_class = "Unknown"
-        if enemy_laner:
+        if enemy_laner and enemy_laner not in ["Picking...", "Unknown"]:
             c = self.champ_lookup.get(enemy_laner.lower())
             if c: enemy_class = c.get('class', 'Unknown')
 
         # --- ŞAMPİYONLARI TARA ---
         for champ in self.data:
-            # 1. Rol Filtresi
-            if my_role.lower() not in champ['role'].lower(): continue
+            # AKILLI ROL FİLTRESİ (TR/EN Uyumlu)
+            if not self.check_role_match(target_role, champ['role']): 
+                continue
 
             name = champ['name']
             my_class = champ.get('class', 'Unknown')
@@ -141,12 +152,11 @@ class LoLDecisionEngine:
                 score = (wr - 50.0) * W_GENEL_WR
                 total_score += score
             
-            # --- B. HASAR İHTİYACI (Takım Dengesi) ---
+            # --- B. HASAR İHTİYACI ---
             if needed_dmg == "AP":
                 bonus = dmg_profile['ap'] * W_DMG_NEED
                 total_score += bonus
                 if dmg_profile['ap'] >= 7: reasons.append(f"⚖️ Takım AP istiyor (+{bonus:.0f})")
-            
             elif needed_dmg == "AD":
                 bonus = dmg_profile['ad'] * W_DMG_NEED
                 total_score += bonus
@@ -154,20 +164,21 @@ class LoLDecisionEngine:
 
             # --- C. TAKIM SİNERJİSİ ---
             for ally in ally_team:
+                if ally in ["Picking...", "Unknown"]: continue
                 syn = self.get_list_score(champ.get('synergies', []), ally)
                 if syn > 0:
                     total_score += syn * W_SINERJI
 
             # --- D. GENEL RAKİP ANALİZİ ---
             for enemy in enemy_team:
-                if enemy == enemy_laner: continue
+                if enemy in ["Picking...", "Unknown"] or enemy == enemy_laner: continue
                 good = self.get_list_score(champ.get('general_good_against', []), enemy)
                 bad = self.get_list_score(champ.get('general_bad_against', []), enemy)
                 if good > 0: total_score += good * W_GEN_GOOD_VS
                 if bad > 0: total_score -= bad * W_GEN_BAD_VS
 
-            # --- E. KORİDOR RAKİBİ (EN ÖNEMLİ KISIM) ---
-            if enemy_laner:
+            # --- E. KORİDOR RAKİBİ ---
+            if enemy_laner and enemy_laner not in ["Picking...", "Unknown"]:
                 expert = champ.get('expert_insight', {})
                 expert_advantage = False
                 expert_disadvantage = False
@@ -185,12 +196,11 @@ class LoLDecisionEngine:
                     reasons.append(f"💀 UZMAN: {enemy_laner} seni ezer!")
                     expert_disadvantage = True
 
-                # 2. İstatistiksel Veri (Uzman "Yenilirsin" demediyse bak)
+                # 2. İstatistiksel Veri
                 if not expert_disadvantage:
                     lane_adv = self.get_list_score(champ.get('lane_counters', []), enemy_laner)
                     lane_dis = self.get_list_score(champ.get('lane_countered_by', []), enemy_laner)
                     
-                    # Uzman "Yeneriz" dediyse istatistiksel ezilmeyi görmezden gel
                     if expert_advantage and lane_dis > 0: lane_dis = 0
 
                     if lane_adv > 0: total_score += lane_adv * W_LANE_ADVANTAGE
@@ -202,11 +212,10 @@ class LoLDecisionEngine:
                     # Gold Farkları
                     g_adv = self.get_list_score(champ.get('lane_gold_advantage', []), enemy_laner)
                     g_def = self.get_list_score(champ.get('lane_gold_deficit', []), enemy_laner)
-                    
                     if g_adv > 0: total_score += (g_adv / 100.0) * W_GOLD_ADV
                     if g_def > 0: total_score -= (g_def / 100.0) * W_GOLD_DEF
 
-                # 3. Sınıf Avantajı (Taş-Kağıt-Makas)
+                # 3. Sınıf Avantajı
                 if not expert_advantage and not expert_disadvantage:
                     class_int = self.get_class_interaction(my_class, enemy_class)
                     if class_int > 0:
@@ -214,7 +223,6 @@ class LoLDecisionEngine:
                         reasons.append(f"Sınıf: {my_class} > {enemy_class}")
                     elif class_int < 0:
                         total_score -= W_CLASS_ADVANTAGE
-                        # reasons.append(f"Sınıf: {my_class} < {enemy_class}")
 
             recommendations.append({
                 "name": name,
@@ -224,29 +232,26 @@ class LoLDecisionEngine:
                 "reasons": reasons
             })
 
-        # Puanı en yüksekten düşüğe sırala
+        # Puanı en yüksekten düşüğe sırala ve ilk 10'u döndür
         recommendations.sort(key=lambda x: x['score'], reverse=True)
-        return recommendations[:5]
+        return recommendations[:10]
 
+# --- TEST ALANI ---
 if __name__ == "__main__":
-    engine = LoLDecisionEngine("tum_sampiyonlar_verisi_full.json")
+    test_path = "data/tum_sampiyonlar_verisi_full.json"
+    if not os.path.exists(test_path):
+        test_path = "../data/tum_sampiyonlar_verisi_full.json"
+
+    engine = LoLDecisionEngine(test_path)
     
-    # --- SENARYO ---
-    # Sen: Mid (Son seçim)
-    # Rakip: Katarina (Suikastçi)
-    # Takımın: Full AD + Tank (Renekton, Sejuani, Ashe, Braum)
-    # İhtiyaç: AP Hasarı + Katarina'yı durduracak biri (Hard CC)
-    
+    print("\n🧪 Test: TR Rol Analizi...")
+    # Client 'belirsiz' veya 'unknown' gönderirse 'Mid' analizi yapmalı
     picks = engine.calculate_score(
-        my_role="Mid", 
+        my_role="belirsiz", 
         enemy_laner="Katarina", 
         ally_team=["Renekton", "Sejuani", "Ashe", "Braum"], 
         enemy_team=["Darius", "Viego", "Samira", "Nautilus"]
     )
     
-    print("\n🏆 YAPAY ZEKA TAVSİYELERİ:")
     for i, p in enumerate(picks, 1):
-        print(f"{i}. {p['name']} ({p['class']})")
-        print(f"   PUAN: {p['score']} | WR: %{p['wr']}")
-        print(f"   NEDENLER: {', '.join(p['reasons'][:4])}") # İlk 4 nedeni yaz
-        print("-" * 60)
+        print(f"{i}. {p['name']} | Puan: {p['score']}")
