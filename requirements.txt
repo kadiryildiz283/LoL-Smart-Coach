@@ -1,0 +1,7 @@
+PyQt6
+pyqtdarktheme
+lcu-driver
+cloudscraper
+beautifulsoup4
+requests
+pyinstaller
