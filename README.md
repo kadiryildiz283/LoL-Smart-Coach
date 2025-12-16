@@ -74,6 +74,8 @@
 <hr>
 
 <h2 id="-kurulum">🚀 Kurulum</h2>
+direk indirebilirsiniz
+https://drive.google.com/file/d/1g7ZAUk021o9pxbJXtVkPUFCVPUbFyOMl/view?usp=sharing
 
 <p>Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.</p>
 
