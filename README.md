@@ -1,147 +1,193 @@
-🧠 LoL Smart Coach - AI Powered Draft Assistant
+<div align="center">
 
-LoL Smart Coach, League of Legends şampiyon seçim ekranında (Champion Select) size gerçek zamanlı ve stratejik tavsiyeler veren, Python tabanlı gelişmiş bir asistan uygulamasıdır.
+  <img src="assets/logo.png" alt="LoL Smart Coach Logo" width="120" height="120">
+  
+  <h1>🧠 LoL Smart Coach</h1>
+  <h3>AI Powered Draft Assistant for League of Legends</h3>
 
-Sadece istatistiklere (Win Rate) bakmaz; takım kompozisyonu (AD/AP dengesi), sinerji, hard-counter mekanikleri ve uzman görüşlerini harmanlayarak bir Challenger koç gibi düşünür.
-✨ Özellikler
+  <p>
+    <img src="https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+    <img src="https://img.shields.io/badge/GUI-PyQt6-41CD52?style=for-the-badge&logo=qt&logoColor=white" alt="PyQt6">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License">
+    <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge" alt="Status">
+    <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-lightgrey?style=for-the-badge" alt="Platform">
+  </p>
 
-    🔌 Otomatik LCU Bağlantısı: Oyun istemcisini (Client) otomatik algılar, seçim ekranına girildiğinde takımları ve rolünüzü anlık çeker.
+  <p>
+    <b>LoL Smart Coach</b>, League of Legends şampiyon seçim ekranında (Champion Select) size gerçek zamanlı ve stratejik tavsiyeler veren gelişmiş bir yapay zeka asistanıdır.
+  </p>
+  
+  <p>
+    Sadece "Kazanma Oranı"na bakmaz; <b>Takım Dengesi</b>, <b>Uzman Görüşü</b>, <b>Counter Mekanikleri</b> ve <b>Sınıf Avantajlarını</b> harmanlayarak bir Challenger koç gibi düşünür.
+  </p>
 
-    🧠 Hibrit Yapay Zeka Algoritması:
+  <p>
+    <a href="#-kurulum">📥 Kurulum</a> •
+    <a href="#-özellikler">✨ Özellikler</a> •
+    <a href="#-nasıl-çalışır">⚙️ Algoritma</a> •
+    <a href="#-katkıda-bulunma">🤝 Katkıda Bulunma</a>
+  </p>
 
-        İstatistiksel Analiz: LeagueOfGraphs üzerinden güncel kazanma oranları ve koridor istatistikleri.
+</div>
 
-        Uzman Görüşü (Expert Insight): İstatistiklerin yanıldığı durumlarda (Örn: Düşük eloda Zed vs Ziggs) devreye giren kural tabanlı "Hard Counter" sistemi.
+<hr>
 
-        Sınıf Mantığı (Rock-Paper-Scissors): Suikastçi > Büyücü > Nişancı gibi temel oyun dinamiklerini uygular.
+<h2 id="-özellikler">✨ Özellikler</h2>
 
-    ⚖️ Takım Dengesi Analizi: Takımınız "Full AD" mi oldu? Yapay zeka bunu fark eder ve size ısrarla AP (Büyü Hasarı) vuran şampiyonlar önerir.
+<table>
+  <tr>
+    <td width="200"><b>🔌 LCU Entegrasyonu</b></td>
+    <td>Oyun istemcisini (Client) otomatik algılar. Seçim ekranına girildiğinde takımları, yasaklamaları ve rolünüzü anlık çeker.</td>
+  </tr>
+  <tr>
+    <td><b>🧠 Hibrit Yapay Zeka</b></td>
+    <td>İstatistiksel verileri (LeagueOfGraphs) ve <b>Uzman Bilgisini (Expert Knowledge)</b> harmanlayarak karar verir.</td>
+  </tr>
+  <tr>
+    <td><b>⚖️ Takım Dengesi</b></td>
+    <td>Takımınız "Full AD" mi oldu? Yapay zeka bunu fark eder ve ısrarla AP (Büyü Hasarı) vuran şampiyonlar önerir.</td>
+  </tr>
+  <tr>
+    <td><b>🛡️ Hard Counter</b></td>
+    <td>İstatistikler yanılsa bile (Örn: Düşük eloda Zed vs Ziggs), uzman modülü devreye girer ve <i>"Bunu alma, yok olursun"</i> der.</td>
+  </tr>
+  <tr>
+    <td><b>🔮 Maç Tahmini</b></td>
+    <td>5v5 seçim tamamlandığında, iki takımın kompozisyonunu analiz ederek kazanma olasılıklarını hesaplar.</td>
+  </tr>
+  <tr>
+    <td><b>🎨 Modern UI</b></td>
+    <td>PyQt6 ile geliştirilmiş, Neon detaylı, Hacker/Cyberpunk temalı modern arayüz.</td>
+  </tr>
+</table>
 
-    🔮 Maç Sonucu Tahmini: İki takımın kompozisyonunu analiz ederek maç başlamadan kazanma olasılıklarını hesaplar.
+<hr>
 
-    🎨 Modern Arayüz: PyQt6 ile geliştirilmiş, neon detaylı modern "Dark Mode" arayüz.
+<h2 id="-ekran-görüntüleri">📸 Ekran Görüntüleri</h2>
 
-    🔄 Veri Yönetimi: Uygulama içinden tek tuşla veritabanını güncelleyebilir ve birleştirebilirsiniz.
+<div align="center">
+  <img src="assets/screenshot.png" alt="Uygulama Arayüzü" style="border-radius: 10px; box-shadow: 0px 0px 20px rgba(0,0,0,0.5);">
+  <br>
+  <em>Seçim ekranı analizi ve yapay zeka önerileri.</em>
+</div>
 
-🛠️ Kurulum
+<hr>
 
-Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.
-Gereksinimler
+<h2 id="-kurulum">🚀 Kurulum</h2>
 
-    Python 3.9 veya üzeri
+<p>Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.</p>
 
-    Git
+<h3>1. Gereksinimler</h3>
+<ul>
+  <li>Python 3.9 veya üzeri</li>
+  <li>Git</li>
+</ul>
 
-1. Projeyi Klonlayın
-Bash
+<h3>2. Projeyi Klonlayın</h3>
+<pre><code>git clone https://github.com/KULLANICI_ADINIZ/LoL-Smart-Coach.git
+cd LoL-Smart-Coach</code></pre>
 
-git clone https://github.com/KULLANICI_ADINIZ/LoL-Smart-Coach.git
-cd LoL-Smart-Coach
+<h3>3. Sanal Ortam (Önerilen)</h3>
+<details>
+  <summary><b>Sanal Ortam Kurulum Detayları (Tıkla ve Genişlet)</b></summary>
+  
+  <br><b>Windows:</b>
+  <pre><code>python -m venv venv
+venv\Scripts\activate</code></pre>
 
-2. Sanal Ortam Oluşturun (Önerilen)
-Bash
+  <b>Linux / Mac:</b>
+  <pre><code>python3 -m venv venv
+source venv/bin/activate</code></pre>
+</details>
 
-# Windows
-python -m venv venv
-venv\Scripts\activate
+<h3>4. Kütüphaneleri Yükleyin</h3>
+<pre><code>pip install -r requirements.txt</code></pre>
 
-# Linux/Mac
-python3 -m venv venv
-source venv/bin/activate
+<h3>5. Uygulamayı Başlatın</h3>
+<p>League of Legends istemcisi açıkken veya kapalıyken çalıştırabilirsiniz.</p>
+<pre><code>python main.py</code></pre>
 
-3. Kütüphaneleri Yükleyin
-Bash
+<hr>
 
-pip install -r requirements.txt
+<h2 id="-nasıl-çalışır">🧮 Algoritma Mantığı (The Brain)</h2>
 
-(Eğer requirements.txt yoksa şu komutu kullanın: pip install PyQt6 pyqtdarktheme lcu-driver cloudscraper beautifulsoup4 requests)
-4. Uygulamayı Başlatın
+<p>Sistem, her şampiyon için dinamik bir <b>Skor</b> hesaplar. Bu skor aşağıdaki formül ile elde edilir:</p>
 
-League of Legends istemcisi açıkken veya kapalıyken çalıştırabilirsiniz.
-Bash
+<pre>
+Total Score = (WinRate * 20) + (Synergy * 2) + (LaneAdv * 15) + (ExpertBonus) + (TeamNeed)
+</pre>
 
-python main.py
+<ul>
+  <li><b>Win Rate (WR):</b> %50'nin üzerindeki her puan için +20 Puan.</li>
+  <li><b>Expert Veto:</b> Eğer uzman veritabanında "Bu şampiyon rakibe ezilir" yazıyorsa <b>-2000 Puan</b> ceza kesilir.</li>
+  <li><b>Expert Bonus:</b> Eğer uzman veritabanında "Bu şampiyon rakibi ezer" yazıyorsa <b>+600 Puan</b> bonus verilir.</li>
+  <li><b>Takım İhtiyacı:</b> Takımda 3+ AD karakter varsa, AP karakterlere <b>+100 Puan</b> bonus verilir.</li>
+  <li><b>Sınıf Avantajı:</b> Taş-Kağıt-Makas mantığı uygulanır (Suikastçi > Büyücü, Tank > Suikastçi vb.).</li>
+</ul>
 
-🏗️ Proje Mimarisi
+<hr>
 
-Bu proje modüler bir yapıda tasarlanmıştır. Katkıda bulunmak isteyenler için dosya yapısı şöyledir:
+<h2>🏗️ Proje Yapısı</h2>
 
+<pre>
 LoL_Smart_Coach/
-│
 ├── core/                       # 🧠 Backend (Beyin)
-│   ├── lcu_connector.py        # LoL Client ile WebSocket bağlantısını kurar.
-│   ├── ai_recommendation_final.py # Puanlama algoritmasının çalıştığı yer.
-│   └── match_predictor.py      # Maç sonucu tahmin motoru.
+│   ├── lcu_connector.py        # LoL Client WebSocket bağlantısı
+│   ├── ai_recommendation_final.py # Ana Puanlama Algoritması
+│   └── match_predictor.py      # Maç Sonucu Tahmin Motoru
 │
 ├── data/                       # 💾 Veritabanı (JSON)
-│   ├── tum_sampiyonlar_verisi_full.json # Ana veri dosyası.
-│   ├── expert_knowledge.json   # Uzman analizlerinin işlenmiş hali.
-│   ├── champion_damage_scores.json # Şampiyonların AD/AP puanları.
-│   └── url_mappings.json       # URL düzeltme haritası.
+│   ├── tum_sampiyonlar_verisi_full.json # Ana Veri (Stat + Expert)
+│   ├── expert_knowledge.json   # İşlenmiş Uzman Görüşleri
+│   ├── champion_damage_scores.json # Şampiyonların AD/AP puanları
+│   └── url_mappings.json       # URL düzeltme haritası
 │
-├── assets/                     # 🖼️ Görseller ve stil dosyaları.
+├── assets/                     # 🖼️ Görseller ve stil dosyaları
 │
-├── main.py                     # 🖥️ Arayüz (GUI) ve ana giriş noktası.
-├── list_update.py              # Güncel şampiyon listesini çeker.
-├── veri_cekici_main.py         # Detaylı istatistikleri (Scraping) çeker.
-├── expert_parser.py            # Text formatındaki uzman raporunu JSON'a çevirir.
-├── merge_expert_data.py        # İstatistik ve Uzman verisini birleştirir.
-└── merge_damage_stats.py       # Hasar profillerini ana veriye ekler.
+├── main.py                     # 🖥️ Arayüz (GUI) ve Başlatıcı
+├── requirements.txt            # Bağımlılıklar
+└── (Yardımcı Scriptler)        # Veri çekme ve işleme araçları
+</pre>
 
-🧮 Algoritma Nasıl Çalışıyor?
+<hr>
 
-Sistem, her şampiyona bir "Skor" verir. Bu skor şu faktörlerin ağırlıklı toplamıdır:
+<h2>📦 Windows İçin Derleme (.exe)</h2>
 
-    Genel Kazanma Oranı (Win Rate): Temel güç göstergesi.
+<p>Bu projeyi bir <code>.exe</code> dosyasına dönüştürmek için:</p>
 
-    Koridor Eşleşmesi (Lane Matchup): Rakibi istatistiksel olarak ne kadar yendiği.
+<ol>
+  <li>PyInstaller yükleyin: <code>pip install pyinstaller</code></li>
+  <li>Aşağıdaki komutu çalıştırın:</li>
+</ol>
 
-    Uzman Vetosu (Expert Veto): Eğer veritabanında "Bu şampiyon buna karşı oynayamaz" (Hard Counter) bilgisi varsa, istatistik ne derse desin o şampiyona devlet cezası kesilir (-1000 Puan).
+<pre><code>pyinstaller --noconsole --onefile --name "LoL_Smart_Coach" --add-data "data;data" --add-data "core;core" --icon=assets/logo.ico main.py</code></pre>
 
-    Takım İhtiyacı: Takımda 3 tane AD karakter varsa, AP karakterlere +100 Puan bonus verilir.
+<small><i>Not: Linux/Mac kullanıyorsanız noktalı virgül (;) yerine iki nokta üst üste (:) kullanın.</i></small>
 
-    Sinerji: Takım arkadaşlarıyla uyumlu olanlara ufak bir bonus eklenir.
+<hr>
 
-Formül Özeti:
-Python
+<h2 id="-katkıda-bulunma">🤝 Katkıda Bulunma</h2>
 
-Total_Score = (WinRate * 20) + (Counter_Score * 15) + (Expert_Bonus) + (Team_Need_Bonus)
+<p>Bu proje açık kaynaktır! Geliştirmeye katkıda bulunmak isterseniz:</p>
+<ol>
+  <li>Bu repoyu <b>Fork</b> edin.</li>
+  <li>Yeni bir özellik için dal oluşturun (<code>git checkout -b feature/YeniOzellik</code>).</li>
+  <li>Değişikliklerinizi yapın ve <b>Commit</b> atın.</li>
+  <li>Dalı <b>Push</b>layın ve bir <b>Pull Request</b> açın.</li>
+</ol>
 
-📦 Windows İçin Derleme (.exe)
+<hr>
 
-Bu projeyi bir .exe dosyasına dönüştürüp arkadaşlarınızla paylaşmak isterseniz:
+<h2>⚠️ Yasal Uyarı</h2>
 
-    PyInstaller yükleyin:
-    Bash
+<p>
+  <i>LoL Smart Coach</i>, Riot Games tarafından onaylanmamıştır ve Riot Games'in veya League of Legends'ın yapımında veya yönetiminde yer alan herhangi birinin görüşlerini yansıtmaz. League of Legends ve Riot Games, Riot Games, Inc. şirketinin ticari markaları veya tescilli ticari markalarıdır.
+</p>
 
-pip install pyinstaller
+<p>
+  Bu proje <b>"Adil Oyun"</b> kurallarına uygundur. Oyun dosyalarına müdahale etmez, hile (script) içermez; sadece istemcinin (LCU) sunduğu yerel API'yi "Okuma" (Read-Only) amaçlı kullanır.
+</p>
 
-Şu komutu çalıştırın (Tüm veri ve çekirdek dosyalarını içine gömer):
-Bash
-
-    pyinstaller --noconsole --onefile --name "LoL_Smart_Coach" --add-data "data;data" --add-data "core;core" main.py
-
-    (Not: Linux/Mac kullanıyorsanız ; yerine : kullanın)
-
-🤝 Katkıda Bulunma (Contributing)
-
-Bu proje açık kaynaktır ve geliştirmelere açıktır!
-
-    Bu repoyu Fork edin.
-
-    Yeni bir özellik için dal (branch) oluşturun (git checkout -b yeni-ozellik).
-
-    Değişikliklerinizi yapın ve Commit atın (git commit -m 'Yeni özellik eklendi').
-
-    Dalı Pushlayın (git push origin yeni-ozellik).
-
-    Bir Pull Request açın.
-
-⚠️ Yasal Uyarı (Disclaimer)
-
-LoL Smart Coach, Riot Games tarafından onaylanmamıştır ve Riot Games'in veya League of Legends'ın yapımında veya yönetiminde yer alan herhangi birinin görüşlerini veya fikirlerini yansıtmaz. League of Legends ve Riot Games, Riot Games, Inc. şirketinin ticari markaları veya tescilli ticari markalarıdır. League of Legends © Riot Games, Inc.
-
-Bu proje tamamen eğitim ve analiz amaçlıdır. Oyun dosyalarına müdahale etmez, sadece istemci (LCU) tarafından sunulan yerel API'yi dinler (Read-Only).
-📄 Lisans
-
-Bu proje MIT Lisansı altında lisanslanmıştır. Dilediğiniz gibi kullanabilir, değiştirebilir ve dağıtabilirsiniz.
+<div align="center">
+  <sub>Developed with ❤️ by Kadir Yildiz</sub>
+</div>
