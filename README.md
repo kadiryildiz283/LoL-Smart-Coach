@@ -1,6 +1,5 @@
 <div align="center">
 exe linki = https://drive.google.com/file/d/1g7ZAUk021o9pxbJXtVkPUFCVPUbFyOMl/view?usp=sharing
-  <img src="assets/logo.png" alt="LoL Smart Coach Logo" width="120" height="120">
   
   <h1>🧠 LoL Smart Coach</h1>
   <h3>AI Powered Draft Assistant for League of Legends</h3>
@@ -190,4 +189,5 @@ LoL_Smart_Coach/
 <div align="center">
   <sub>Developed with ❤️ by Kadir Yildiz</sub>
 </div>
+
 
