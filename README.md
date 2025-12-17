@@ -5,8 +5,6 @@ exe linki = https://drive.google.com/file/d/1g7ZAUk021o9pxbJXtVkPUFCVPUbFyOMl/vi
   <h1>🧠 LoL Smart Coach</h1>
   <h3>AI Powered Draft Assistant for League of Legends</h3>
   <p>
-    <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e15533fd-8156-4e4f-a4fc-a618e3fc777e" />
-
     <img src="https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
     <img src="https://img.shields.io/badge/GUI-PyQt6-41CD52?style=for-the-badge&logo=qt&logoColor=white" alt="PyQt6">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License">
