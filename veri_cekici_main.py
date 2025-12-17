@@ -5,6 +5,15 @@ import re
 import time
 import random
 import os
+import sys
+
+try:
+    from utils import get_data_path
+except ImportError:
+    # utils.py yoksa fallback (yedek)
+    def get_data_path(filename):
+        os.makedirs("data", exist_ok=True)
+        return os.path.join("data", filename)
 
 # --- AYARLAR ---
 REGION = "iron"  
@@ -12,18 +21,36 @@ INPUT_FILE = "data/sampiyon_listesi.json"
 MAPPING_FILE = "data/url_mappings.json"
 OUTPUT_FILE = "data/tum_sampiyonlar_verisi_full.json"
 
-# Global Mapping
+# Global Değişkenler
 CHAMPION_URL_MAP = {}
+scraper = None  # Scraper'ı burada boş bırakıyoruz, başlatmıyoruz!
 
-# --- GÜNCELLEME BURADA: Scraper'ı daha gerçekçi yapıyoruz ---
-# Cloudflare'e "Ben Windows kullanan bir Chrome tarayıcısıyım" diyoruz.
-scraper = cloudscraper.create_scraper(
-    browser={
-        'browser': 'chrome',
-        'platform': 'windows',
-        'desktop': True
-    }
-)
+def create_local_scraper():
+    """
+    Scraper nesnesini, fonksiyon çağrıldığı thread (iş parçacığı) içinde oluşturur.
+    Bu, GUI'den çalıştırıldığında 403 hatası almayı engeller.
+    """
+    global scraper
+    print("🌍 Tarayıcı oturumu (Thread-Safe) oluşturuluyor...")
+    
+    new_scraper = cloudscraper.create_scraper(
+        browser={
+            'browser': 'chrome',
+            'platform': 'windows',
+            'desktop': True
+        }
+    )
+    
+    # Gerçekçi Header Ayarları
+    new_scraper.headers.update({
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
+        'Referer': 'https://www.google.com/',
+        'Connection': 'keep-alive'
+    })
+    
+    scraper = new_scraper
 
 def load_mappings():
     global CHAMPION_URL_MAP
@@ -38,12 +65,16 @@ def load_mappings():
         CHAMPION_URL_MAP = {}
 
 def get_soup_via_cloudscraper(url):
-    # Hata durumunda 3 kereye kadar tekrar deneme mekanizması
+    # Eğer scraper henüz oluşturulmadıysa (veya thread değiştiyse) oluştur
+    if scraper is None:
+        create_local_scraper()
+
+    # Hata durumunda 3 kereye kadar tekrar deneme
     for attempt in range(3):
         try:
             response = scraper.get(url)
             
-            # Eğer 429 (Çok Fazla İstek) aldıysak uzun bekle
+            # 429: Çok Fazla İstek
             if response.status_code == 429:
                 print(f"   ⚠️ Çok hızlı gidiyoruz (429). 10 saniye soğuma...")
                 time.sleep(10)
@@ -51,11 +82,13 @@ def get_soup_via_cloudscraper(url):
 
             if response.status_code == 200:
                 return BeautifulSoup(response.content, 'lxml')
+            
             elif response.status_code == 404:
-                return None # Sayfa yoksa normaldir, tekrar deneme
+                return None # Sayfa yoksa normaldir
+            
             else:
                 print(f"   ⚠️ Hata Kodu: {response.status_code} (Deneme {attempt+1}/3)")
-                time.sleep(2) # Kısa bir bekleme yapıp tekrar dene
+                time.sleep(2)
 
         except Exception as e:
             print(f"   ⚠️ Bağlantı hatası: {e}")
@@ -113,7 +146,7 @@ def get_champion_full_data(champ_info, region):
         "general_bad_against": []   
     }
 
-    # 1. Win Rate
+    # 1. Win Rate (Tier List Sayfası)
     tier_url = f"https://www.leagueofgraphs.com/champions/tier-list/{slug}/{region}"
     soup_tier = get_soup_via_cloudscraper(tier_url)
     
@@ -125,7 +158,6 @@ def get_champion_full_data(champ_info, region):
                 data["general_win_rate"] = float(raw_text)
             except: pass
     
-    # Kısa bir bekleme (Sayfalar arası)
     time.sleep(random.uniform(0.5, 1.0))
 
     # 2. Counter Tabloları
@@ -161,6 +193,10 @@ def get_champion_full_data(champ_info, region):
     return data
 
 def main():
+    # --- KRİTİK GÜNCELLEME ---
+    # Scraper'ı GUI thread'i içinde burada başlatıyoruz.
+    create_local_scraper()
+    
     load_mappings()
 
     if not os.path.exists(INPUT_FILE):
@@ -186,21 +222,23 @@ def main():
             wr = champ_data.get("general_win_rate", 0)
             
             if wr == 0.0:
-                print("⚠️ (WR Çekilemedi - 403 olabilir)")
+                print("⚠️ (WR Çekilemedi)")
             else:
                 print(f"✅ (WR: %{wr})")
             
         except Exception as e:
             print(f"❌ HATA: {e}")
 
-        # --- GÜNCELLEME: Bekleme süresini artırdık ---
-        # 403 hatası alıyorsan bu süreyi artırmak zorundasın.
-        # Her karakterden sonra 2 ile 4 saniye arası bekleyecek.
+        # Her karakterden sonra rastgele bekleme
         sleep_time = random.uniform(2.0, 4.0) 
         time.sleep(sleep_time)
 
     print("-" * 50)
     print(f"💾 Tüm veriler '{OUTPUT_FILE}' dosyasına kaydediliyor...")
+    
+    # Klasör yoksa oluştur
+    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(full_database, f, indent=4, ensure_ascii=False)
     
