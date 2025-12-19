@@ -1,5 +1,5 @@
 <div align="center">
-exe linki = https://drive.google.com/file/d/1g7ZAUk021o9pxbJXtVkPUFCVPUbFyOMl/view?usp=sharing
+exe linki = [https://drive.google.com/file/d/1g7ZAUk021o9pxbJXtVkPUFCVPUbFyOMl/view?usp=sharing](https://drive.google.com/file/d/1K5aw6JByUyDw5BBrf3owOfxWbDjt6QaK/view?usp=drive_link)
   
   <h1>🧠 LoL Smart Coach</h1>
   <h3>AI Powered Draft Assistant for League of Legends</h3>
@@ -189,5 +189,6 @@ LoL_Smart_Coach/
 <div align="center">
   <sub>Developed with ❤️ by Kadir Yildiz</sub>
 </div>
+
 
 
