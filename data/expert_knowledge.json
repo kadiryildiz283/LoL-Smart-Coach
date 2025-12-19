@@ -2446,5 +2446,96 @@
             "Tahm Kench",
             "Thresh"
         ]
-    }
+    },
+  {
+    "name": "Zaahen",
+    "role_desc": "Üst Koridor / Orman (Ezergeçer)",
+    "hard_counters": ["Teemo", "Swain", "Kayle"],
+    "easy_matchups": ["Sion", "K'Sante", "Yasuo", "Yone"]
+  },
+  {
+    "name": "Yunara",
+    "role_desc": "Alt Koridor (Hiper Taşıyıcı)",
+    "hard_counters": ["Kog'Maw", "Nilah", "Twitch"],
+    "easy_matchups": ["Kalista", "Mel"]
+  },
+  {
+    "name": "Mel Medarda",
+    "role_desc": "Orta Koridor / Destek (Savaş Büyücüsü / Kontrolcü)",
+    "hard_counters": ["Aurelion Sol", "Xerath", "Ziggs", "Kassadin"],
+    "easy_matchups": ["Smolder", "Ryze"]
+  },
+  {
+    "name": "Ambessa Medarda",
+    "role_desc": "Üst Koridor / Orman (Dövüşçü / Suikastçı)",
+    "hard_counters": ["Cassiopeia", "Warwick", "Poppy"],
+    "easy_matchups": ["Sejuani", "Ornn", "Yone"]
+  },
+  {
+    "name": "Aurora",
+    "role_desc": "Orta Koridor / Üst Koridor (Çarpışmacı Büyücü)",
+    "hard_counters": ["Vel'Koz", "Talon", "Anivia"],
+    "easy_matchups": ["Smolder", "Azir"]
+  },
+  {
+    "name": "Smolder",
+    "role_desc": "Alt Koridor (Büyücü Nişancı)",
+    "hard_counters": ["Draven", "Kalista", "Jarvan IV"],
+    "easy_matchups": ["Ezreal", "Zeri"]
+  },
+  {
+    "name": "Hwei",
+    "role_desc": "Orta Koridor (Topçu / Kontrol Büyücüsü)",
+    "hard_counters": ["Fizz", "Katarina", "Naafiri"],
+    "easy_matchups": ["Azir", "Ryze"]
+  },
+  {
+    "name": "Briar",
+    "role_desc": "Orman (Dalgıç)",
+    "hard_counters": ["Rammus", "Jax", "Shaco"],
+    "easy_matchups": ["Hecarim", "Rengar"]
+  },
+  {
+    "name": "Naafiri",
+    "role_desc": "Orta Koridor (Suikastçı)",
+    "hard_counters": ["Irelia", "Taliyah"],
+    "easy_matchups": ["Pyke", "Xerath"]
+  },
+  {
+    "name": "Milio",
+    "role_desc": "Destek (Efsuncu)",
+    "hard_counters": ["Blitzcrank", "Pyke"],
+    "easy_matchups": ["Amumu", "Lissandra"]
+  },
+  {
+    "name": "K'Sante",
+    "role_desc": "Üst Koridor (Tank/Dövüşçü)",
+    "hard_counters": ["Fiora", "Gwen", "Garen"],
+    "easy_matchups": ["Mundo", "Nasus"]
+  },
+  {
+    "name": "Nilah",
+    "role_desc": "Alt Koridor (Yakın Dövüş Nişancı)",
+    "hard_counters": ["Xayah", "Caitlyn", "Veigar"],
+    "easy_matchups": ["Master Yi", "Draven"]
+  },
+  {
+    "name": "Bel'Veth",
+    "role_desc": "Orman (Savaşçı)",
+    "hard_counters": ["Rammus", "Taliyah"],
+    "easy_matchups": ["Sion", "Dr. Mundo"]
+  },
+  {
+    "name": "Renata Glasc",
+    "role_desc": "Destek (Kontrolcü)",
+    "hard_counters": ["Xerath", "Vel'Koz"],
+    "easy_matchups": ["Master Yi", "Jinx"]
+  },
+  {
+    "name": "Zeri",
+    "role_desc": "Alt Koridor (Nişancı)",
+    "hard_counters": ["Vi", "Nautilus", "Draven"],
+    "easy_matchups": ["Ezreal", "Ornn"]
+  }
+
 ]
