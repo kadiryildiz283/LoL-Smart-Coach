@@ -1,8 +1,10 @@
 PyQt6
 pyqtdarktheme
+pyqtdarktheme
 lcu-driver
-cloudscraper
+curl_cffi
 beautifulsoup4
 requests
 pyinstaller
 lxml
+pyqtgraph

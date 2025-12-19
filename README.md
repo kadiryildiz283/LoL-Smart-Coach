@@ -1,8 +1,10 @@
 <div align="center">
-exe linki = https://drive.google.com/file/d/1g7ZAUk021o9pxbJXtVkPUFCVPUbFyOMl/view?usp=sharing
+
+  <img src="assets/logo.png" alt="LoL Smart Coach Logo" width="120" height="120">
   
   <h1>🧠 LoL Smart Coach</h1>
   <h3>AI Powered Draft Assistant for League of Legends</h3>
+
   <p>
     <img src="https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
     <img src="https://img.shields.io/badge/GUI-PyQt6-41CD52?style=for-the-badge&logo=qt&logoColor=white" alt="PyQt6">
@@ -64,7 +66,7 @@ exe linki = https://drive.google.com/file/d/1g7ZAUk021o9pxbJXtVkPUFCVPUbFyOMl/vi
 <h2 id="-ekran-görüntüleri">📸 Ekran Görüntüleri</h2>
 
 <div align="center">
-  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/bcab3116-5b62-4fa1-a8a3-80ff3c5b0df8" />
+  <img src="assets/screenshot.png" alt="Uygulama Arayüzü" style="border-radius: 10px; box-shadow: 0px 0px 20px rgba(0,0,0,0.5);">
   <br>
   <em>Seçim ekranı analizi ve yapay zeka önerileri.</em>
 </div>
@@ -189,5 +191,3 @@ LoL_Smart_Coach/
 <div align="center">
   <sub>Developed with ❤️ by Kadir Yildiz</sub>
 </div>
-
-

@@ -1,56 +1,101 @@
-import cloudscraper
+
 from bs4 import BeautifulSoup
 import json
 import re
 import time
 import random
 import os
-import sys
 
-try:
-    from utils import get_data_path
-except ImportError:
-    # utils.py yoksa fallback (yedek)
-    def get_data_path(filename):
-        os.makedirs("data", exist_ok=True)
-        return os.path.join("data", filename)
+# ... (Imports remain same)
 
 # --- AYARLAR ---
 REGION = "iron"  
-INPUT_FILE = "data/sampiyon_listesi.json"
-MAPPING_FILE = "data/url_mappings.json"
-OUTPUT_FILE = "data/tum_sampiyonlar_verisi_full.json"
+# data_loader ile tam yolu alacağız (import aşağıda)
+from core.data_manager import ensure_data_directory, get_resource_path
 
-# Global Değişkenler
+# Pathleri dinamik al
+ensure_data_directory() # Klasör kontrolü
+INPUT_FILE = get_resource_path("data/sampiyon_listesi.json")
+MAPPING_FILE = get_resource_path("data/url_mappings.json")
+OUTPUT_FILE = get_resource_path("data/tum_sampiyonlar_verisi_full.json")
+
+# Global Mapping
 CHAMPION_URL_MAP = {}
-scraper = None  # Scraper'ı burada boş bırakıyoruz, başlatmıyoruz!
 
-def create_local_scraper():
-    """
-    Scraper nesnesini, fonksiyon çağrıldığı thread (iş parçacığı) içinde oluşturur.
-    Bu, GUI'den çalıştırıldığında 403 hatası almayı engeller.
-    """
-    global scraper
-    print("🌍 Tarayıcı oturumu (Thread-Safe) oluşturuluyor...")
-    
-    new_scraper = cloudscraper.create_scraper(
-        browser={
-            'browser': 'chrome',
-            'platform': 'windows',
-            'desktop': True
-        }
-    )
-    
-    # Gerçekçi Header Ayarları
-    new_scraper.headers.update({
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-        'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
-        'Referer': 'https://www.google.com/',
-        'Connection': 'keep-alive'
-    })
-    
-    scraper = new_scraper
+# ... Imports
+from curl_cffi import requests # cloudscraper yerine
+
+# --- AYARLAR ---
+REGION = "iron"  
+# data_loader ile tam yolu alacağız (import aşağıda)
+from core.data_manager import ensure_data_directory, get_resource_path
+
+# Pathleri dinamik al
+ensure_data_directory() # Klasör kontrolü
+INPUT_FILE = get_resource_path("data/sampiyon_listesi.json")
+MAPPING_FILE = get_resource_path("data/url_mappings.json")
+OUTPUT_FILE = get_resource_path("data/tum_sampiyonlar_verisi_full.json")
+
+# Global Mapping
+CHAMPION_URL_MAP = {}
+
+# --- SCRAPER YAPILANDIRMASI ---
+class LoLScraper:
+    def __init__(self):
+        # Gerçek bir Chrome 120 tarayıcısını taklit ediyoruz
+        self.session = requests.Session(impersonate="chrome120")
+        self.session_ready = False
+
+    def warm_up(self):
+        """Ana sayfaya giderek çerezleri al ve session'ı ısıt."""
+        print("🔥 Session ısıtılıyor (Ana sayfa ziyareti)...")
+        try:
+            self.session.get("https://www.leagueofgraphs.com/")
+            time.sleep(3) # Çerezler otursun
+            self.session_ready = True
+            print("✅ Session hazır (TLS Fingerprint: Chrome 120).")
+        except Exception as e:
+            print(f"⚠️ Warm-up hatası: {e}")
+
+    def get_soup(self, url):
+        # Warmup yapılmadıysa yap
+        if not self.session_ready:
+            self.warm_up()
+
+        for attempt in range(3):
+            try:
+                response = self.session.get(url, timeout=15)
+                
+                if response.status_code == 429:
+                    wait = 60
+                    print(f"   🛑 429 (Too Many Requests). {wait}sn bekleniyor...")
+                    time.sleep(wait)
+                    continue
+
+                if response.status_code == 403:
+                    print(f"   🚫 403 (Erişim Red). Bekleme artırılıyor...")
+                    time.sleep(15)
+                    # 403 alınca session'ı yenilemeyi deneyebiliriz
+                    self.session = requests.Session(impersonate="chrome120")
+                    self.warm_up()
+                    continue
+
+                if response.status_code == 200:
+                    return BeautifulSoup(response.content, 'lxml')
+                elif response.status_code == 404:
+                    return None
+                else:
+                    print(f"   ⚠️ Kod: {response.status_code} (Deneme {attempt+1})")
+                    time.sleep(3)
+
+            except Exception as e:
+                print(f"   ⚠️ Ağ Hatası: {e}")
+                time.sleep(3)
+                
+        return None
+
+# Tekil instance
+bot = LoLScraper()
 
 def load_mappings():
     global CHAMPION_URL_MAP
@@ -65,36 +110,7 @@ def load_mappings():
         CHAMPION_URL_MAP = {}
 
 def get_soup_via_cloudscraper(url):
-    # Eğer scraper henüz oluşturulmadıysa (veya thread değiştiyse) oluştur
-    if scraper is None:
-        create_local_scraper()
-
-    # Hata durumunda 3 kereye kadar tekrar deneme
-    for attempt in range(3):
-        try:
-            response = scraper.get(url)
-            
-            # 429: Çok Fazla İstek
-            if response.status_code == 429:
-                print(f"   ⚠️ Çok hızlı gidiyoruz (429). 10 saniye soğuma...")
-                time.sleep(10)
-                continue
-
-            if response.status_code == 200:
-                return BeautifulSoup(response.content, 'lxml')
-            
-            elif response.status_code == 404:
-                return None # Sayfa yoksa normaldir
-            
-            else:
-                print(f"   ⚠️ Hata Kodu: {response.status_code} (Deneme {attempt+1}/3)")
-                time.sleep(2)
-
-        except Exception as e:
-            print(f"   ⚠️ Bağlantı hatası: {e}")
-            time.sleep(2)
-            
-    return None
+    return bot.get_soup(url)
 
 def extract_value_final(row):
     p_bar = row.find("progressbar")
@@ -146,7 +162,7 @@ def get_champion_full_data(champ_info, region):
         "general_bad_against": []   
     }
 
-    # 1. Win Rate (Tier List Sayfası)
+    # 1. Win Rate
     tier_url = f"https://www.leagueofgraphs.com/champions/tier-list/{slug}/{region}"
     soup_tier = get_soup_via_cloudscraper(tier_url)
     
@@ -158,6 +174,7 @@ def get_champion_full_data(champ_info, region):
                 data["general_win_rate"] = float(raw_text)
             except: pass
     
+    # Kısa bir bekleme (Sayfalar arası)
     time.sleep(random.uniform(0.5, 1.0))
 
     # 2. Counter Tabloları
@@ -193,10 +210,6 @@ def get_champion_full_data(champ_info, region):
     return data
 
 def main():
-    # --- KRİTİK GÜNCELLEME ---
-    # Scraper'ı GUI thread'i içinde burada başlatıyoruz.
-    create_local_scraper()
-    
     load_mappings()
 
     if not os.path.exists(INPUT_FILE):
@@ -209,8 +222,11 @@ def main():
     full_database = []
     total = len(champions_to_scrape)
     
-    print(f"🚀 {total} karakter taranacak. (Koruma Modu Aktif)")
+    print(f"🚀 {total} karakter taranacak. (Koruma Modu Aktif v2)")
     print("-" * 50)
+
+    # Global warm up
+    bot.warm_up()
 
     for i, champ in enumerate(champions_to_scrape, 1):
         print(f"[{i}/{total}] {champ['name']}...", end=" ", flush=True)
@@ -222,23 +238,19 @@ def main():
             wr = champ_data.get("general_win_rate", 0)
             
             if wr == 0.0:
-                print("⚠️ (WR Çekilemedi)")
+                print("⚠️ (WR Alınamadı)")
             else:
                 print(f"✅ (WR: %{wr})")
             
         except Exception as e:
             print(f"❌ HATA: {e}")
 
-        # Her karakterden sonra rastgele bekleme
-        sleep_time = random.uniform(2.0, 4.0) 
+        # Her karakterden sonra random bekleme
+        sleep_time = random.uniform(3.0, 6.0) 
         time.sleep(sleep_time)
 
     print("-" * 50)
     print(f"💾 Tüm veriler '{OUTPUT_FILE}' dosyasına kaydediliyor...")
-    
-    # Klasör yoksa oluştur
-    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
-
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(full_database, f, indent=4, ensure_ascii=False)
     
