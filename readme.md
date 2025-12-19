@@ -1,3 +1,5 @@
+<img width="1920" height="1080" alt="ai" src="https://github.com/user-attachments/assets/bc623cc1-1d6a-4a38-86bc-a48a5c6af99a" />
+
 <div align="center">
   <h1>🎮 LoL AI Draft Coach</h1>
   <p><b>Draft ekranını şansa bırakma; veri ve stratejiyle kazan!</b></p>
