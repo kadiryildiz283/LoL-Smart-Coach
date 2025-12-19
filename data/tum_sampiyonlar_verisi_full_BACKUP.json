@@ -5606,6 +5606,19 @@
         "damage_profile": {
             "ap": 0,
             "ad": 10
+        },
+        "expert_insight": {
+            "role_description": "Üst Koridor / Orman (Dövüşçü / Suikastçı)",
+            "hard_counters": [
+                "Cassiopeia",
+                "Warwick",
+                "Poppy"
+            ],
+            "easy_matchups": [
+                "Sejuani",
+                "Ornn",
+                "Yone"
+            ]
         }
     },
     {
@@ -62115,6 +62128,19 @@
         "damage_profile": {
             "ap": 10,
             "ad": 0
+        },
+        "expert_insight": {
+            "role_description": "Orta Koridor / Destek (Savaş Büyücüsü / Kontrolcü)",
+            "hard_counters": [
+                "Aurelion Sol",
+                "Xerath",
+                "Ziggs",
+                "Kassadin"
+            ],
+            "easy_matchups": [
+                "Smolder",
+                "Ryze"
+            ]
         }
     },
     {
