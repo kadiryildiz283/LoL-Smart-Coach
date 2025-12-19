@@ -132,10 +132,23 @@ class MainWindow(QMainWindow):
         self.lbl_role.setFont(QFont("Segoe UI", 12, QFont.Weight.Bold))
         self.lbl_role.setStyleSheet("color: #00bcff; letter-spacing: 1px;")
         
+        # --- Playstyle Selector (YENİ) ---
+        self.combo_playstyle = QComboBox()
+        self.combo_playstyle.addItems(["Dengeli", "Güvenli", "Agresif"])
+        self.combo_playstyle.setStyleSheet("""
+            QComboBox { background-color: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 5px; border-radius: 4px;}
+            QComboBox QAbstractItemView { background-color: #21262d; color: #c9d1d9; }
+        """)
+        self.combo_playstyle.currentIndexChanged.connect(self.change_playstyle)
+        # ---------------------------------
+        
         self.lbl_status = QLabel("Client Bekleniyor...")
         self.lbl_status.setAlignment(Qt.AlignmentFlag.AlignRight)
         
         h_layout.addWidget(self.lbl_role)
+        h_layout.addSpacing(20)
+        h_layout.addWidget(QLabel("Stil:", styleSheet="color:#8b949e"))
+        h_layout.addWidget(self.combo_playstyle)
         h_layout.addStretch()
         h_layout.addWidget(self.lbl_status)
         
@@ -333,6 +346,17 @@ class MainWindow(QMainWindow):
         if self.ai_engine:
             self.run_ai_analysis(role, target_enemy, self.current_my_team, self.current_enemy_team)
 
+    def change_playstyle(self, index):
+        """Oyun tarzını değiştirir."""
+        styles = ["balanced", "safe", "aggressive"]
+        if 0 <= index < len(styles):
+            selected = styles[index]
+            self.ai_engine.set_profile(selected)
+            self.append_terminal_text(f"🧠 Oyun Tarzı Değiştirildi: {selected.upper()}")
+            # Eğer zaten bir analiz varsa yeniden çalıştır
+            if self.combo_enemy_laner.currentIndex() > 0:
+                self.re_run_analysis_from_ui(0)
+
     def force_recommendation(self):
         print("\n⚡ Manuel Tetikleme.")
         role = self.current_role
@@ -397,13 +421,29 @@ class MainWindow(QMainWindow):
             top_names = []
             
             for i, p in enumerate(picks[:5], 1): # İlk 5
-                reasons = ", ".join(p['reasons'][:2])
-                html_line = f"<b style='color: #00e676; font-size:15px'>#{i} {p['name']}</b> <span style='color:#8b949e'>({p['class']})</span><br><i>{reasons}</i><br>"
+                # Artık p['reasons'] bir liste değil, tek bir string (Narrative)
+                narrative = p['reasons']
+                score = p.get('score', 0)
+                
+                html_line = f"""
+                <div style='margin-bottom: 12px; padding: 10px; background-color: #21262d; border-left: 4px solid #00e676; border-radius: 4px;'>
+                    <div style='display: flex; justify-content: space-between;'>
+                        <span>
+                            <b style='color: #00e676; font-size:16px'>#{i} {p['name']}</b>
+                            <span style='color:#8b949e; font-size:12px'> ({p['class']})</span>
+                        </span>
+                        <b style='color: #ffab00; font-size:14px'>🏆 {score}</b>
+                    </div>
+                    <div style='color: #c9d1d9; font-size: 13px; margin-top: 4px;'>
+                        {narrative}
+                    </div>
+                </div>
+                """
                 lines.append(html_line)
                 
                 # Grafik verisi
                 top_names.append(p['name'])
-                top_scores.append(p.get('total_score', 50)) # Skor yoksa 50 varsay
+                top_scores.append(score)
 
             self.suggestion_label.setText("".join(lines))
             
