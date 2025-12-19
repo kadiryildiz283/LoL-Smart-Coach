@@ -2460,13 +2460,13 @@
     "easy_matchups": ["Kalista", "Mel"]
   },
   {
-    "name": "Mel Medarda",
+    "name": "Mel",
     "role_desc": "Orta Koridor / Destek (Savaş Büyücüsü / Kontrolcü)",
     "hard_counters": ["Aurelion Sol", "Xerath", "Ziggs", "Kassadin"],
     "easy_matchups": ["Smolder", "Ryze"]
   },
   {
-    "name": "Ambessa Medarda",
+    "name": "Ambessa",
     "role_desc": "Üst Koridor / Orman (Dövüşçü / Suikastçı)",
     "hard_counters": ["Cassiopeia", "Warwick", "Poppy"],
     "easy_matchups": ["Sejuani", "Ornn", "Yone"]

@@ -9915,6 +9915,18 @@
         "damage_profile": {
             "ap": 10,
             "ad": 0
+        },
+        "expert_insight": {
+            "role_description": "Orta Koridor / Üst Koridor (Çarpışmacı Büyücü)",
+            "hard_counters": [
+                "Vel'Koz",
+                "Talon",
+                "Anivia"
+            ],
+            "easy_matchups": [
+                "Smolder",
+                "Azir"
+            ]
         }
     },
     {
@@ -11752,16 +11764,14 @@
             }
         ],
         "expert_insight": {
-            "role_description": "Orman (Skirmisher)",
+            "role_description": "Orman (Savaşçı)",
             "hard_counters": [
                 "Rammus",
-                "Poppy",
                 "Taliyah"
             ],
             "easy_matchups": [
                 "Sion",
-                "Dr. Mundo",
-                "Nidalee"
+                "Dr. Mundo"
             ]
         },
         "class": "Skirmisher",
@@ -14753,17 +14763,15 @@
             }
         ],
         "expert_insight": {
-            "role_description": "Orman (Diver)",
+            "role_description": "Orman (Dalgıç)",
             "hard_counters": [
                 "Rammus",
-                "Nocturne",
-                "Singed",
+                "Jax",
                 "Shaco"
             ],
             "easy_matchups": [
                 "Hecarim",
-                "Kha'Zix",
-                "Nidalee"
+                "Rengar"
             ]
         },
         "class": "Skirmisher",
@@ -34438,6 +34446,18 @@
         "damage_profile": {
             "ap": 10,
             "ad": 0
+        },
+        "expert_insight": {
+            "role_description": "Orta Koridor (Topçu / Kontrol Büyücüsü)",
+            "hard_counters": [
+                "Fizz",
+                "Katarina",
+                "Naafiri"
+            ],
+            "easy_matchups": [
+                "Azir",
+                "Ryze"
+            ]
         }
     },
     {
@@ -42496,17 +42516,15 @@
             }
         ],
         "expert_insight": {
-            "role_description": "Üst Koridor (Warden/Skirmisher)",
+            "role_description": "Üst Koridor (Tank/Dövüşçü)",
             "hard_counters": [
                 "Fiora",
-                "Garen",
                 "Gwen",
-                "Ambessa"
+                "Garen"
             ],
             "easy_matchups": [
-                "Malphite",
-                "Sion",
-                "Ornn"
+                "Mundo",
+                "Nasus"
             ]
         },
         "class": "Tank",
@@ -62779,17 +62797,14 @@
             }
         ],
         "expert_insight": {
-            "role_description": "Destek (Enchanter)",
+            "role_description": "Destek (Efsuncu)",
             "hard_counters": [
                 "Blitzcrank",
-                "Pyke",
-                "Nautilus"
+                "Pyke"
             ],
             "easy_matchups": [
                 "Amumu",
-                "Lillia",
-                "Ashe",
-                "Leona"
+                "Lissandra"
             ]
         },
         "class": "Support",
@@ -66296,16 +66311,14 @@
             }
         ],
         "expert_insight": {
-            "role_description": "Orta/Orman (Assassin)",
+            "role_description": "Orta Koridor (Suikastçı)",
             "hard_counters": [
                 "Irelia",
-                "Veigar",
-                "Poppy"
+                "Taliyah"
             ],
             "easy_matchups": [
-                "Xerath",
-                "Vel'Koz",
-                "Lux"
+                "Pyke",
+                "Xerath"
             ]
         },
         "class": "Assassin",
@@ -70127,14 +70140,13 @@
             }
         ],
         "expert_insight": {
-            "role_description": "Alt Koridor (Skirmisher)",
+            "role_description": "Alt Koridor (Yakın Dövüş Nişancı)",
             "hard_counters": [
                 "Xayah",
                 "Caitlyn",
-                "Ashe"
+                "Veigar"
             ],
             "easy_matchups": [
-                "Twitch",
                 "Master Yi",
                 "Draven"
             ]
@@ -80415,17 +80427,14 @@
             }
         ],
         "expert_insight": {
-            "role_description": "Destek (Enchanter)",
+            "role_description": "Destek (Kontrolcü)",
             "hard_counters": [
                 "Xerath",
-                "Lux",
                 "Vel'Koz"
             ],
             "easy_matchups": [
                 "Master Yi",
-                "Vayne",
-                "Kog'Maw",
-                "Samira"
+                "Jinx"
             ]
         },
         "class": "Support",
@@ -92260,15 +92269,15 @@
             }
         ],
         "expert_insight": {
-            "role_description": "Alt Koridor (Marksman/Caster)",
+            "role_description": "Alt Koridor (Büyücü Nişancı)",
             "hard_counters": [
-                "Jarvan IV",
-                "Vi",
-                "Nautilus"
+                "Draven",
+                "Kalista",
+                "Jarvan IV"
             ],
             "easy_matchups": [
-                "Zeri",
-                "Ezreal"
+                "Ezreal",
+                "Zeri"
             ]
         },
         "class": "ADC",
@@ -121793,6 +121802,18 @@
         "damage_profile": {
             "ap": 5,
             "ad": 5
+        },
+        "expert_insight": {
+            "role_description": "Alt Koridor (Hiper Taşıyıcı)",
+            "hard_counters": [
+                "Kog'Maw",
+                "Nilah",
+                "Twitch"
+            ],
+            "easy_matchups": [
+                "Kalista",
+                "Mel"
+            ]
         }
     },
     {
@@ -124196,6 +124217,20 @@
         "damage_profile": {
             "ap": 0,
             "ad": 10
+        },
+        "expert_insight": {
+            "role_description": "Üst Koridor / Orman (Ezergeçer)",
+            "hard_counters": [
+                "Teemo",
+                "Swain",
+                "Kayle"
+            ],
+            "easy_matchups": [
+                "Sion",
+                "K'Sante",
+                "Yasuo",
+                "Yone"
+            ]
         }
     },
     {
@@ -126753,17 +126788,15 @@
             }
         ],
         "expert_insight": {
-            "role_description": "Alt Koridor (Marksman)",
+            "role_description": "Alt Koridor (Nişancı)",
             "hard_counters": [
-                "Twitch",
-                "Vayne",
-                "Draven",
-                "Vi"
+                "Vi",
+                "Nautilus",
+                "Draven"
             ],
             "easy_matchups": [
-                "Garen",
-                "Urgot",
-                "Skillshot şampiyonlar"
+                "Ezreal",
+                "Ornn"
             ]
         },
         "class": "ADC",
