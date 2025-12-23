@@ -1,0 +1,154 @@
+{
+    "name": "Leona",
+    "role_desc": "Support",
+    "matchups": [
+        {
+            "enemy": "Mel",
+            "score": 10.0
+        },
+        {
+            "enemy": "Yuumi",
+            "score": 8.62
+        },
+        {
+            "enemy": "Blitzcrank",
+            "score": 8.17
+        },
+        {
+            "enemy": "Pyke",
+            "score": 7.25
+        },
+        {
+            "enemy": "Elise",
+            "score": 7.16
+        },
+        {
+            "enemy": "Nautilus",
+            "score": 6.98
+        },
+        {
+            "enemy": "Pantheon",
+            "score": 6.52
+        },
+        {
+            "enemy": "Lulu",
+            "score": 6.43
+        },
+        {
+            "enemy": "Alistar",
+            "score": 5.6
+        },
+        {
+            "enemy": "Tahm Kench",
+            "score": 5.05
+        },
+        {
+            "enemy": "Thresh",
+            "score": 4.78
+        },
+        {
+            "enemy": "Rell",
+            "score": 4.59
+        },
+        {
+            "enemy": "Sona",
+            "score": 4.59
+        },
+        {
+            "enemy": "Karma",
+            "score": 4.23
+        },
+        {
+            "enemy": "Maokai",
+            "score": 4.13
+        },
+        {
+            "enemy": "Bard",
+            "score": 3.86
+        },
+        {
+            "enemy": "Lux",
+            "score": 3.86
+        },
+        {
+            "enemy": "Neeko",
+            "score": 3.86
+        },
+        {
+            "enemy": "Seraphine",
+            "score": 3.86
+        },
+        {
+            "enemy": "Senna",
+            "score": 3.77
+        },
+        {
+            "enemy": "Vel'Koz",
+            "score": 3.77
+        },
+        {
+            "enemy": "Renata Glasc",
+            "score": 3.67
+        },
+        {
+            "enemy": "Xerath",
+            "score": 3.58
+        },
+        {
+            "enemy": "Rakan",
+            "score": 3.22
+        },
+        {
+            "enemy": "Poppy",
+            "score": 3.12
+        },
+        {
+            "enemy": "Nami",
+            "score": 2.94
+        },
+        {
+            "enemy": "Braum",
+            "score": 2.76
+        },
+        {
+            "enemy": "Brand",
+            "score": 2.48
+        },
+        {
+            "enemy": "Zyra",
+            "score": 2.48
+        },
+        {
+            "enemy": "Soraka",
+            "score": 1.66
+        },
+        {
+            "enemy": "Zilean",
+            "score": 1.66
+        },
+        {
+            "enemy": "Morgana",
+            "score": 1.2
+        },
+        {
+            "enemy": "Milio",
+            "score": 1.02
+        },
+        {
+            "enemy": "Shaco",
+            "score": 1.02
+        },
+        {
+            "enemy": "Janna",
+            "score": 0.19
+        },
+        {
+            "enemy": "Swain",
+            "score": 0.1
+        },
+        {
+            "enemy": "Taric",
+            "score": 0.1
+        }
+    ]
+}

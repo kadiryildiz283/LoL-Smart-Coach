@@ -1,0 +1,102 @@
+{
+    "name": "Lucian",
+    "role_desc": "AD Carry",
+    "matchups": [
+        {
+            "enemy": "Yunara",
+            "score": 10.0
+        },
+        {
+            "enemy": "Kalista",
+            "score": 9.87
+        },
+        {
+            "enemy": "Ezreal",
+            "score": 8.62
+        },
+        {
+            "enemy": "Varus",
+            "score": 8.62
+        },
+        {
+            "enemy": "Zeri",
+            "score": 8.5
+        },
+        {
+            "enemy": "Draven",
+            "score": 7.49
+        },
+        {
+            "enemy": "Corki",
+            "score": 6.87
+        },
+        {
+            "enemy": "Tristana",
+            "score": 6.87
+        },
+        {
+            "enemy": "Twitch",
+            "score": 6.12
+        },
+        {
+            "enemy": "Kai'Sa",
+            "score": 5.86
+        },
+        {
+            "enemy": "Sivir",
+            "score": 5.36
+        },
+        {
+            "enemy": "Xayah",
+            "score": 4.49
+        },
+        {
+            "enemy": "Kog'Maw",
+            "score": 3.98
+        },
+        {
+            "enemy": "Vayne",
+            "score": 3.98
+        },
+        {
+            "enemy": "Aphelios",
+            "score": 3.73
+        },
+        {
+            "enemy": "Ashe",
+            "score": 3.73
+        },
+        {
+            "enemy": "Jinx",
+            "score": 3.73
+        },
+        {
+            "enemy": "Caitlyn",
+            "score": 3.61
+        },
+        {
+            "enemy": "Jhin",
+            "score": 3.61
+        },
+        {
+            "enemy": "Samira",
+            "score": 3.61
+        },
+        {
+            "enemy": "Miss Fortune",
+            "score": 3.36
+        },
+        {
+            "enemy": "Smolder",
+            "score": 3.36
+        },
+        {
+            "enemy": "Ziggs",
+            "score": 2.11
+        },
+        {
+            "enemy": "Nilah",
+            "score": 0.1
+        }
+    ]
+}

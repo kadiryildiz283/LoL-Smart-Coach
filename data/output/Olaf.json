@@ -1,0 +1,198 @@
+{
+    "name": "Olaf",
+    "role_desc": "Top",
+    "matchups": [
+        {
+            "enemy": "Ornn",
+            "score": 10.0
+        },
+        {
+            "enemy": "Yone",
+            "score": 8.98
+        },
+        {
+            "enemy": "Cassiopeia",
+            "score": 8.39
+        },
+        {
+            "enemy": "Yasuo",
+            "score": 8.39
+        },
+        {
+            "enemy": "Jayce",
+            "score": 8.31
+        },
+        {
+            "enemy": "Gangplank",
+            "score": 8.22
+        },
+        {
+            "enemy": "Warwick",
+            "score": 7.46
+        },
+        {
+            "enemy": "Camille",
+            "score": 7.29
+        },
+        {
+            "enemy": "Pantheon",
+            "score": 6.95
+        },
+        {
+            "enemy": "Fiora",
+            "score": 6.87
+        },
+        {
+            "enemy": "Teemo",
+            "score": 6.87
+        },
+        {
+            "enemy": "Mordekaiser",
+            "score": 6.45
+        },
+        {
+            "enemy": "Cho'Gath",
+            "score": 6.36
+        },
+        {
+            "enemy": "Singed",
+            "score": 6.36
+        },
+        {
+            "enemy": "Gragas",
+            "score": 6.28
+        },
+        {
+            "enemy": "Riven",
+            "score": 6.19
+        },
+        {
+            "enemy": "Quinn",
+            "score": 6.02
+        },
+        {
+            "enemy": "Tryndamere",
+            "score": 6.02
+        },
+        {
+            "enemy": "Shen",
+            "score": 5.94
+        },
+        {
+            "enemy": "Ambessa",
+            "score": 5.6
+        },
+        {
+            "enemy": "Gnar",
+            "score": 5.6
+        },
+        {
+            "enemy": "Gwen",
+            "score": 5.6
+        },
+        {
+            "enemy": "Dr. Mundo",
+            "score": 5.52
+        },
+        {
+            "enemy": "Poppy",
+            "score": 5.43
+        },
+        {
+            "enemy": "Urgot",
+            "score": 5.43
+        },
+        {
+            "enemy": "Irelia",
+            "score": 5.35
+        },
+        {
+            "enemy": "Rumble",
+            "score": 5.09
+        },
+        {
+            "enemy": "Kennen",
+            "score": 4.84
+        },
+        {
+            "enemy": "Zaahen",
+            "score": 4.84
+        },
+        {
+            "enemy": "Renekton",
+            "score": 4.75
+        },
+        {
+            "enemy": "K'Sante",
+            "score": 4.67
+        },
+        {
+            "enemy": "Nasus",
+            "score": 4.58
+        },
+        {
+            "enemy": "Aatrox",
+            "score": 4.5
+        },
+        {
+            "enemy": "Darius",
+            "score": 4.16
+        },
+        {
+            "enemy": "Sion",
+            "score": 3.82
+        },
+        {
+            "enemy": "Garen",
+            "score": 3.57
+        },
+        {
+            "enemy": "Jax",
+            "score": 3.32
+        },
+        {
+            "enemy": "Malphite",
+            "score": 3.32
+        },
+        {
+            "enemy": "Vladimir",
+            "score": 3.32
+        },
+        {
+            "enemy": "Trundle",
+            "score": 2.98
+        },
+        {
+            "enemy": "Illaoi",
+            "score": 1.96
+        },
+        {
+            "enemy": "Heimerdinger",
+            "score": 1.71
+        },
+        {
+            "enemy": "Tahm Kench",
+            "score": 1.45
+        },
+        {
+            "enemy": "Volibear",
+            "score": 1.37
+        },
+        {
+            "enemy": "Kled",
+            "score": 1.28
+        },
+        {
+            "enemy": "Kayle",
+            "score": 1.2
+        },
+        {
+            "enemy": "Yorick",
+            "score": 0.35
+        },
+        {
+            "enemy": "Sett",
+            "score": 0.1
+        }
+    ]
+}

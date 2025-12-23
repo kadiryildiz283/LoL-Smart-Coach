@@ -1,0 +1,210 @@
+{
+    "name": "Skarner",
+    "role_desc": "Jungler",
+    "matchups": [
+        {
+            "enemy": "Karthus",
+            "score": 10.0
+        },
+        {
+            "enemy": "Evelynn",
+            "score": 9.48
+        },
+        {
+            "enemy": "Kindred",
+            "score": 8.08
+        },
+        {
+            "enemy": "Sylas",
+            "score": 7.5
+        },
+        {
+            "enemy": "Kha'Zix",
+            "score": 7.32
+        },
+        {
+            "enemy": "Sejuani",
+            "score": 6.86
+        },
+        {
+            "enemy": "Zed",
+            "score": 6.62
+        },
+        {
+            "enemy": "Lee Sin",
+            "score": 6.56
+        },
+        {
+            "enemy": "Talon",
+            "score": 6.51
+        },
+        {
+            "enemy": "Rengar",
+            "score": 5.75
+        },
+        {
+            "enemy": "Qiyana",
+            "score": 5.57
+        },
+        {
+            "enemy": "Hecarim",
+            "score": 5.28
+        },
+        {
+            "enemy": "Shaco",
+            "score": 5.22
+        },
+        {
+            "enemy": "Cho'Gath",
+            "score": 4.82
+        },
+        {
+            "enemy": "Fiddlesticks",
+            "score": 4.7
+        },
+        {
+            "enemy": "Zac",
+            "score": 4.64
+        },
+        {
+            "enemy": "Pantheon",
+            "score": 4.58
+        },
+        {
+            "enemy": "Nidalee",
+            "score": 4.47
+        },
+        {
+            "enemy": "Rammus",
+            "score": 4.41
+        },
+        {
+            "enemy": "Ekko",
+            "score": 4.23
+        },
+        {
+            "enemy": "Elise",
+            "score": 4.06
+        },
+        {
+            "enemy": "Bel'Veth",
+            "score": 3.77
+        },
+        {
+            "enemy": "Graves",
+            "score": 3.77
+        },
+        {
+            "enemy": "Malphite",
+            "score": 3.65
+        },
+        {
+            "enemy": "Aatrox",
+            "score": 3.48
+        },
+        {
+            "enemy": "Nunu & Willump",
+            "score": 3.42
+        },
+        {
+            "enemy": "Nocturne",
+            "score": 3.36
+        },
+        {
+            "enemy": "Rek'Sai",
+            "score": 3.36
+        },
+        {
+            "enemy": "Vi",
+            "score": 3.36
+        },
+        {
+            "enemy": "Wukong",
+            "score": 2.95
+        },
+        {
+            "enemy": "Naafiri",
+            "score": 2.9
+        },
+        {
+            "enemy": "Udyr",
+            "score": 2.84
+        },
+        {
+            "enemy": "Ambessa",
+            "score": 2.72
+        },
+        {
+            "enemy": "Ivern",
+            "score": 2.72
+        },
+        {
+            "enemy": "Viego",
+            "score": 2.72
+        },
+        {
+            "enemy": "Jarvan IV",
+            "score": 2.6
+        },
+        {
+            "enemy": "Warwick",
+            "score": 2.31
+        },
+        {
+            "enemy": "Xin Zhao",
+            "score": 2.2
+        },
+        {
+            "enemy": "Volibear",
+            "score": 1.91
+        },
+        {
+            "enemy": "Diana",
+            "score": 1.85
+        },
+        {
+            "enemy": "Dr. Mundo",
+            "score": 1.73
+        },
+        {
+            "enemy": "Kayn",
+            "score": 1.5
+        },
+        {
+            "enemy": "Amumu",
+            "score": 1.38
+        },
+        {
+            "enemy": "Master Yi",
+            "score": 1.38
+        },
+        {
+            "enemy": "Briar",
+            "score": 1.32
+        },
+        {
+            "enemy": "Zaahen",
+            "score": 1.26
+        },
+        {
+            "enemy": "Jayce",
+            "score": 0.92
+        },
+        {
+            "enemy": "Jax",
+            "score": 0.68
+        },
+        {
+            "enemy": "Lillia",
+            "score": 0.68
+        },
+        {
+            "enemy": "Shyvana",
+            "score": 0.45
+        },
+        {
+            "enemy": "Trundle",
+            "score": 0.1
+        }
+    ]
+}
