@@ -1,0 +1,50 @@
+{
+    "active_profile": "balanced",
+    "profiles": {
+        "balanced": {
+            "W_GENEL_WR": 80.0,
+            "W_SINERJI": 15.0,
+            "W_LANE_ADVANTAGE": 15.0,
+            "W_LANE_DISADVANTAGE": 20.0,
+            "W_GOLD_ADV": 15.0,
+            "W_GOLD_DEF": 16.0,
+            "W_GEN_GOOD_VS": 18.0,
+            "W_GEN_BAD_VS": 20.0,
+            "W_EXPERT_HARD_CTR": 1000.0,
+            "W_EXPERT_COUNTERED": 2500.0,
+            "W_CLASS_ADVANTAGE": 40.0,
+            "W_DMG_NEED": 15.0,
+            "W_COMP_SYNERGY": 25.0
+        },
+        "safe": {
+            "W_GENEL_WR": 70.0,
+            "W_SINERJI": 10.0,
+            "W_LANE_ADVANTAGE": 25.0,
+            "W_LANE_DISADVANTAGE": 40.0,
+            "W_GOLD_ADV": 10.0,
+            "W_GOLD_DEF": 30.0,
+            "W_GEN_GOOD_VS": 20.0,
+            "W_GEN_BAD_VS": 30.0,
+            "W_EXPERT_HARD_CTR": 150.0,
+            "W_EXPERT_COUNTERED": 500.0,
+            "W_CLASS_ADVANTAGE": 50.0,
+            "W_DMG_NEED": 20.0,
+            "W_COMP_SYNERGY": 20.0
+        },
+        "aggressive": {
+            "W_GENEL_WR": 90.0,
+            "W_SINERJI": 20.0,
+            "W_LANE_ADVANTAGE": 30.0,
+            "W_LANE_DISADVANTAGE": 10.0,
+            "W_GOLD_ADV": 30.0,
+            "W_GOLD_DEF": 10.0,
+            "W_GEN_GOOD_VS": 25.0,
+            "W_GEN_BAD_VS": 10.0,
+            "W_EXPERT_HARD_CTR": 80.0,
+            "W_EXPERT_COUNTERED": 150.0,
+            "W_CLASS_ADVANTAGE": 30.0,
+            "W_DMG_NEED": 10.0,
+            "W_COMP_SYNERGY": 30.0
+        }
+    }
+}

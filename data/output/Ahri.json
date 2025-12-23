@@ -1,0 +1,190 @@
+{
+    "name": "Ahri",
+    "role_desc": "Mid",
+    "matchups": [
+        {
+            "enemy": "Azir",
+            "score": 10.0
+        },
+        {
+            "enemy": "Hwei",
+            "score": 8.59
+        },
+        {
+            "enemy": "Taliyah",
+            "score": 8.33
+        },
+        {
+            "enemy": "Aurora",
+            "score": 7.81
+        },
+        {
+            "enemy": "Zoe",
+            "score": 7.56
+        },
+        {
+            "enemy": "Orianna",
+            "score": 7.43
+        },
+        {
+            "enemy": "Qiyana",
+            "score": 7.17
+        },
+        {
+            "enemy": "Galio",
+            "score": 7.04
+        },
+        {
+            "enemy": "Ryze",
+            "score": 7.04
+        },
+        {
+            "enemy": "Yone",
+            "score": 6.91
+        },
+        {
+            "enemy": "Kennen",
+            "score": 6.66
+        },
+        {
+            "enemy": "Aurelion Sol",
+            "score": 6.27
+        },
+        {
+            "enemy": "Lissandra",
+            "score": 6.14
+        },
+        {
+            "enemy": "Zed",
+            "score": 6.14
+        },
+        {
+            "enemy": "Akali",
+            "score": 6.01
+        },
+        {
+            "enemy": "LeBlanc",
+            "score": 5.89
+        },
+        {
+            "enemy": "Akshan",
+            "score": 5.76
+        },
+        {
+            "enemy": "Twisted Fate",
+            "score": 5.76
+        },
+        {
+            "enemy": "Ekko",
+            "score": 5.63
+        },
+        {
+            "enemy": "Vladimir",
+            "score": 5.37
+        },
+        {
+            "enemy": "Cassiopeia",
+            "score": 5.24
+        },
+        {
+            "enemy": "Sylas",
+            "score": 5.24
+        },
+        {
+            "enemy": "Annie",
+            "score": 5.11
+        },
+        {
+            "enemy": "Syndra",
+            "score": 4.6
+        },
+        {
+            "enemy": "Talon",
+            "score": 4.6
+        },
+        {
+            "enemy": "Vex",
+            "score": 4.47
+        },
+        {
+            "enemy": "Anivia",
+            "score": 4.21
+        },
+        {
+            "enemy": "Katarina",
+            "score": 4.21
+        },
+        {
+            "enemy": "Irelia",
+            "score": 4.09
+        },
+        {
+            "enemy": "Fizz",
+            "score": 3.57
+        },
+        {
+            "enemy": "Viktor",
+            "score": 3.44
+        },
+        {
+            "enemy": "Xerath",
+            "score": 3.44
+        },
+        {
+            "enemy": "Diana",
+            "score": 2.93
+        },
+        {
+            "enemy": "Lux",
+            "score": 2.93
+        },
+        {
+            "enemy": "Yasuo",
+            "score": 2.93
+        },
+        {
+            "enemy": "Kassadin",
+            "score": 2.67
+        },
+        {
+            "enemy": "Vel'Koz",
+            "score": 2.54
+        },
+        {
+            "enemy": "Quinn",
+            "score": 2.41
+        },
+        {
+            "enemy": "Malzahar",
+            "score": 2.16
+        },
+        {
+            "enemy": "Swain",
+            "score": 1.9
+        },
+        {
+            "enemy": "Kayle",
+            "score": 1.39
+        },
+        {
+            "enemy": "Mel",
+            "score": 1.26
+        },
+        {
+            "enemy": "Morgana",
+            "score": 1.13
+        },
+        {
+            "enemy": "Ziggs",
+            "score": 1.13
+        },
+        {
+            "enemy": "Naafiri",
+            "score": 0.23
+        },
+        {
+            "enemy": "Veigar",
+            "score": 0.1
+        }
+    ]
+}

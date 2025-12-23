@@ -255,6 +255,14 @@ def main():
         json.dump(full_database, f, indent=4, ensure_ascii=False)
     
     print("🎉 İŞLEM TAMAMLANDI!")
+    
+    # --- NEW: Trigger Export Script ---
+    print("\n🔗 Export Script Tetikleniyor (Detaylı Matchup Analizi)...")
+    try:
+        import export_veri_cekici
+        export_veri_cekici.main()
+    except Exception as e:
+        print(f"❌ Export Script Hatası: {e}")
 
 if __name__ == "__main__":
     main()

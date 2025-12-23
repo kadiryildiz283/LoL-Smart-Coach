@@ -27,14 +27,14 @@ Bu proje, League of Legends seçim ekranında (Champ Select) size gerçek zamanl
     * **Sinerji:** Takım arkadaşlarınızla ne kadar uyumlusunuz?
     * **Matchup Analizi:** Rakibinize karşı koridor ve genel oyun avantajınız.
     * **Kompozisyon Dengesi:** Takımın hasar türü ve sınıf (Tank, Assassin vb.) ihtiyaçları.
-* **Görsel Analiz:** Önerilen şampiyonların neden seçilmesi gerektiğini gösteren detaylı grafikler ve açıklamalar.
+* **Görsel Analiz:** Önerilen şampiyonların neden seçilmesi gerektiğini gösteren **animasyonlu kartlar** ve güç grafikleri.
 * **Tamamen Özelleştirilebilir Veri:** AI'nın beynini JSON dosyaları üzerinden kendiniz eğitebilirsiniz!
 
 ## 🛠️ Kurulum
 
 1.  **Depoyu Klonlayın:**
     ```bash
-    git clone [https://github.com/kullaniciadin/lol-ai-coach.git](https://github.com/kullaniciadin/lol-ai-coach.git)
+    git clone [https://github.com/kullaniciadin/lol-ai-coach.git](https://github.com/kadiryildiz283/lol-ai-coach.git)
     cd lol-ai-coach
     ```
 
@@ -51,13 +51,13 @@ Bu proje, League of Legends seçim ekranında (Champ Select) size gerçek zamanl
 ## 🧠 Verileri Kendinize Göre Düzenleyin (Özelleştirme)
 Bu projenin en güçlü yanı, "sabit" bir algoritma olmamasıdır. `data/` klasöründeki dosyalarla asistanınızı kişiselleştirebilirsiniz:
 
-* **`ai_config.json`:** Hangi kriterin ne kadar önemli olduğunu (weights) belirleyin. (Örn: "Benim için counter pick, win rate'den %20 daha önemli olsun").
-* **`expert_knowledge.json`:** Kendi tecrübelerinize göre özel eşleşmeler ekleyin. "Bu şampiyon bu rakibe karşı aslında çok güçlü" dediğiniz her şeyi buraya işleyebilirsiniz.
+* **`config.json`:** Hangi kriterin ne kadar önemli olduğunu (weights) belirleyin. (Örn: "Benim için counter pick, win rate'den %20 daha önemli olsun").
+* **`output/{Champion}.json`:** Her şampiyonun özel eşleşme verileri burada tutulur. `export_veri_cekici.py` ile otomatik güncellenir.
 * **`champion_damage_scores.json`:** Şampiyonların hasar profillerini güncel tutun.
 
 ## 🚀 Kullanılan Teknolojiler
 * **Backend:** Python
-* **UI:** PyQt6 (Modern Dark Theme)
+* **UI:** PyQt6 (Modern Frameless Window with Gaming Aesthetics)
 * **Visualization:** Pyqtgraph
 * **Connection:** LCU-Driver (League Client Update API)
 

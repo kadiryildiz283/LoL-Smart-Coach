@@ -8,7 +8,8 @@ class LoLDecisionEngine:
         self.champ_lookup = {c['name'].lower(): c for c in self.data}
         
         # AYARLARI YÜKLE
-        self.config_path = os.path.join(os.path.dirname(data_file), "ai_config.json")
+        self.config_path = os.path.join(os.path.dirname(data_file), "config.json")
+        self.output_dir = os.path.join(os.path.dirname(data_file), "output")
         self.weights = self.load_config()
 
         # Sınıf Üstünlükleri
@@ -48,7 +49,7 @@ class LoLDecisionEngine:
             return json.load(f)
 
     def load_config(self):
-        """ai_config.json dosyasından ağırlıkları çeker. Yoksa varsayılanı döner."""
+        """config.json dosyasından ağırlıkları çeker. Yoksa varsayılanı döner."""
         default_weights = {
             "W_GENEL_WR": 80.0, "W_SINERJI": 15.0, "W_LANE_ADVANTAGE": 15.0, "W_LANE_DISADVANTAGE": 20.0,
             "W_GOLD_ADV": 15.0, "W_GOLD_DEF": 16.0, "W_GEN_GOOD_VS": 18.0, "W_GEN_BAD_VS": 20.0,
@@ -56,9 +57,14 @@ class LoLDecisionEngine:
             "W_DMG_NEED": 15.0, "W_COMP_SYNERGY": 25.0
         }
         
-        if os.path.exists(self.config_path):
+        # Eğer config.json yoksa ai_config.json'a bak (Fallback)
+        path = self.config_path
+        if not os.path.exists(path):
+             path = path.replace("config.json", "ai_config.json")
+
+        if os.path.exists(path):
             try:
-                with open(self.config_path, "r") as f:
+                with open(path, "r") as f:
                     cfg = json.load(f)
                     active = cfg.get("active_profile", "balanced")
                     return cfg["profiles"].get(active, default_weights)
@@ -66,6 +72,8 @@ class LoLDecisionEngine:
                 print(f"Config Load Error: {e}")
                 
         return default_weights
+
+
 
     def set_profile(self, profile_name):
         """Aktif oyun tarzını (profile) değiştirir ve ağırlıkları günceller."""
@@ -201,10 +209,10 @@ class LoLDecisionEngine:
         needed_dmg = self.analyze_team_damage(ally_team)
         team_archs = self.analyze_composition(ally_team)
         
-        enemy_class = "Unknown"
         if enemy_laner and enemy_laner not in ["Picking...", "Unknown"]:
             c = self.champ_lookup.get(enemy_laner.lower())
             if c: enemy_class = c.get('class', 'Unknown')
+
 
         for champ in self.data:
             if not self.check_role_match(target_role, champ['role']): 
@@ -282,6 +290,8 @@ class LoLDecisionEngine:
                     total_score -= W["W_EXPERT_COUNTERED"]
                     negatives.append(f"{enemy_laner} bu şampiyonu zorlayabilir")
                     expert_disadvantage = True
+                
+
 
                 # 2. İstatistiksel Veri
                 if not expert_disadvantage:

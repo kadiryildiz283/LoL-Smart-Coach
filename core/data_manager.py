@@ -40,7 +40,18 @@ def ensure_data_directory():
         except Exception as e:
             print(f"❌ Data kopyalama hatası: {e}")
     else:
-        print(f"✅ Data klasörü mevcut: {target_data_dir}")
+        print(f"✅ Data klasörü mevcut ve KORUNDU: {target_data_dir}")
+        print("ℹ️ Mevcut veriler/ayarlar kullanılıyor.")
+
+    # Check for config.json specific persistence (Migrate ai_config.json if needed)
+    config_path = os.path.join(target_data_dir, "config.json")
+    ai_config_path = os.path.join(target_data_dir, "ai_config.json")
+    
+    if not os.path.exists(config_path) and os.path.exists(ai_config_path):
+        try:
+            shutil.copy(ai_config_path, config_path)
+            print("✅ config.json oluşturuldu (ai_config.json'dan kopyalandı).")
+        except: pass
 
     return target_data_dir
 
