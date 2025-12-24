@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="ai" src="https://github.com/user-attachments/assets/bc623cc1-1d6a-4a38-86bc-a48a5c6af99a" />
+<img width="1341" height="843" alt="image" src="https://github.com/user-attachments/assets/44fdae23-3ed5-4bd2-b979-002b430e4bbb" />
 
 <div align="center">
   <h1>🎮 LoL AI Draft Coach</h1>
