@@ -96,10 +96,12 @@ class ContributionBar(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.value = 0.0
+        self.missing = False
         self.setMinimumHeight(16)
 
-    def set_value(self, lo: float):
+    def set_value(self, lo: float, missing: bool = False):
         self.value = lo
+        self.missing = missing
         self.update()
 
     def paintEvent(self, event):
@@ -112,7 +114,7 @@ class ContributionBar(QWidget):
         frac = min(1.0, abs(self.value) / 0.3)
         w = (r.width() / 2 - 46) * frac
         p.setPen(Qt.PenStyle.NoPen)
-        p.setBrush(QColor(GREEN if self.value >= 0 else RED))
+        p.setBrush(QColor("#30363d" if self.missing else (GREEN if self.value >= 0 else RED)))
         if self.value >= 0:
             p.drawRoundedRect(QRectF(mid, r.top() + 3, w, r.height() - 6), 3, 3)
         else:
@@ -121,7 +123,7 @@ class ContributionBar(QWidget):
         p.setFont(QFont("Segoe UI", 8))
         p.drawText(r.adjusted(0, 0, -4, 0),
                    Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter,
-                   f"{self.value:+.3f}")
+                   "veri yok" if self.missing else f"{self.value:+.3f}")
 
 
 class IconWorker(QThread):
@@ -162,6 +164,11 @@ class ModernApp(ModernWindow):
         self._worker = None
         self._icon_workers = []
         self._icon_labels: dict[int, list[QLabel]] = {}
+        self._prev_score = None
+        self.eng = None
+        if self.ds:
+            from engine.engines.decision import DecisionEngine
+            self.eng = DecisionEngine(self.cfg, self.ds)
         self._build_ui()
         self._debounce = QTimer(self)
         self._debounce.setSingleShot(True)
@@ -340,6 +347,20 @@ class ModernApp(ModernWindow):
             row.addWidget(bar, 1)
             ev_lay.addLayout(row)
             self.ev_bars.append((lb, bar))
+        self.enemy_impact_lbl = QLabel("KARŞI ETKİSİ (aday vs her rakip, log-odds)")
+        self.enemy_impact_lbl.setObjectName("H2")
+        ev_lay.addWidget(self.enemy_impact_lbl)
+        self.enemy_bars: list[tuple[QLabel, ContributionBar]] = []
+        for i in range(5):
+            row = QHBoxLayout()
+            lb = QLabel("")
+            lb.setFixedWidth(150)
+            lb.setStyleSheet("font-size:10px; color:#c9d1d9;")
+            bar = ContributionBar()
+            row.addWidget(lb)
+            row.addWidget(bar, 1)
+            ev_lay.addLayout(row)
+            self.enemy_bars.append((lb, bar))
         self.risk_row = QHBoxLayout()
         ev_lay.addLayout(self.risk_row)
         self.warn_lbl = QLabel("")
@@ -482,6 +503,10 @@ class ModernApp(ModernWindow):
                     prev.requestInterruption()
             except RuntimeError:
                 pass
+        # visible feedback: the user must SEE that a recalculation is running
+        self.chips["mode"].setText("COMPUTING…")
+        self.hero_score.setStyleSheet(f"color:{AMBER};")
+        self.status_lbl.setText("yeniden hesaplanıyor…")
         w = PanelWorker(ally, enemy, eroles, bans, role, team, parent=self)
         self._worker = w
         w.numeric_ready.connect(self._render)
@@ -528,9 +553,12 @@ class ModernApp(ModernWindow):
     def _render(self, rec):
         cid = rec.get("recommended_champion_id")
         champ = self.ds.champions.get(cid, {})
+        score = rec.get("ranking_score")
+        delta = None if self._prev_score is None or score is None else score - self._prev_score
+        self._prev_score = score
+        self.hero_score.setStyleSheet(f"color:{GREEN};")
         self.hero_name.setText(champ.get("name", "—"))
         self.hero_tag.setText(f"{rec.get('recommended_role')}  ·  {', '.join(champ.get('tags', []))}")
-        score = rec.get("ranking_score")
         self.hero_score.setText(f"{score:+.3f}" if score is not None else "—")
         conf = rec.get("confidence") or 0
         self.conf_bar.setValue(int(conf * 100))
@@ -593,9 +621,27 @@ class ModernApp(ModernWindow):
         team_ids = self._ids([cb for _, cb, _ in self.ally_rows]) + \
             self._ids([cb for _, cb, _ in self.enemy_rows])
         self._request_icons([cid] + [a["champion_id"] for a in rec.get("alternatives", [])] + team_ids)
+        # per-enemy impact: makes enemy swaps visible even when the top pick stays
+        from engine.contracts.types import RelationType
+        role = Role(self.role_cb.currentText())
+        for i, (lb, bar) in enumerate(self.enemy_bars):
+            icon, cb, rc = self.enemy_rows[i]
+            name = cb.currentText()
+            ecid = self.ds.resolve_id(name) if name != "(empty)" else None
+            if ecid is None or self.eng is None or cid is None:
+                lb.setText("—")
+                bar.set_value(0.0)
+                continue
+            erole = normalize_role(rc.currentText()) if rc.currentText() != "Unknown" else None
+            rel = RelationType.SAME_LANE if erole == role else RelationType.CROSS_TEAM
+            d = self.eng.matchup.delta(cid, role, ecid, erole or role, rel)
+            w = 1.0 if rel == RelationType.SAME_LANE else 0.25
+            lb.setText(f"vs {name} · {erole.value if erole else '?'}")
+            bar.set_value(w * d["logodds"] * d["confidence"], missing=(d["kind"] == "missing"))
+        delta_txt = f" · Δ skor {delta:+.4f} (önceki draft)" if delta is not None else ""
         self.status_lbl.setText(
             f"dataset {self.ds.dataset_id} · patch {self.ds.manifest.get('patch')} · "
-            f"{len(rec.get('candidates', []))} aday · {rec.get('status')}")
+            f"{len(rec.get('candidates', []))} aday · {rec.get('status')}{delta_txt}")
 
     def _render_llm(self, out):
         if out.get("llm_status") == "ok":
