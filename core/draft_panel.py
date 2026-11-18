@@ -191,7 +191,8 @@ class DraftPanel(QDialog):
             cb.setCurrentText(name if name in self.champ_names else "(empty)")
         for i, rc in enumerate(self.enemy_role_combos):
             r = enemy_roles[i] if enemy_roles and i < len(enemy_roles) else None
-            rc.setCurrentText(r if r else "Unknown")
+            nr = normalize_role(r)  # LCU "Top"/"ADC" -> canonical TOP/BOTTOM
+            rc.setCurrentText(nr.value if nr else "Unknown")
         role = normalize_role(my_role)
         if role:
             self.user_role.setCurrentText(role.value)

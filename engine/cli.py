@@ -33,6 +33,8 @@ def cmd_ingest(args, cfg: Config) -> int:
                                  "all": "ALL"}.get(args.rank, args.rank.upper())
     if args.max_vs is not None:
         cfg.log.max_vs_pages_per_champion = args.max_vs
+    if args.offline:
+        cfg.log.offline = True
     if args.patch:
         cfg.ddragon.patch = args.patch
     selected = set(args.providers.split(","))
@@ -247,6 +249,8 @@ def main(argv=None) -> int:
     p.add_argument("--patch", default=None)
     p.add_argument("--max-vs", type=int, default=None)
     p.add_argument("--no-resume", action="store_true")
+    p.add_argument("--offline", action="store_true",
+                   help="parse raw cache only, zero network (intermediate publish)")
     p.set_defaults(fn=cmd_ingest)
 
     p = sub.add_parser("datasets")

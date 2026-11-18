@@ -22,6 +22,7 @@ class LoGConfig:
     timeout_s: float = 20.0
     max_vs_pages_per_champion: int = 0  # 0 = unlimited (brute force full coverage)
     impersonate: str = "chrome120"
+    offline: bool = False  # parse raw cache only, zero network (intermediate publish)
 
 
 @dataclass

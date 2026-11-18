@@ -215,6 +215,8 @@ class LeagueOfGraphsProvider(Provider):
             if cached is not None:
                 res.cached += 1
                 return cached["body"]
+        if self.cfg.offline:
+            return None  # cache-only mode: never touch the network
         html = access.get_html(url)
         res.fetched += 1
         if html is not None:
