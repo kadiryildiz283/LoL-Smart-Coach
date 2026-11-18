@@ -476,6 +476,17 @@ class ModernApp(ModernWindow):
         if not self.ds:
             self.status_lbl.setText("Dataset yok — python -m engine.cli ingest")
             return
+        # pick up newly published datasets without restarting the window
+        try:
+            latest_id = json.loads(
+                (self.cfg.datasets_dir / "index.json").read_text(encoding="utf-8")).get("latest")
+        except Exception:
+            latest_id = None
+        if latest_id and latest_id != self.ds.dataset_id:
+            self.ds = DatasetStore(self.cfg.datasets_dir).load(latest_id)
+            from engine.engines.decision import DecisionEngine
+            self.eng = DecisionEngine(self.cfg, self.ds)
+            self._refresh_chips()
         ally = self._ids([cb for _, cb, _ in self.ally_rows])
         enemy = self._ids([cb for _, cb, _ in self.enemy_rows])
         eroles = []

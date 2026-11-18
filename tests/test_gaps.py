@@ -165,6 +165,45 @@ def test_changed_segments(tmp_path, mini_cfg):
     assert modified[0]["champion_id"] in rep2["changed_segments"]["champions"]
 
 
+def test_observed_beats_legacy_shadow(tmp_path, mini_cfg):
+    """Legacy record listed first must NOT shadow the observed one for a pair."""
+    from engine.engines.matchup import MatchupEngine
+    from engine.engines.meta import MetaEngine
+    from engine.contracts.types import RelationType
+    store = DatasetStore(tmp_path / "datasets")
+    files = _mini_files()
+    shadow = {
+        "schema_version": "1.0", "champion_id": 51, "champion_role": "BOTTOM",
+        "opponent_id": 67, "opponent_role": "BOTTOM", "relation_type": "SAME_LANE",
+        "patch": "legacy-unknown", "region": "ALL", "rank_scope": "IRON_PLUS",
+        "queue": "RANKED_SOLO", "sample_size": None, "observed_win_rate": None,
+        "expected_win_rate": None, "adjusted_matchup_delta": None,
+        "lane_gold_diff_15": None, "lane_cs_diff_15": None, "lane_xp_diff_15": None,
+        "confidence_interval": None, "legacy_derived_score": 9.0,
+        "legacy_direction": "ADVANTAGE",
+        "provenance": {"provider": "legacy_leagueofgraphs"},
+        "quality": {"status": "legacy_derived", "missing_reason": "raw_wr_lost",
+                    "confidence": 0.25},
+    }
+    # shadow FIRST in the list, like the real pipeline merge order
+    files["matchups.json"] = [shadow] + files["matchups.json"]
+    manifest = {
+        "schema_version": "1.0", "dataset_id": "ds-shadow-test", "status": "validated",
+        "game": "LEAGUE_OF_LEGENDS", "patch": "16.23",
+        "generated_at": "2026-11-18T00:00:00+00:00",
+        "sources": [{"provider": "test", "status": "ok"}],
+        "coverage": {"champions": 10},
+        "quality": {"validation_passed": True, "warnings": [], "missing_segments": []},
+    }
+    store.publish(files, manifest, {"run_id": "t"})
+    ds = store.latest()
+    eng = MatchupEngine(mini_cfg, ds, MetaEngine(mini_cfg, ds))
+    d = eng.delta(51, Role.BOTTOM, 67, Role.BOTTOM, RelationType.SAME_LANE)
+    assert d["kind"] == "observed", d
+    assert d["observed"] == 0.481
+    assert d["confidence"] > 0.5
+
+
 def test_baselines_ranking_only(real_ds, cfg):
     from engine.evaluation.baselines import run_baselines
     rep = run_baselines(cfg, real_ds)

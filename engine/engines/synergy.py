@@ -23,8 +23,16 @@ class SynergyEngine:
         self.meta = meta
         self._by_pair: dict[tuple, dict] = {}
         for key, rec in self.ds.synergy_idx.items():
-            self._by_pair.setdefault((key[0], key[2]), rec)
+            pk = (key[0], key[2])
+            if pk not in self._by_pair or self._prio(rec) > self._prio(self._by_pair[pk]):
+                self._by_pair[pk] = rec
         self._cache: dict[tuple, dict] = {}
+
+    def _prio(self, rec: dict) -> tuple:
+        return (1 if rec.get("observed_win_rate") is not None else 0,
+                1 if rec.get("patch") == self.ds.manifest.get("patch") else 0,
+                1 if rec.get("rank_scope") == self.cfg.engine.rank_scope else 0,
+                rec.get("sample_size") or 0)
 
     def _find(self, cid: int, crole: Role, ally_id: int) -> dict | None:
         return self._by_pair.get((cid, ally_id))

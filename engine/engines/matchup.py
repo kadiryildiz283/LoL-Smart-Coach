@@ -25,14 +25,27 @@ class MatchupEngine:
         self.cfg = config
         self.ds = dataset
         self.meta = meta
-        # O(1) pair indexes (MC simulation calls this thousands of times)
+        # O(1) pair indexes (MC simulation calls this thousands of times).
+        # Quality-aware priority: observed beats legacy, current patch/scope beats
+        # old ones, bigger sample beats smaller. setdefault would let the legacy
+        # record (listed first) shadow the observed one for the same pair.
         self._exact: dict[tuple, dict] = {}
         self._relaxed: dict[tuple, dict] = {}
         for key, rec in self.ds.matchup_idx.items():
             cid, crole, oid, orole, relation = key[0], key[1], key[2], key[3], key[4]
-            self._exact.setdefault((cid, crole, oid, orole, relation), rec)
-            self._relaxed.setdefault((cid, crole, oid, relation), rec)
+            ek = (cid, crole, oid, orole, relation)
+            rk = (cid, crole, oid, relation)
+            if ek not in self._exact or self._prio(rec) > self._prio(self._exact[ek]):
+                self._exact[ek] = rec
+            if rk not in self._relaxed or self._prio(rec) > self._prio(self._relaxed[rk]):
+                self._relaxed[rk] = rec
         self._delta_cache: dict[tuple, dict] = {}
+
+    def _prio(self, rec: dict) -> tuple:
+        return (1 if rec.get("observed_win_rate") is not None else 0,
+                1 if rec.get("patch") == self.ds.manifest.get("patch") else 0,
+                1 if rec.get("rank_scope") == self.cfg.engine.rank_scope else 0,
+                rec.get("sample_size") or 0)
 
     def _find(self, cid: int, crole: Role, oid: int, orole: Role,
               relation: RelationType) -> dict | None:
