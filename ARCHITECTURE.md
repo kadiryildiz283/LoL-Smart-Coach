@@ -45,9 +45,23 @@ engine/
 ├── evaluation/
 │   ├── benchmarks.py   # p95 gecikme ölçümü (§16)
 │   ├── backtest.py     # Kalibrasyon protokolü + legacy-vs-observed doğrulama (§17)
+│   ├── baselines.py    # Aşamalı baseline karşılaştırması (meta→+matchup→+synergy→full) (§17)
 │   └── ablation.py     # Bileşen katkısı ölçümü (§22.8, §23.5)
-└── cli.py              # ingest | recommend | datasets | rules | benchmark | evaluate
+├── model.py            # L2 logistic trainer, time-split, calibration gate (§23.3)
+├── logging.py          # Yapılandırılmış JSONL log + hata sınıflandırma (§19)
+└── cli.py              # ingest | recommend | datasets | rules | benchmark | evaluate | train
 ```
+
+UI: `core/draft_panel.py` — §16 profesyonel panel (editable slot/ban/rol, patch/rank
+bilgisi, rol göstergeleri, pick sırası, debounce otomatik yeniden hesap, sayısal önce
++ async Qwen). `core/lcu_connector.py` banları ve tüm oyuncu `assignedPosition`
+bilgisini yakalar; panel açıkken her champ-select değişiminde canlı güncellenir.
+
+Audit: `engine/data/audit.py` — her öneri `draft_snapshot.json` + `recommendation.json`
+(+ JSONL tarihçe) olarak persist edilir; sıralama sonradan yeniden üretilebilir (§4).
+
+Tip gate: `mypy.ini` — veri çekirdeği (contracts, stats, model, audit, logging,
+mechanics) temiz; engines/UI kademeli anotasyonlu.
 
 ## Matematiksel sözleşme (§23)
 
@@ -80,11 +94,15 @@ python -m venv --system-site-packages .venv
 .venv/bin/python -m engine.cli recommend ... --llm                     # Qwen açıklamalı
 .venv/bin/python -m engine.cli rules seed|validate|discover|list
 .venv/bin/python -m engine.cli benchmark --n 30 --samples 128
-.venv/bin/python -m engine.cli evaluate
+.venv/bin/python -m engine.cli evaluate --baselines
+.venv/bin/python -m engine.cli train --synthetic    # kod yolu doğrulama (üretim DEĞİL)
+.venv/bin/python -m engine.cli train                # gerçek: RIOT_API_KEY + matches.jsonl
+.venv/bin/python -m engine.cli rules discover --changed   # §22.10 incremental
 .venv/bin/python -m engine.cli datasets list|rollback <id>
-.venv/bin/python -m pytest tests/ -m "not integration"                 # 45 test
+.venv/bin/python -m pytest tests/ -m "not integration"                 # 52 test
 .venv/bin/python -m pytest tests/ -m integration                       # canlı Qwen
-python main.py                                                         # PyQt6 UI + Engine Coach
+.venv/bin/mypy engine/contracts engine/stats.py engine/model.py engine/data/audit.py engine/logging.py engine/knowledge/mechanics.py
+python main.py                                                         # PyQt6 UI + Engine Coach panel
 ```
 
 ## Dış bağımlılıklar (açıkça işaretli)

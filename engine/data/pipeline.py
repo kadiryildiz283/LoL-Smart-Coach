@@ -18,10 +18,15 @@ import time
 from pathlib import Path
 
 from engine.config import Config
+from engine.contracts.records import utcnow
+from engine.contracts.types import RuleType, RuleStatus, GamePhase
 from engine.contracts.schema import validate_record, SchemaError
 from engine.data.store import DatasetStore
 from engine.data.providers.base import Provider, ProviderResult, ProviderDisabled
 from engine.data.providers._browser import ChallengeBlocked
+from engine.logging import get_logger, log_event, classify_error
+
+logger = get_logger("engine.pipeline")
 
 KIND_FILE = {
     "champions": "champions.json",
@@ -32,7 +37,7 @@ KIND_FILE = {
     "champion_mechanics": "champion_mechanics.json",
 }
 VALIDATED_KINDS = {"champion_role_stats": "champion_role_stats",
-                   "matchups": "matchup", "synergies": "synergy"}
+                   "matchups": "matchup", "synergies": "synergy", "builds": "build"}
 
 
 class IngestionPipeline:
@@ -69,13 +74,16 @@ class IngestionPipeline:
                 pres = provider.collect(staging, resume=resume)
             except ProviderDisabled as e:
                 pres.status = "disabled"
-                pres.errors.append(str(e))
+                pres.errors.append(f"[disabled] {e}")
             except ChallengeBlocked as e:
                 pres.status = "blocked"
-                pres.errors.append(f"access blocked: {e}")
+                pres.errors.append(f"[access_block] {e}")
             except Exception as e:
                 pres.status = "failed"
-                pres.errors.append(f"{type(e).__name__}: {e}")
+                pres.errors.append(f"[{classify_error(e)}] {type(e).__name__}: {e}")
+            log_event(logger, "provider_finished", provider=pres.provider,
+                      status=pres.status, fetched=pres.fetched, cached=pres.cached,
+                      records={k: len(v) for k, v in pres.records.items()})
 
             if pres.patch:
                 patch = pres.patch
@@ -93,6 +101,10 @@ class IngestionPipeline:
                     target["overall_pick_rate"] = owr.get("pick_rate")
                     target["overall_ban_rate"] = owr.get("ban_rate")
                     target["overall_rank_scope"] = owr.get("rank_scope")
+            for cid_str, extras in pres.extra.get("champion_extras", {}).items():
+                target = merged["champions"].get(int(cid_str))
+                if target is not None:
+                    target.update(extras)
             report["providers"].append({
                 "provider": pres.provider, "status": pres.status,
                 "fetched": pres.fetched, "cached": pres.cached,
@@ -166,6 +178,11 @@ class IngestionPipeline:
                     if hasattr(downstream, "set_champions"):
                         downstream.set_champions(champ_list)
 
+        # surface provider errors at top level (§5 rule 10: visible failures)
+        for pr in report["providers"]:
+            for e in pr["errors"]:
+                report["errors"].append(f"{pr['provider']}: {e}")
+
         # ---- validation gate ----
         validation_errors: list[str] = []
         for kind, schema_kind in VALIDATED_KINDS.items():
@@ -203,6 +220,49 @@ class IngestionPipeline:
             legacy_dir=self.config.legacy_data_dir)
         coverage["mechanics"] = len(merged["champion_mechanics"])
 
+        # ---- derived role play rates + flex rates (§3.1, flagged as derived) ----
+        self._derive_role_shares(merged)
+
+        # ---- coverage honesty (§3.1: top-N tables are NOT full coverage) ----
+        observed_pairs = {(m["champion_id"], m["opponent_id"])
+                          for m in merged["matchups"].values()
+                          if m.get("observed_win_rate") is not None}
+        possible_pairs = set()
+        champs = list(merged["champions"].values())
+        role_sets = {c["champion_id"]: set(c.get("roles") or []) for c in champs}
+        for i, a in enumerate(champs):
+            for b in champs[i + 1:]:
+                if role_sets[a["champion_id"]] & role_sets[b["champion_id"]]:
+                    possible_pairs.add((a["champion_id"], b["champion_id"]))
+        coverage["matchup_pairs_observed"] = len(observed_pairs)
+        coverage["matchup_pairs_possible"] = len(possible_pairs)
+        coverage["matchup_pair_coverage_ratio"] = (
+            round(len(observed_pairs & possible_pairs) / len(possible_pairs), 4)
+            if possible_pairs else None)
+        coverage["coverage_note"] = ("counters tabloları top-N'dir; tam kapsama vs brute-force "
+                                     "fazı ile hedeflenir; oran gerçek kapsamı gösterir")
+
+        # ---- changed segments vs previous dataset (§22.10 incremental learning) ----
+        changed = {"champions": [], "matchup_pairs": []}
+        if previous is not None:
+            for cid, rec in merged["champions"].items():
+                prev = previous.champions.get(cid)
+                if prev is None:
+                    changed["champions"].append(cid)
+                elif abs((rec.get("overall_win_rate") or 0)
+                         - (prev.get("overall_win_rate") or 0)) > 0.01:
+                    changed["champions"].append(cid)
+            prev_pairs = {(m["champion_id"], m["opponent_id"]) for m in previous.matchups
+                          if m.get("observed_win_rate") is not None}
+            for m in merged["matchups"].values():
+                pair = (m["champion_id"], m["opponent_id"])
+                if m.get("observed_win_rate") is not None and pair not in prev_pairs:
+                    if list(pair) not in changed["matchup_pairs"]:
+                        changed["matchup_pairs"].append(list(pair))
+            changed["champions"] = changed["champions"][:200]
+            changed["matchup_pairs"] = changed["matchup_pairs"][:500]
+        report["changed_segments"] = changed
+
         # ---- deterministic dataset id (content-addressed, values included) ----
         files = {}
         for kind, fname in KIND_FILE.items():
@@ -235,8 +295,12 @@ class IngestionPipeline:
         try:
             self.store.publish(files, manifest, report)
             report["published_dataset_id"] = dataset_id
+            log_event(logger, "dataset_published", dataset_id=dataset_id,
+                      coverage=coverage, quarantined=len(report["quarantined"]),
+                      conflicts=len(report["conflicts"]))
         except (SchemaError, ValueError) as e:
             report["errors"].append(f"publish refused: {e}")
+            log_event(logger, "publish_refused", error=str(e))
 
         if rule_proposals:
             report["rule_proposals_count"] = len(rule_proposals)
@@ -244,7 +308,54 @@ class IngestionPipeline:
             prop_path.write_text(json.dumps(rule_proposals, ensure_ascii=False, indent=2),
                                  encoding="utf-8")
             report["rule_proposals_path"] = str(prop_path)
+            # legacy expert insights enter the registry as PROPOSED (never auto-active)
+            try:
+                from engine.knowledge.rules.registry import RuleRegistry
+                reg = RuleRegistry(self.config.game_rules_dir)
+                counts = reg.bulk_upsert([self._proposal_to_rule(p) for p in rule_proposals],
+                                         "legacy_expert_insight_migration")
+                report["legacy_rules_ingested"] = counts
+            except Exception as e:
+                report["errors"].append(f"legacy rule ingestion: {e}")
         return report
+
+    @staticmethod
+    def _derive_role_shares(merged: dict) -> None:
+        by_champ: dict[int, list[dict]] = {}
+        for rec in merged["champion_role_stats"].values():
+            if rec.get("metric_scope") == "ROLE_SPECIFIC":
+                by_champ.setdefault(rec["champion_id"], []).append(rec)
+        for cid, recs in by_champ.items():
+            picks = [(r, r["stats"]["pick_rate"]) for r in recs if r["stats"]["pick_rate"]]
+            total = sum(p for _, p in picks)
+            if total <= 0:
+                continue
+            for r, p in picks:
+                r["stats"]["role_play_rate"] = round(p / total, 5)
+                r["role_play_rate_derived"] = True
+            champ = merged["champions"].get(cid)
+            if champ is not None and len(picks) > 1:
+                champ["flex_pick_rate"] = round(1.0 - max(p for _, p in picks) / total, 5)
+
+    @staticmethod
+    def _proposal_to_rule(p: dict) -> dict:
+        from engine.contracts.records import Rule
+        return Rule(
+            rule_id="", rule_type=RuleType(p.get("rule_type", "empirical")),
+            status=RuleStatus.PROPOSED, title=p.get("title", "legacy proposal"),
+            subject=p.get("subject", {}), target=p.get("target", {}),
+            relation=p.get("relation", "EASY_MATCHUP_VS"),
+            game_phase=GamePhase(p.get("game_phase", "ALL")),
+            claim=p.get("claim", ""), conditions=p.get("conditions", []),
+            exceptions=p.get("exceptions", []),
+            scope=p.get("scope", {"patch_from": None, "patch_to": None,
+                                  "rank": "ALL", "region": "ALL"}),
+            impact={"category": p.get("impact_category", "MATCH_WIN"),
+                    "estimated_effect": None, "calibration_status": "not_calibrated"},
+            provenance=p.get("provenance", {"generated_by": "legacy", "created_at": utcnow()}),
+            review={"verification_status": "pending", "contradictions": [],
+                    "last_reviewed_patch": None},
+        ).to_dict()
 
     @staticmethod
     def _merge_champion(existing: dict, new: dict) -> dict:
@@ -287,7 +398,8 @@ class IngestionPipeline:
                     rec["ally_role"], rec["patch"], rec["region"], rec["rank_scope"])
         if kind == "builds":
             return (rec["champion_id"], rec["role"], rec["patch"],
-                    tuple(rec.get("items", [])))
+                    rec.get("section", "core"), tuple(rec.get("items", [])),
+                    tuple(sorted(rec.get("runes", {}).get("perks", []))))
         return json.dumps(rec, sort_keys=True)
 
     @staticmethod

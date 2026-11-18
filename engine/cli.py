@@ -125,7 +125,14 @@ def cmd_rules(args, cfg: Config) -> int:
         if ds is None:
             print("no dataset", file=sys.stderr)
             return 1
-        report = discover_rules(cfg, ds, registry, limit=args.limit)
+        pairs = None
+        if args.changed:
+            # §22.10: only re-examine pairs whose evidence changed in the last publish
+            pairs = [tuple(p) for p in ds.report.get("changed_segments", {}).get("matchup_pairs", [])]
+            if not pairs:
+                print("no changed matchup pairs in latest ingestion report")
+                return 0
+        report = discover_rules(cfg, ds, registry, limit=args.limit, pairs=pairs)
         print(json.dumps(report, ensure_ascii=False, indent=2))
     elif args.action == "list":
         for r in registry.all():
@@ -157,7 +164,76 @@ def cmd_evaluate(args, cfg: Config) -> int:
         print("no dataset", file=sys.stderr)
         return 1
     report = run_evaluation(cfg, ds)
+    if args.baselines:
+        from engine.evaluation.baselines import run_baselines
+        report["baselines"] = run_baselines(cfg, ds)
     print(json.dumps(report, indent=2, ensure_ascii=False))
+    return 0
+
+
+def cmd_train(args, cfg: Config) -> int:
+    """Train the calibrated win model. Real training needs match-level data
+    (Riot Match-v5 -> datasets/matches.jsonl). --synthetic runs a labeled
+    fixture to verify the training/gate code paths (never production)."""
+    import numpy as np
+    from engine.model import (train_logistic, predict_proba, time_split,
+                              calibration_gate, draft_features, save_model)
+    from engine.engines.decision import DecisionEngine
+    from engine.stats import logit, sigmoid
+    store = _store(cfg)
+    ds = store.latest()
+    if ds is None:
+        print("no dataset", file=sys.stderr)
+        return 1
+    matches_path = cfg.datasets_dir / "matches.jsonl"
+    if args.synthetic:
+        import random
+        from engine.contracts.types import ALL_ROLES
+        rng = random.Random(3)
+        ids = [cid for cid, c in ds.champions.items() if c.get("overall_win_rate")]
+        matches = []
+        for i in range(300):
+            pool = rng.sample(ids, 10)
+            blue = [(c, ALL_ROLES[j]) for j, c in enumerate(pool[:5])]
+            red = [(c, ALL_ROLES[j]) for j, c in enumerate(pool[5:])]
+            lo = sum(logit(ds.champions[c]["overall_win_rate"]) for c, _ in blue) - \
+                sum(logit(ds.champions[c]["overall_win_rate"]) for c, _ in red)
+            matches.append({"match_id": f"SYN-{i}", "patch": f"16.{10 + i // 100}",
+                            "timestamp": f"2026-{1 + i // 100:02d}-01",
+                            "teams": {"BLUE": blue, "RED": red},
+                            "win_blue": int(rng.random() < sigmoid(lo)),
+                            "quality": "synthetic"})
+        print("UYARI: synthetic fixture — üretim kalibrasyonu DEĞİL")
+    elif matches_path.exists():
+        matches = [json.loads(l) for l in matches_path.read_text(encoding="utf-8").splitlines() if l.strip()]
+    else:
+        print(json.dumps({"status": "external_dependency",
+                          "need": "RIOT_API_KEY -> match-v5 -> datasets/matches.jsonl",
+                          "hint": "python -m engine.cli train --synthetic (code-path verification only)"}))
+        return 1
+    eng = DecisionEngine(cfg, ds)
+    train, test = time_split(matches)
+
+    def xy(ms):
+        X, y = [], []
+        for m in ms:
+            X.append(draft_features(eng, m["teams"]["BLUE"], m["teams"]["RED"]))
+            y.append(m["win_blue"])
+        return np.array(X), np.array(y)
+
+    Xtr, ytr = xy(train)
+    Xte, yte = xy(test)
+    model = train_logistic(Xtr, ytr)
+    base = predict_proba(train_logistic(Xtr[:, [0]], ytr), Xte[:, [0]])
+    gate = calibration_gate(model, Xte, yte, base)
+    print(json.dumps(gate, indent=2))
+    if gate["calibration_gate_passed"] and not args.synthetic:
+        save_model(cfg.datasets_dir / "calibrated_model.json", model, gate, ds.dataset_id)
+        print("model saved; decision engine switches to CALIBRATED on next run")
+    elif gate["calibration_gate_passed"]:
+        print("synthetic gate passed (code path OK); model NOT saved for production")
+    else:
+        print("gate FAILED — model not saved; engine stays HEURISTIC")
     return 0
 
 
@@ -195,6 +271,8 @@ def main(argv=None) -> int:
     p = sub.add_parser("rules")
     p.add_argument("action", choices=["seed", "discover", "list", "validate"])
     p.add_argument("--limit", type=int, default=10)
+    p.add_argument("--changed", action="store_true",
+                   help="incremental: only pairs changed in the latest dataset (§22.10)")
     p.set_defaults(fn=cmd_rules)
 
     p = sub.add_parser("benchmark")
@@ -203,7 +281,12 @@ def main(argv=None) -> int:
     p.set_defaults(fn=cmd_benchmark)
 
     p = sub.add_parser("evaluate")
+    p.add_argument("--baselines", action="store_true")
     p.set_defaults(fn=cmd_evaluate)
+
+    p = sub.add_parser("train")
+    p.add_argument("--synthetic", action="store_true")
+    p.set_defaults(fn=cmd_train)
 
     args = parser.parse_args(argv)
     cfg = DEFAULT_CONFIG

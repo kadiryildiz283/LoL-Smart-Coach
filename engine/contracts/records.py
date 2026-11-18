@@ -177,6 +177,8 @@ class Build:
     skill_order: list[str] = field(default_factory=list)
     sample_size: int | None = None
     win_rate: float | None = None
+    popularity: float | None = None
+    section: str = "core"  # starting | core | boots | final | runes
     provenance: Provenance = field(default_factory=lambda: Provenance("unknown"))
     quality: Quality = field(default_factory=Quality)
 
@@ -202,7 +204,7 @@ class Feature:
 class ChampionMechanics:
     champion_id: int
     patch: str
-    features: dict[str, Feature] = field(default_factory=dict)
+    features: dict[str, dict] = field(default_factory=dict)  # serialized Feature records
     provenance: Provenance = field(default_factory=lambda: Provenance("unknown"))
 
     def to_dict(self) -> dict:

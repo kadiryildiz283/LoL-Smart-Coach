@@ -196,4 +196,7 @@ def discover_rules(cfg: Config, ds: Dataset, registry: RuleRegistry,
             registry.upsert(rule, "post_proposal_validation")
         state[key] = eh
         state_path.write_text(json.dumps(state, indent=2), encoding="utf-8")
+    # §22.3 step 8: conflict detection after proposals
+    from engine.knowledge.rules.validators import resolve_conflicts
+    report["conflict_actions"] = resolve_conflicts(registry, ds)
     return report

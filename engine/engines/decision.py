@@ -316,10 +316,16 @@ class DecisionEngine:
             candidates=beam,
             status="evaluated_heuristic" if self.mode == EvalMode.HEURISTIC else "evaluated",
         )
+        rec.explanations.append(f"Hesap süresi: {time.monotonic()-t0:.2f}s")
         rec_dict = rec.to_dict()
         from engine.contracts.schema import validate_record
         validate_record("recommendation", rec_dict)
         for ev in beam:
             validate_record("candidate_evaluation", ev.to_dict())
-        rec.explanations.append(f"Hesap süresi: {time.monotonic()-t0:.2f}s")
+        # audit trail (§4): every ranking reproducible from draft + dataset + model
+        try:
+            from engine.data.audit import AuditLog
+            AuditLog(self.cfg.datasets_dir / "audit").record(rec_dict, draft.to_dict())
+        except Exception:
+            pass  # audit failure must never break the decision path
         return rec

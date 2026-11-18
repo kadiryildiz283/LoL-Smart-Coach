@@ -367,7 +367,16 @@ class MainWindow(ModernWindow):
         self.current_role = str(my_role)
         self.current_my_team = my_team
         self.current_enemy_team = enemy_team
-        
+        self.current_bans = data.get('bans', [])
+        self.current_enemy_roles = data.get('enemy_team_roles', [])
+
+        # live panel recalculation on every champ-select change (§16)
+        panel = getattr(self, "draft_panel", None)
+        if panel is not None and panel.isVisible():
+            panel.apply_lcu_state(my_team, enemy_team, self.current_role,
+                                  bans=self.current_bans,
+                                  enemy_roles=self.current_enemy_roles)
+
         self.role_indicator.set_role(self.current_role)
         
         # Update Hexagons
@@ -465,41 +474,19 @@ class MainWindow(ModernWindow):
         self.runner.start()
 
     def open_engine_coach(self):
-        """Draft Intelligence Engine panel: numeric first, Qwen explanation async."""
-        from PyQt6.QtWidgets import QDialog, QVBoxLayout, QPlainTextEdit, QLabel
-        from core.engine_adapter import EngineWorker, format_numeric
-        from engine.data.store import DatasetStore
-        from engine.config import DEFAULT_CONFIG
-
-        dlg = QDialog(self)
-        dlg.setWindowTitle("Draft Intelligence Engine — Coach")
-        dlg.resize(760, 620)
-        lay = QVBoxLayout(dlg)
-        lay.addWidget(QLabel("Sayısal öneri (karar motoru):"))
-        numeric = QPlainTextEdit()
-        numeric.setReadOnly(True)
-        numeric.setStyleSheet("background:#0d1117; color:#e6edf3; font-family:Consolas;")
-        lay.addWidget(numeric, stretch=2)
-        lay.addWidget(QLabel("Qwen yorumu (asenkron, kararı değiştirmez):"))
-        llm_box = QPlainTextEdit()
-        llm_box.setReadOnly(True)
-        llm_box.setPlainText("Hazırlanıyor... (LLM kapalıysa şablon açıklama gelir)")
-        llm_box.setStyleSheet("background:#0d1117; color:#c9d1d9; font-family:Consolas;")
-        lay.addWidget(llm_box, stretch=2)
-
-        ds = DatasetStore(DEFAULT_CONFIG.datasets_dir).latest()
-        champs = ds.champions if ds else {}
-
-        worker = EngineWorker(
-            ally_names=[c for c in self.current_my_team if c not in ("Picking...", "Unknown", "...", "None")],
-            enemy_names=[c for c in self.current_enemy_team if c not in ("Picking...", "Unknown", "...", "None")],
-            ban_names=[], role_str=self.current_role, with_llm=True, parent=dlg)
-        worker.numeric_ready.connect(lambda rec: numeric.setPlainText(format_numeric(rec, champs)))
-        worker.llm_ready.connect(lambda out: llm_box.setPlainText(json.dumps(out, ensure_ascii=False, indent=2)))
-        worker.failed.connect(lambda msg: numeric.setPlainText("HATA: " + msg))
-        worker.start()
-        dlg.finished.connect(lambda _: worker.wait(2000))
-        dlg.exec()
+        """Professional Draft Panel (§16): editable slots/bans/roles, auto-recalc,
+        numeric first, async Qwen explanation."""
+        from core.draft_panel import DraftPanel
+        self.draft_panel = DraftPanel(self)
+        # seed with current LCU state if available
+        if self.current_my_team or self.current_enemy_team:
+            self.draft_panel.apply_lcu_state(
+                self.current_my_team, self.current_enemy_team, self.current_role,
+                bans=getattr(self, "current_bans", []),
+                enemy_roles=getattr(self, "current_enemy_roles", None))
+        else:
+            self.draft_panel.recalc()
+        self.draft_panel.exec()
 
 if __name__ == "__main__":
     # High DPI Support

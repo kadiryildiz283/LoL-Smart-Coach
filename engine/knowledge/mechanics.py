@@ -46,7 +46,7 @@ def _score(count: int, scale: float = 2.0) -> float:
 
 def _load_dd_raw(dd_staging: Path) -> dict[int, dict]:
     """Map champion_id -> full Data Dragon champion payload from raw cache."""
-    out = {}
+    out: dict[int, dict] = {}
     if not dd_staging.exists():
         return out
     for p in dd_staging.glob("*.json"):
@@ -64,7 +64,8 @@ def _load_dd_raw(dd_staging: Path) -> dict[int, dict]:
 
 
 def derive_features(champ_record: dict, dd_raw: dict | None, patch: str) -> dict[str, dict]:
-    features: dict[str, Feature] = {}
+    # values are SERIALIZED feature records (Feature.to_dict()), not dataclasses
+    features: dict[str, dict] = {}
     base = champ_record.get("base_stats") or (dd_raw or {}).get("stats", {})
 
     def verified(name, value, unit, ref):

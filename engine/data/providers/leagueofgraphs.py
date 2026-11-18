@@ -158,6 +158,46 @@ def parse_vs(html: str, enemy_name: str) -> dict:
     return out
 
 
+def parse_items(html: str) -> list[dict]:
+    """Item rows are DIVs with raw fraction data-sort attributes + official item ids."""
+    out = []
+    markers = [("Starting Build", "starting"), ("Core Build", "core"),
+               ("Boots", "boots"), ("Final Item Options", "final")]
+    positions = sorted([(html.find(m), key) for m, key in markers if html.find(m) >= 0])
+    for idx, (start, key) in enumerate(positions):
+        end = positions[idx + 1][0] if idx + 1 < len(positions) else len(html)
+        seg = html[start:end]
+        for ch in re.split(r'class="lolg-table__row"', seg)[1:]:
+            attrs = dict(re.findall(r'data-sort-(\w+)="([^"]+)"', ch[:300]))
+            item_ids = [int(x) for x in re.findall(r'tooltip-var="item-(\d+)"', ch[:1500])]
+            if not item_ids:
+                continue
+            out.append({
+                "section": key, "items": item_ids,
+                "popularity": float(attrs["popularity"]) if "popularity" in attrs else None,
+                "win_rate": float(attrs["winrate"]) if "winrate" in attrs else None,
+            })
+    return out
+
+
+def parse_runes(html: str) -> list[dict]:
+    out = []
+    markers = ["Best runes", "Runes #2", "Runes #3", "Runes #4", "Runes #5"]
+    positions = sorted([(html.find(m), m) for m in markers if html.find(m) >= 0])
+    for idx, (start, name) in enumerate(positions):
+        end = positions[idx + 1][0] if idx + 1 < len(positions) else len(html)
+        seg = html[start:end]
+        pop = re.search(r'lolg-meter__label">Popularity</span>\s*<span[^>]*>([\d.]+)%', seg)
+        wr = re.search(r'lolg-meter__label">Winrate</span>\s*<span[^>]*>([\d.]+)%', seg)
+        perks = [int(x) for x in dict.fromkeys(re.findall(r'perk-(\d+)', seg))]
+        out.append({
+            "section": name, "perks": perks,
+            "popularity": round(float(pop.group(1)) / 100, 5) if pop else None,
+            "win_rate": round(float(wr.group(1)) / 100, 5) if wr else None,
+        })
+    return out
+
+
 class LeagueOfGraphsProvider(Provider):
     name = "leagueofgraphs"
 
@@ -360,10 +400,63 @@ class LeagueOfGraphsProvider(Provider):
             if vs_done and vs_done % 50 == 0:
                 print(f"[LoG vs] ilerleme: {vs_done} sayfa", flush=True)
 
+        # ---------- Phase 4: builds (items + runes) ----------
+        from engine.contracts.records import Build
+        for c in self.champions:
+            slug = log_slug(c["name"])
+            cid = c["id"]
+            crole = primary_role.get(cid, (plausible.get(cid) or [Role.MIDDLE])[0])
+            iurl = f"{base}/champions/items/{slug}/{rank}"
+            ih = self._html(access, staging, iurl, res, resume)
+            if ih:
+                ipatch = parse_patch(ih) or patch or "unknown"
+                for row in parse_items(ih):
+                    b = Build(
+                        champion_id=cid, role=crole, patch=ipatch, items=row["items"],
+                        win_rate=row["win_rate"], popularity=row["popularity"],
+                        section=row["section"], sample_size=None,
+                        provenance=prov(iurl),
+                        quality=Quality(
+                            status=QualityStatus.OBSERVED if row["win_rate"] is not None
+                            else QualityStatus.MISSING,
+                            confidence=0.5 if row["win_rate"] is not None else None,
+                            missing_reason="sample_not_exposed_by_source"),
+                    ).to_dict()
+                    res.add("builds", b)
+            rurl = f"{base}/champions/runes/{slug}/{rank}"
+            rh = self._html(access, staging, rurl, res, resume)
+            if rh:
+                rpatch = parse_patch(rh) or patch or "unknown"
+                for row in parse_runes(rh):
+                    b = Build(
+                        champion_id=cid, role=crole, patch=rpatch,
+                        runes={"perks": row["perks"]},
+                        win_rate=row["win_rate"], popularity=row["popularity"],
+                        section="runes:" + row["section"], sample_size=None,
+                        provenance=prov(rurl),
+                        quality=Quality(
+                            status=QualityStatus.OBSERVED if row["win_rate"] is not None
+                            else QualityStatus.MISSING,
+                            confidence=0.5 if row["win_rate"] is not None else None,
+                            missing_reason="sample_not_exposed_by_source"),
+                    ).to_dict()
+                    res.add("builds", b)
+            # §3.1 "varsa" fields: endpoints not mapped yet -> explicit nulls, never invented
+            res.extra.setdefault("champion_extras", {})[str(cid)] = {
+                "win_rate_by_duration": None,
+                "win_rate_by_duration_missing_reason": "duration_filter_endpoint_not_mapped",
+                "side_win_rates": None,
+                "side_win_rates_missing_reason": "side_split_not_exposed_on_parsed_pages",
+                "win_rate_by_experience": None,
+                "win_rate_by_experience_missing_reason": "progressions_endpoint_not_mapped",
+            }
+            print(f"[LoG builds] {c['name']}", flush=True)
+
         res.coverage = {
             "meta_champions": len({r["champion_id"] for r in res.records.get("champion_role_stats", [])}),
             "matchups": len(res.records.get("matchups", [])),
             "synergies": len(res.records.get("synergies", [])),
+            "builds": len(res.records.get("builds", [])),
             "vs_pages": vs_done, "patch": patch,
         }
         res.status = "ok" if not res.errors else "partial"

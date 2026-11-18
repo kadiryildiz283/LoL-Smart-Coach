@@ -120,6 +120,23 @@ SYNERGY = {
     },
 }
 
+BUILD = {
+    "type": "object",
+    "required": ["schema_version", "champion_id", "role", "patch", "provenance", "quality"],
+    "properties": {
+        "schema_version": {"type": "string"},
+        "champion_id": _int(False), "role": ROLE_ENUM, "patch": {"type": "string"},
+        "items": {"type": "array", "items": {"type": "integer"}},
+        "runes": {"type": "object"},
+        "skill_order": {"type": "array"},
+        "sample_size": {**_int(), "minimum": 0},
+        "win_rate": {**_num(), "minimum": 0, "maximum": 1},
+        "popularity": {**_num(), "minimum": 0, "maximum": 1},
+        "section": {"type": "string"},
+        "provenance": PROVENANCE, "quality": QUALITY,
+    },
+}
+
 MANIFEST = {
     "type": "object",
     "required": ["schema_version", "dataset_id", "status", "patch", "generated_at",
@@ -286,6 +303,7 @@ SCHEMAS: dict[str, dict] = {
     "champion_role_stats": CHAMPION_ROLE_STATS,
     "matchup": MATCHUP,
     "synergy": SYNERGY,
+    "build": BUILD,
     "manifest": MANIFEST,
     "evidence": EVIDENCE,
     "candidate_evaluation": CANDIDATE_EVALUATION,

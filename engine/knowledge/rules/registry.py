@@ -97,6 +97,42 @@ class RuleRegistry:
         self._save()
         return rule["rule_id"], "created"
 
+    def bulk_upsert(self, rules: list[dict], change_reason: str = "bulk") -> dict:
+        """Many rules, one save. Returns action counts."""
+        counts = {"created": 0, "updated": 0, "dedup_skipped": 0}
+        for rule in rules:
+            try:
+                validate_record("rule", rule)
+            except SchemaError:
+                continue
+            sem = rule.get("semantic_key") or Rule.compute_semantic_key(
+                rule["rule_type"], rule["subject"], rule["target"], rule["relation"],
+                rule.get("game_phase", "ALL"), rule.get("conditions", []), rule.get("scope", {}))
+            rule["semantic_key"] = sem
+            existing = self.find_by_semantic(sem)
+            if existing is not None:
+                if json.dumps(existing, sort_keys=True) == json.dumps(rule, sort_keys=True):
+                    counts["dedup_skipped"] += 1
+                    continue
+                old = dict(existing)
+                rule["rule_id"] = existing["rule_id"]
+                rule["version"] = existing.get("version", 1) + 1
+                rule.setdefault("history", existing.get("history", []))
+                rule["history"].append({"version": old.get("version", 1),
+                                        "changed_at": utcnow(), "reason": change_reason,
+                                        "previous_status": old.get("status"), "snapshot": old})
+                self._rules[rule["rule_id"]] = rule
+                self._by_semantic[sem] = rule["rule_id"]
+                counts["updated"] += 1
+            else:
+                if not rule.get("rule_id"):
+                    rule["rule_id"] = f"rule-{sem[:12]}"
+                self._rules[rule["rule_id"]] = rule
+                self._by_semantic[sem] = rule["rule_id"]
+                counts["created"] += 1
+        self._save()
+        return counts
+
     def set_status(self, rule_id: str, status: RuleStatus, reason: str) -> None:
         rule = self._rules.get(rule_id)
         if rule is None:

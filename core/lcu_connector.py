@@ -103,8 +103,10 @@ class LCUWorker(QThread):
         
         my_team = []
         enemy_team = []
+        my_team_roles = []
+        enemy_team_roles = []
         my_role = "Unknown"
-        
+
         # Yerel oyuncunun hücre ID'sini al (kendi rolümüzü bulmak için)
         local_cell_id = data.get('localPlayerCellId', -1)
 
@@ -113,7 +115,8 @@ class LCUWorker(QThread):
             champ_id = member.get('championId', 0)
             name = self.get_champ_name(champ_id)
             my_team.append(name)
-            
+            my_team_roles.append(self.normalize_role(member.get('assignedPosition', '')))
+
             # Eğer bu oyuncu bensem, rolümü kaydet
             if member.get('cellId') == local_cell_id:
                 raw_role = member.get('assignedPosition', '')
@@ -124,12 +127,22 @@ class LCUWorker(QThread):
             champ_id = member.get('championId', 0)
             name = self.get_champ_name(champ_id)
             enemy_team.append(name)
+            enemy_team_roles.append(self.normalize_role(member.get('assignedPosition', '')))
+
+        # --- Yasaklamalar (§16) ---
+        bans_raw = data.get('bans', {}) or {}
+        bans = [self.get_champ_name(cid)
+                for cid in (bans_raw.get('myTeamBans', []) + bans_raw.get('theirTeamBans', []))
+                if cid]
 
         # Arayüze gönderilecek paket
         info = {
             "my_team": my_team,
             "enemy_team": enemy_team,
             "my_role": my_role,
+            "my_team_roles": my_team_roles,
+            "enemy_team_roles": enemy_team_roles,
+            "bans": bans,
             "phase": data.get('timer', {}).get('phase', 'Unknown')
         }
         

@@ -29,6 +29,19 @@
 | Genel WR rol-bazlı gibi kullanılırdı | `overall_win_rate` champions.json'da; rol stats ayrı; fallback açık bayraklı |
 | Test kaydı production'da | `TestChampionPipeline` karantinaya alındı (`data/quarantine/`) |
 
+## Build / Rune ve "varsa" alanları (§3.1)
+
+- **Items:** LoG `/champions/items/{slug}/{rank}` — Starting/Core/Boots/Final bölümleri,
+  resmî item ID'leri (`tooltip-var="item-XXXX"`), ham popularity/WR fraction'ları
+  (`data-sort-*`). Örneklem sayfada yok → `sample_size=null + missing_reason`.
+- **Runes:** `/champions/runes/{slug}/{rank}` — 5 rune seti, perk ID'leri, popularity/WR.
+- **Duration curve / side WR / XP performansı:** endpoint'ler henüz map edilmedi →
+  `null + explicit missing_reason` (uydurma yok). Stats sayfasındaki graphDD dizileri
+  tarihsel trend (2014+ timestamp), duration bucket DEĞİL — doğrulandı.
+- **role_play_rate / flex_pick_rate:** rol pick oranlarından türetilir, `derived` bayraklı.
+- **Coverage dürüstlüğü:** manifest `matchup_pair_coverage_ratio` = gözlenen çift /
+  rol-kesişimli mümkün çift; counters top-N'dir, tam kapsama vs fazıyla hedeflenir.
+
 ## Mevcut kapsam (son publish)
 
 - champions: 173 (172 legacy + DD'den yeni şampiyon "Locke" — otomatik kimlik eşleme)
