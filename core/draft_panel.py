@@ -228,8 +228,14 @@ class DraftPanel(QDialog):
             self.numeric.setPlainText(f"Draft hatası: {e}")
             return
         self.mode_label.setText("Computing…")
-        if self._worker is not None and self._worker.isRunning():
-            self._worker.requestInterruption()  # skip pending LLM work of superseded run
+        prev = self._worker
+        if prev is not None:
+            try:
+                running = prev.isRunning()
+            except RuntimeError:
+                running = False  # C++ object already retired via deleteLater
+            if running:
+                prev.requestInterruption()  # skip pending LLM work of superseded run
         worker = PanelWorker(ally, enemy, eroles, bans, role, team, parent=self)
         self._worker = worker
         self._workers.append(worker)
@@ -244,15 +250,20 @@ class DraftPanel(QDialog):
     def _retire(self, worker):
         if worker in self._workers:
             self._workers.remove(worker)
+        if self._worker is worker:
+            self._worker = None  # never keep a dangling reference to a deleted QThread
         worker.deleteLater()
 
     def closeEvent(self, event):
         for w in list(self._workers):
-            w.requestInterruption()
-            w.wait(2000)
-            if w.isRunning():
-                w.terminate()
-                w.wait(500)
+            try:
+                w.requestInterruption()
+                w.wait(2000)
+                if w.isRunning():
+                    w.terminate()
+                    w.wait(500)
+            except RuntimeError:
+                pass  # already deleted
         super().closeEvent(event)
 
     def _show_numeric(self, rec):
