@@ -371,6 +371,8 @@ class LeagueOfGraphsProvider(Provider):
                 html = self._html(access, staging, url, res, resume)
                 per_champ += 1
                 vs_done += 1
+                if vs_done % 50 == 0:
+                    print(f"[LoG vs] ilerleme: {vs_done} sayfa", flush=True)
                 if not html:
                     continue
                 v = parse_vs(html, b["name"])
@@ -399,8 +401,6 @@ class LeagueOfGraphsProvider(Provider):
                     m["roles_assumed_primary"] = True
                     res.add("matchups", m)
                 covered_pairs.add((a["id"], b["id"]))
-            if vs_done and vs_done % 50 == 0:
-                print(f"[LoG vs] ilerleme: {vs_done} sayfa", flush=True)
 
         # ---------- Phase 4: builds (items + runes) ----------
         from engine.contracts.records import Build
