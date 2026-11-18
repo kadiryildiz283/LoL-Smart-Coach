@@ -1,0 +1,353 @@
+[
+  {
+    "rule_id": "principle-range-pressure-family",
+    "rule_type": "strategic",
+    "status": "proposed",
+    "title": "Menzil avantajı ve koridor baskısı",
+    "subject": {
+      "scope": "GENERAL"
+    },
+    "target": {
+      "scope": "GENERAL"
+    },
+    "relation": "STRATEGIC_PRINCIPLE",
+    "claim": "Uzun menzilli şampiyonlar kısa menzilli rakiplerine karşı erken koridorda baskı kurabilir.",
+    "game_phase": "ALL",
+    "conditions": [
+      "Rakip all-in tehdidi düşükken",
+      "Dalga kontrolü menzil lehineyken"
+    ],
+    "exceptions": [
+      "Karşıt kompozisyon koşulları"
+    ],
+    "evidence": {
+      "mechanical_sources": [],
+      "statistical_sources": [],
+      "sample_size": null,
+      "observed_lane_advantage": null,
+      "observed_match_win_rate": null
+    },
+    "confidence": {
+      "mechanical": null,
+      "strategic": null,
+      "empirical": null
+    },
+    "scope": {
+      "patch_from": null,
+      "patch_to": null,
+      "rank": "ALL",
+      "region": "ALL"
+    },
+    "impact": {
+      "category": "STRATEGY",
+      "estimated_effect": null,
+      "calibration_status": "hypothesis"
+    },
+    "provenance": {
+      "generated_by": "knowledge_engine",
+      "generation_type": "hypothesis_family",
+      "created_at": "2026-11-18T10:41:51+00:00"
+    },
+    "review": {
+      "verification_status": "llm_hypothesis_only",
+      "contradictions": [],
+      "last_reviewed_patch": null
+    },
+    "version": 1,
+    "semantic_key": "3b59aed5948ef56a60a5",
+    "history": [],
+    "schema_version": "1.0"
+  },
+  {
+    "rule_id": "principle-waveclear-priority-family",
+    "rule_type": "strategic",
+    "status": "proposed",
+    "title": "Waveclear ve koridor önceliği",
+    "subject": {
+      "scope": "GENERAL"
+    },
+    "target": {
+      "scope": "GENERAL"
+    },
+    "relation": "STRATEGIC_PRINCIPLE",
+    "claim": "Güçlü waveclear, koridor önceliği ve rotasyon avantajı sağlayabilir.",
+    "game_phase": "ALL",
+    "conditions": [
+      "Rakip waveclear'i zayıfken",
+      "Ormancı önceliği kullanabiliyorken"
+    ],
+    "exceptions": [
+      "Karşıt kompozisyon koşulları"
+    ],
+    "evidence": {
+      "mechanical_sources": [],
+      "statistical_sources": [],
+      "sample_size": null,
+      "observed_lane_advantage": null,
+      "observed_match_win_rate": null
+    },
+    "confidence": {
+      "mechanical": null,
+      "strategic": null,
+      "empirical": null
+    },
+    "scope": {
+      "patch_from": null,
+      "patch_to": null,
+      "rank": "ALL",
+      "region": "ALL"
+    },
+    "impact": {
+      "category": "STRATEGY",
+      "estimated_effect": null,
+      "calibration_status": "hypothesis"
+    },
+    "provenance": {
+      "generated_by": "knowledge_engine",
+      "generation_type": "hypothesis_family",
+      "created_at": "2026-11-18T10:41:51+00:00"
+    },
+    "review": {
+      "verification_status": "llm_hypothesis_only",
+      "contradictions": [],
+      "last_reviewed_patch": null
+    },
+    "version": 1,
+    "semantic_key": "c8bd0c439fe3914b9cd7",
+    "history": [],
+    "schema_version": "1.0"
+  },
+  {
+    "rule_id": "principle-mobility-antimobility-family",
+    "rule_type": "strategic",
+    "status": "proposed",
+    "title": "Mobility vs anti-mobility",
+    "subject": {
+      "scope": "GENERAL"
+    },
+    "target": {
+      "scope": "GENERAL"
+    },
+    "relation": "STRATEGIC_PRINCIPLE",
+    "claim": "Dash bağımlı şampiyonlar, hareket engelleyici rakiplere karşı zorlanabilir.",
+    "game_phase": "ALL",
+    "conditions": [
+      "Rakipte grounding/polymorph/knockup varken"
+    ],
+    "exceptions": [
+      "Karşıt kompozisyon koşulları"
+    ],
+    "evidence": {
+      "mechanical_sources": [],
+      "statistical_sources": [],
+      "sample_size": null,
+      "observed_lane_advantage": null,
+      "observed_match_win_rate": null
+    },
+    "confidence": {
+      "mechanical": null,
+      "strategic": null,
+      "empirical": null
+    },
+    "scope": {
+      "patch_from": null,
+      "patch_to": null,
+      "rank": "ALL",
+      "region": "ALL"
+    },
+    "impact": {
+      "category": "STRATEGY",
+      "estimated_effect": null,
+      "calibration_status": "hypothesis"
+    },
+    "provenance": {
+      "generated_by": "knowledge_engine",
+      "generation_type": "hypothesis_family",
+      "created_at": "2026-11-18T10:41:51+00:00"
+    },
+    "review": {
+      "verification_status": "llm_hypothesis_only",
+      "contradictions": [],
+      "last_reviewed_patch": null
+    },
+    "version": 1,
+    "semantic_key": "a10971b6fc59724c8f1e",
+    "history": [],
+    "schema_version": "1.0"
+  },
+  {
+    "rule_id": "principle-engage-disengage-family",
+    "rule_type": "strategic",
+    "status": "proposed",
+    "title": "Engage vs disengage",
+    "subject": {
+      "scope": "GENERAL"
+    },
+    "target": {
+      "scope": "GENERAL"
+    },
+    "relation": "STRATEGIC_PRINCIPLE",
+    "claim": "Engage kompozisyonları, yetersiz disengage rakiplere karşı avantaj elde edebilir.",
+    "game_phase": "ALL",
+    "conditions": [
+      "Rakipte peel/sustain azken",
+      "Engage menzili rakip disengage menzilini aşıyorken"
+    ],
+    "exceptions": [
+      "Karşıt kompozisyon koşulları"
+    ],
+    "evidence": {
+      "mechanical_sources": [],
+      "statistical_sources": [],
+      "sample_size": null,
+      "observed_lane_advantage": null,
+      "observed_match_win_rate": null
+    },
+    "confidence": {
+      "mechanical": null,
+      "strategic": null,
+      "empirical": null
+    },
+    "scope": {
+      "patch_from": null,
+      "patch_to": null,
+      "rank": "ALL",
+      "region": "ALL"
+    },
+    "impact": {
+      "category": "STRATEGY",
+      "estimated_effect": null,
+      "calibration_status": "hypothesis"
+    },
+    "provenance": {
+      "generated_by": "knowledge_engine",
+      "generation_type": "hypothesis_family",
+      "created_at": "2026-11-18T10:41:51+00:00"
+    },
+    "review": {
+      "verification_status": "llm_hypothesis_only",
+      "contradictions": [],
+      "last_reviewed_patch": null
+    },
+    "version": 1,
+    "semantic_key": "9386d64572625c8a1126",
+    "history": [],
+    "schema_version": "1.0"
+  },
+  {
+    "rule_id": "principle-poke-sustain-family",
+    "rule_type": "strategic",
+    "status": "proposed",
+    "title": "Poke vs sustain",
+    "subject": {
+      "scope": "GENERAL"
+    },
+    "target": {
+      "scope": "GENERAL"
+    },
+    "relation": "STRATEGIC_PRINCIPLE",
+    "claim": "Poke kompozisyonları, sustain'i düşük rakipleri kuşatma savaşlarında yıpratabilir.",
+    "game_phase": "ALL",
+    "conditions": [
+      "Rakip engage'i poke menzilini kapatabiliyorsa istisna"
+    ],
+    "exceptions": [
+      "Karşıt kompozisyon koşulları"
+    ],
+    "evidence": {
+      "mechanical_sources": [],
+      "statistical_sources": [],
+      "sample_size": null,
+      "observed_lane_advantage": null,
+      "observed_match_win_rate": null
+    },
+    "confidence": {
+      "mechanical": null,
+      "strategic": null,
+      "empirical": null
+    },
+    "scope": {
+      "patch_from": null,
+      "patch_to": null,
+      "rank": "ALL",
+      "region": "ALL"
+    },
+    "impact": {
+      "category": "STRATEGY",
+      "estimated_effect": null,
+      "calibration_status": "hypothesis"
+    },
+    "provenance": {
+      "generated_by": "knowledge_engine",
+      "generation_type": "hypothesis_family",
+      "created_at": "2026-11-18T10:41:51+00:00"
+    },
+    "review": {
+      "verification_status": "llm_hypothesis_only",
+      "contradictions": [],
+      "last_reviewed_patch": null
+    },
+    "version": 1,
+    "semantic_key": "1de40e1fdbfc15521bd4",
+    "history": [],
+    "schema_version": "1.0"
+  },
+  {
+    "rule_id": "principle-burst-durability-family",
+    "rule_type": "strategic",
+    "status": "proposed",
+    "title": "Burst vs dayanıklılık",
+    "subject": {
+      "scope": "GENERAL"
+    },
+    "target": {
+      "scope": "GENERAL"
+    },
+    "relation": "STRATEGIC_PRINCIPLE",
+    "claim": "Burst odaklı rakipler, dayanıklılığı düşük carryleri tehdit eder.",
+    "game_phase": "ALL",
+    "conditions": [
+      "Carry peel altındaysa etkisi azalır"
+    ],
+    "exceptions": [
+      "Karşıt kompozisyon koşulları"
+    ],
+    "evidence": {
+      "mechanical_sources": [],
+      "statistical_sources": [],
+      "sample_size": null,
+      "observed_lane_advantage": null,
+      "observed_match_win_rate": null
+    },
+    "confidence": {
+      "mechanical": null,
+      "strategic": null,
+      "empirical": null
+    },
+    "scope": {
+      "patch_from": null,
+      "patch_to": null,
+      "rank": "ALL",
+      "region": "ALL"
+    },
+    "impact": {
+      "category": "STRATEGY",
+      "estimated_effect": null,
+      "calibration_status": "hypothesis"
+    },
+    "provenance": {
+      "generated_by": "knowledge_engine",
+      "generation_type": "hypothesis_family",
+      "created_at": "2026-11-18T10:41:51+00:00"
+    },
+    "review": {
+      "verification_status": "llm_hypothesis_only",
+      "contradictions": [],
+      "last_reviewed_patch": null
+    },
+    "version": 1,
+    "semantic_key": "58fb15192ad234a94e40",
+    "history": [],
+    "schema_version": "1.0"
+  }
+]

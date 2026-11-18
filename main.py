@@ -40,19 +40,19 @@ def global_exception_handler(exctype, value, tb):
 sys.excepthook = global_exception_handler
 
 # --- 3. IMPORTS ---
+# Core engine imports MUST NOT depend on optional scraper modules.
+ensure_data_directory()
+from core.lcu_connector import LCUWorker
+from core.ai_recommendation_final import LoLDecisionEngine
+from core.match_predictor import LoLMatchPredictor
+
 try:
-    ensure_data_directory() 
-    
     import list_update
     import veri_cekici_main
-    import expert_parser
     import merge_expert_data
     import merge_damage_stats
-    from core.lcu_connector import LCUWorker
-    from core.ai_recommendation_final import LoLDecisionEngine
-    from core.match_predictor import LoLMatchPredictor
 except ImportError as e:
-    print(f"⚠️ Module Missing: {e}")
+    print(f"⚠️ Scraper module missing (data update disabled): {e}")
 
 # --- 5. LOG SYSTEM ---
 class EmittingStream(QObject):
@@ -73,7 +73,7 @@ class ScriptRunner(QThread):
             if self.task_type == "scrape_data":
                 print("⏳ Fetching stats..."); veri_cekici_main.main()
             elif self.task_type == "merge_all":
-                print("ℹ️ Merging data..."); expert_parser.main(); merge_expert_data.main(); merge_damage_stats.main()
+                print("ℹ️ Merging data..."); merge_expert_data.main(); merge_damage_stats.main()
                 print("🎉 Database Ready.")
         except Exception as e: print(f"❌ ERROR: {str(e)}")
         self.finished_task.emit()
@@ -238,11 +238,14 @@ class MainWindow(ModernWindow):
         b_merge.clicked.connect(lambda: self.run_script("merge_all"))
         b_force = ModernButton("Force Analyze", "#d29922")
         b_force.clicked.connect(self.force_recommendation)
-        
+        b_engine = ModernButton("Engine Coach", "#00bcd4")
+        b_engine.clicked.connect(self.open_engine_coach)
+
         footer_layout.addWidget(b_reset)
         footer_layout.addWidget(b_update)
         footer_layout.addWidget(b_merge)
         footer_layout.addWidget(b_force)
+        footer_layout.addWidget(b_engine)
         
         layout.addLayout(footer_layout)
         
@@ -338,6 +341,9 @@ class MainWindow(ModernWindow):
         styles = ["balanced", "safe", "aggressive"]
         if 0 <= index < len(styles):
             selected = styles[index]
+            if self.ai_engine is None:
+                print("⚠️ AI engine not loaded; playstyle change ignored.")
+                return
             self.ai_engine.set_profile(selected)
             self.append_terminal_text(f"🧠 Playstyle: {selected.upper()}")
             if self.combo_enemy_laner.currentIndex() > 0:
@@ -457,6 +463,43 @@ class MainWindow(ModernWindow):
         self.runner = ScriptRunner(task_type)
         self.runner.finished_task.connect(lambda: self.load_ai_modules())
         self.runner.start()
+
+    def open_engine_coach(self):
+        """Draft Intelligence Engine panel: numeric first, Qwen explanation async."""
+        from PyQt6.QtWidgets import QDialog, QVBoxLayout, QPlainTextEdit, QLabel
+        from core.engine_adapter import EngineWorker, format_numeric
+        from engine.data.store import DatasetStore
+        from engine.config import DEFAULT_CONFIG
+
+        dlg = QDialog(self)
+        dlg.setWindowTitle("Draft Intelligence Engine — Coach")
+        dlg.resize(760, 620)
+        lay = QVBoxLayout(dlg)
+        lay.addWidget(QLabel("Sayısal öneri (karar motoru):"))
+        numeric = QPlainTextEdit()
+        numeric.setReadOnly(True)
+        numeric.setStyleSheet("background:#0d1117; color:#e6edf3; font-family:Consolas;")
+        lay.addWidget(numeric, stretch=2)
+        lay.addWidget(QLabel("Qwen yorumu (asenkron, kararı değiştirmez):"))
+        llm_box = QPlainTextEdit()
+        llm_box.setReadOnly(True)
+        llm_box.setPlainText("Hazırlanıyor... (LLM kapalıysa şablon açıklama gelir)")
+        llm_box.setStyleSheet("background:#0d1117; color:#c9d1d9; font-family:Consolas;")
+        lay.addWidget(llm_box, stretch=2)
+
+        ds = DatasetStore(DEFAULT_CONFIG.datasets_dir).latest()
+        champs = ds.champions if ds else {}
+
+        worker = EngineWorker(
+            ally_names=[c for c in self.current_my_team if c not in ("Picking...", "Unknown", "...", "None")],
+            enemy_names=[c for c in self.current_enemy_team if c not in ("Picking...", "Unknown", "...", "None")],
+            ban_names=[], role_str=self.current_role, with_llm=True, parent=dlg)
+        worker.numeric_ready.connect(lambda rec: numeric.setPlainText(format_numeric(rec, champs)))
+        worker.llm_ready.connect(lambda out: llm_box.setPlainText(json.dumps(out, ensure_ascii=False, indent=2)))
+        worker.failed.connect(lambda msg: numeric.setPlainText("HATA: " + msg))
+        worker.start()
+        dlg.finished.connect(lambda _: worker.wait(2000))
+        dlg.exec()
 
 if __name__ == "__main__":
     # High DPI Support

@@ -1,4 +1,4 @@
-import cloudscraper
+from curl_cffi import requests as cffi_requests
 from bs4 import BeautifulSoup
 import json
 import time
@@ -50,12 +50,12 @@ def extract_json_smart(text, start_keyword):
     return None
 
 def main():
-    print(f"🌍 Siteye bağlanılıyor (Cloudscraper ile): {URL}...")
-    
-    scraper = cloudscraper.create_scraper()
-    
+    print(f"🌍 Siteye bağlanılıyor (curl_cffi Chrome taklidi ile): {URL}...")
+
+    scraper = cffi_requests.Session(impersonate="chrome120")
+
     try:
-        response = scraper.get(URL)
+        response = scraper.get(URL, timeout=20)
         if response.status_code != 200:
             print(f"❌ Hata: Siteye ulaşılamadı. Kod: {response.status_code}")
             return

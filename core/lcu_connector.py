@@ -135,8 +135,29 @@ class LCUWorker(QThread):
         
         self.champ_select_update.emit(info)
 
+    def stop(self):
+        """Thread'i ve event loop'u güvenli şekilde durdurur (RESET sızıntı düzeltmesi)."""
+        self._stopping = True
+        loop = self.loop
+        connector = self.connector
+        if loop is not None and loop.is_running():
+            async def _shutdown():
+                try:
+                    if connector is not None:
+                        await connector.stop()
+                except Exception:
+                    pass
+                loop.stop()
+            try:
+                import asyncio as _aio
+                _aio.run_coroutine_threadsafe(_shutdown(), loop)
+            except Exception:
+                loop.call_soon_threadsafe(loop.stop)
+        self.wait(3000)
+
     def run(self):
         """Thread başladığında çalışacak ana döngü."""
+        self._stopping = False
         try:
             # Her thread için taze bir event loop şarttır
             self.loop = asyncio.new_event_loop()

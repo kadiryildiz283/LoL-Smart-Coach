@@ -55,11 +55,37 @@ Bu projenin en güçlü yanı, "sabit" bir algoritma olmamasıdır. `data/` klas
 * **`output/{Champion}.json`:** Her şampiyonun özel eşleşme verileri burada tutulur. `export_veri_cekici.py` ile otomatik güncellenir.
 * **`champion_damage_scores.json`:** Şampiyonların hasar profillerini güncel tutun.
 
+## 🧠 Draft Intelligence Engine (yeni çekirdek)
+
+Eski puanlama motorunun yanında, şartnameye (`kutsal_amac.md`) göre inşa edilmiş
+olasılıksal karar motoru: `engine/`.
+
+* **Tipli veri sözleşmeleri + JSON Schema kapısı** — geçersiz veri asla yayımlanmaz.
+* **Çok kaynaklı veri hattı:** Data Dragon (resmî), League of Graphs (izinli, brute-force,
+  resume'lu), Riot Match-v5 (anahtar bekliyor), legacy migrasyon.
+* **Matematiksel birlik:** tüm kanıtlar log-odds; matchup = gözlenen − beklenen (double-counting yok);
+  shrinkage + Wilson belirsizlik; eksik veri `null + missing_reason`.
+* **Joint rol çıkarımı** (flex pick'ler birlikte çözülür), **Monte Carlo gelecek draft**
+  simülasyonu (seed'li, bütçeli), CVaR downside risk.
+* **Oyun Kanunları Bilgi Tabanı:** Data Dragon'dan doğrulanmış mekanik gerçekler +
+  LLM önerileri (bağımsız doğrulama kapıları, semantik dedup, lifecycle).
+* **Yerel Qwen koç** (`qwen3.8:27b`): kararı değiştirmez, sadece açıklar; kapalıysa motor tam çalışır.
+* **HEURISTIC mod dürüstlüğü:** kalibre model eğitilene kadar `predicted_win_probability=null`.
+
+```bash
+.venv/bin/python -m engine.cli ingest --providers dd,legacy,log,riot
+.venv/bin/python -m engine.cli recommend --role MIDDLE --ally "Malphite,Amumu" --enemy "Zed,Caitlyn" --llm
+.venv/bin/python -m pytest tests/ -m "not integration"   # 45 test
+```
+
+Ayrıntı: `ARCHITECTURE.md`, `DATA_SOURCES.md`. UI'da **Engine Coach** butonu.
+
 ## 🚀 Kullanılan Teknolojiler
 * **Backend:** Python
 * **UI:** PyQt6 (Modern Frameless Window with Gaming Aesthetics)
 * **Visualization:** Pyqtgraph
 * **Connection:** LCU-Driver (League Client Update API)
+* **Engine:** jsonschema, numpy, curl_cffi, Playwright (yalnızca non-interaktif challenge)
 
 ## 🤝 Katkıda Bulunma
 Her türlü feedback, veri güncellemesi veya kod geliştirmesine açığız! 

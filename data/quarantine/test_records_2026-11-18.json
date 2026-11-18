@@ -1,0 +1,15 @@
+[
+  {
+    "name": "TestChampionPipeline",
+    "role": "Mid",
+    "expert_insight": {
+      "role_description": "Mid",
+      "hard_counters": [
+        "HardCounterEnemy"
+      ],
+      "easy_matchups": [
+        "EasyMatchupEnemy"
+      ]
+    }
+  }
+]

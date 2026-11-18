@@ -35,7 +35,7 @@ class LoLDecisionEngine:
         self.archetypes = {
             "Poke": ["jayce", "xerath", "lux", "vel'koz", "ziggs", "varus", "nidalee", "zoe", "caitlyn", "ezreal"],
             "Engage": ["malphite", "amumu", "leona", "nautilus", "zac", "sejuani", "ornn", "alistar", "rakan", "rell"],
-            "Disengage": ["janna", "braum", "lulu", "milie", "taric", "zyra", "anivia", "gragas"],
+            "Disengage": ["janna", "braum", "lulu", "milio", "taric", "zyra", "anivia", "gragas"],
             "Pick": ["blitzcrank", "thresh", "morgana", "elise", "pyke", "twisted fate"],
             "Siege": ["tristana", "ziggs", "caitlyn", "heimerdinger", "yorick"],
             "Hypercarry": ["jinx", "kog'maw", "vayne", "twitch", "kayle", "master yi", "kassadin"]
@@ -191,7 +191,9 @@ class LoLDecisionEngine:
             
         return " ".join(text_parts)
 
-    def calculate_score(self, my_role, enemy_laner=None, ally_team=[], enemy_team=[]):
+    def calculate_score(self, my_role, enemy_laner=None, ally_team=None, enemy_team=None):
+        ally_team = list(ally_team) if ally_team else []
+        enemy_team = list(enemy_team) if enemy_team else []
         recommendations = []
         W = self.weights # Kısa kullanım için
 
@@ -209,6 +211,7 @@ class LoLDecisionEngine:
         needed_dmg = self.analyze_team_damage(ally_team)
         team_archs = self.analyze_composition(ally_team)
         
+        enemy_class = "Unknown"
         if enemy_laner and enemy_laner not in ["Picking...", "Unknown"]:
             c = self.champ_lookup.get(enemy_laner.lower())
             if c: enemy_class = c.get('class', 'Unknown')
