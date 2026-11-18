@@ -118,7 +118,8 @@ class LLMClient:
                         "messages": [{"role": "system", "content": system},
                                      {"role": "user", "content": prompt}],
                         "temperature": 0.2,
-                        "max_tokens": 1500,
+                        "max_tokens": 2000,
+                        "response_format": {"type": "json_object"},
                     }, timeout=self.cfg.timeout_s)
                     text = resp["choices"][0]["message"]["content"]
                 else:

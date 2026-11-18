@@ -19,7 +19,9 @@ SYSTEM = (
     "kanıt paketi verilecek. Kurallar: (1) Sayısal sıralamayı DEĞİŞTİREMEZSİN, sadece açıklarsın. "
     "(2) Verilmeyen istatistik/oran UYDURAMAZSIN; eksik veri için 'veri yok' dersin. "
     "(3) Yasaklı/seçilmiş şampiyon öneremezsin. (4) Mekanik avantajı maç galibiyeti garantisi "
-    "gibi sunamazsın. (5) Türkçe, net ve stratejik yaz. (6) SADECE istenen JSON şemasında çıktı ver."
+    "gibi sunamazsın. (5) Yetenek isimleri ve mekanik detayları YALNIZCA kanıt paketinde "
+    "geçiyorsa kullan; pakette yoksa isim UYDURMA, genel rol/ifade kullan. "
+    "(6) Türkçe, net ve stratejik yaz. (7) SADECE istenen JSON şemasında çıktı ver."
 )
 
 
