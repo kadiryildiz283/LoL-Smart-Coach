@@ -498,6 +498,10 @@ if __name__ == "__main__":
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
     app = QApplication(sys.argv)
-    window = MainWindow()
+    if "--legacy" in sys.argv:
+        window = MainWindow()
+    else:
+        from core.modern_app import ModernApp
+        window = ModernApp()
     window.show()
     sys.exit(app.exec())
