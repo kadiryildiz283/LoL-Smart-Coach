@@ -230,13 +230,16 @@ class DraftPanel(QDialog):
         self.mode_label.setText("Computing…")
         if self._worker is not None and self._worker.isRunning():
             self._worker.requestInterruption()  # skip pending LLM work of superseded run
-        self._worker = PanelWorker(ally, enemy, eroles, bans, role, team, parent=self)
-        self._workers.append(self._worker)
-        self._worker.numeric_ready.connect(self._show_numeric)
-        self._worker.llm_ready.connect(self._show_llm)
-        self._worker.failed.connect(lambda m: self.numeric.setPlainText("HATA: " + m))
-        self._worker.finished.connect(lambda: self._retire(self._worker))
-        self._worker.start()
+        worker = PanelWorker(ally, enemy, eroles, bans, role, team, parent=self)
+        self._worker = worker
+        self._workers.append(worker)
+        worker.numeric_ready.connect(self._show_numeric)
+        worker.llm_ready.connect(self._show_llm)
+        worker.failed.connect(lambda m: self.numeric.setPlainText("HATA: " + m))
+        # bind THIS worker: reading self._worker at emit time would retire the
+        # superseding (still running) worker and crash QThread
+        worker.finished.connect(lambda w=worker: self._retire(w))
+        worker.start()
 
     def _retire(self, worker):
         if worker in self._workers:
